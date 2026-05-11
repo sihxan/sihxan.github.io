@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var segments = window.location.pathname.split("/").filter(Boolean);
+        var isProjectPage = segments.length > 1;
+        var base = isProjectPage ? "/" + segments[0] + "/" : "/";
+        var route = isProjectPage ? "/" + segments.slice(1).join("/") : window.location.pathname;
+        window.location.replace(window.location.origin + base + "#" + route + window.location.search);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
