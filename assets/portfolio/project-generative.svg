@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Generative AI notes image</title>
+  <desc id="desc">Noisy latent field turning into structured generative samples.</desc>
+  <defs>
+    <radialGradient id="glow" cx="48%" cy="43%" r="60%">
+      <stop offset="0" stop-color="#f0c95d" stop-opacity="0.9"/>
+      <stop offset="0.52" stop-color="#244da8" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#0a1628"/>
+    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="6" r="2" fill="#ffffff" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="620" fill="url(#glow)"/>
+  <rect width="900" height="620" fill="url(#dots)"/>
+  <g fill="none" stroke="#f5ead8" stroke-width="3" opacity="0.62">
+    <path d="M151 424c80-220 225-271 385-194 80 38 148 19 220-61"/>
+    <path d="M141 330c104-95 203-102 297-21 86 75 180 66 282-28"/>
+    <path d="M233 503c65-89 143-125 235-106 92 18 165-15 218-98"/>
+  </g>
+  <g transform="translate(144 112)" opacity="0.95">
+    <rect x="0" y="0" width="170" height="220" rx="18" fill="#0b1729" stroke="#ffffff" stroke-opacity="0.24"/>
+    <circle cx="85" cy="110" r="56" fill="#ffffff" opacity="0.1"/>
+    <text x="44" y="202" font-family="Courier New, monospace" font-size="20" fill="#f5ead8">NOISE</text>
+  </g>
+  <g transform="translate(590 274)" opacity="0.95">
+    <rect x="0" y="0" width="170" height="220" rx="18" fill="#f5ead8"/>
+    <path d="M32 153c20-60 50-92 91-96 19-2 33 2 47 10v153H0v-25c12-7 22-20 32-42z" fill="#244da8" opacity="0.82"/>
+    <circle cx="123" cy="55" r="34" fill="#d4a017" opacity="0.82"/>
+    <text x="26" y="202" font-family="Courier New, monospace" font-size="20" fill="#0a1628">SAMPLE</text>
+  </g>
+</svg>

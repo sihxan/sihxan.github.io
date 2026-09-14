@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Dataset distillation research image</title>
+  <desc id="desc">Large data cloud compressed into a compact distilled dataset.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2e6d2"/>
+      <stop offset="1" stop-color="#10223b"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#bg)"/>
+  <g fill="#10223b" opacity="0.22">
+    <circle cx="165" cy="128" r="23"/><circle cx="248" cy="116" r="16"/><circle cx="318" cy="156" r="27"/>
+    <circle cx="122" cy="235" r="19"/><circle cx="217" cy="235" r="31"/><circle cx="335" cy="256" r="17"/>
+    <circle cx="164" cy="356" r="28"/><circle cx="264" cy="352" r="20"/><circle cx="376" cy="384" r="25"/>
+    <circle cx="111" cy="468" r="16"/><circle cx="222" cy="482" r="26"/><circle cx="333" cy="492" r="18"/>
+  </g>
+  <g fill="none" stroke="#1a3a8f" stroke-width="5" stroke-linecap="round" opacity="0.62">
+    <path d="M399 174c86 36 127 88 147 159"/>
+    <path d="M403 431c80-28 124-76 143-143"/>
+    <path d="M392 300h157"/>
+  </g>
+  <rect x="588" y="169" width="214" height="250" rx="20" fill="#0a1628" opacity="0.92"/>
+  <g transform="translate(632 213)">
+    <rect x="0" y="0" width="54" height="54" fill="#f0c95d"/>
+    <rect x="72" y="0" width="54" height="54" fill="#79a9ff"/>
+    <rect x="0" y="72" width="54" height="54" fill="#c65b46"/>
+    <rect x="72" y="72" width="54" height="54" fill="#f3e8d7"/>
+  </g>
+  <path d="M614 470h168" stroke="#f3e8d7" stroke-width="9" stroke-linecap="round" opacity="0.75"/>
+  <text x="610" y="112" font-family="Courier New, monospace" font-size="22" font-weight="700" fill="#0a1628">DISTILLED SIGNAL</text>
+</svg>

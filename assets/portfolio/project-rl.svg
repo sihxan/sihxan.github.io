@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">AI competition award image</title>
+  <desc id="desc">Award badge and applied AI competition board.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe4cf"/>
+      <stop offset="1" stop-color="#0a1628"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#bg)"/>
+  <g transform="translate(102 100)">
+    <rect x="0" y="0" width="360" height="420" rx="18" fill="#0a1628" opacity="0.92"/>
+    <path d="M70 310h220M70 250h220M70 190h220M70 130h220" stroke="#ffffff" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M75 320c46-78 88-91 127-38 44 60 91 37 137-71" fill="none" stroke="#f0c95d" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="75" cy="320" r="9" fill="#f0c95d"/>
+    <circle cx="202" cy="282" r="9" fill="#f0c95d"/>
+    <circle cx="339" cy="211" r="9" fill="#f0c95d"/>
+    <text x="70" y="74" font-family="Courier New, monospace" font-size="24" fill="#f5ead8">MAICON</text>
+  </g>
+  <g transform="translate(540 130)">
+    <path d="M130 0l35 72 79 11-57 56 14 78-71-37-70 37 13-78-57-56 79-11z" fill="#d4a017"/>
+    <circle cx="130" cy="128" r="80" fill="none" stroke="#f5ead8" stroke-width="10" opacity="0.84"/>
+    <path d="M83 220l-39 120 71-31 31 70 34-118M177 220l39 120-71-31-31 70-34-118" fill="#c65b46" opacity="0.86"/>
+    <text x="77" y="139" font-family="Courier New, monospace" font-size="36" font-weight="700" fill="#0a1628">2nd</text>
+  </g>
+</svg>

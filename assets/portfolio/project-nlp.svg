@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Multimodal AI study image</title>
+  <desc id="desc">Vision, language, and time tokens aligned in one model space.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1729"/>
+      <stop offset="1" stop-color="#29466b"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#bg)"/>
+  <g opacity="0.9">
+    <rect x="86" y="112" width="230" height="180" rx="16" fill="#f3e8d7"/>
+    <circle cx="168" cy="185" r="38" fill="#244da8" opacity="0.85"/>
+    <path d="M112 260c54-69 93-40 126-80 20-24 41-31 78-8v120H86v-21c9-2 17-6 26-11z" fill="#d4a017" opacity="0.72"/>
+  </g>
+  <g font-family="Courier New, monospace" font-size="21" fill="#f3e8d7" opacity="0.9">
+    <text x="92" y="386">[vision]</text>
+    <text x="92" y="426">[language]</text>
+    <text x="92" y="466">[time]</text>
+  </g>
+  <g transform="translate(445 95)">
+    <rect x="0" y="0" width="352" height="420" rx="22" fill="#f5ead8" opacity="0.94"/>
+    <g fill="#10223b" opacity="0.2">
+      <rect x="46" y="54" width="230" height="13"/>
+      <rect x="46" y="91" width="270" height="13"/>
+      <rect x="46" y="128" width="210" height="13"/>
+    </g>
+    <g fill="none" stroke="#1a3a8f" stroke-width="4" opacity="0.74">
+      <circle cx="110" cy="252" r="44"/>
+      <circle cx="185" cy="206" r="44"/>
+      <circle cx="244" cy="284" r="44"/>
+      <path d="M147 229l31-19M214 241l18 25M151 268l49 11"/>
+    </g>
+    <g fill="#d4a017">
+      <circle cx="110" cy="252" r="9"/>
+      <circle cx="185" cy="206" r="9"/>
+      <circle cx="244" cy="284" r="9"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#f0c95d" stroke-width="5" stroke-linecap="round" opacity="0.74">
+    <path d="M318 184C377 149 405 147 445 184"/>
+    <path d="M318 386C372 426 408 426 445 386"/>
+  </g>
+</svg>
