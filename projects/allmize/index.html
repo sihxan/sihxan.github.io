@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#faf9f6">
+  <title data-ko="Allmize AI 서비스 개발 — 김시환" data-en="AI service development at Allmize — Sihwan Kim">Allmize AI 서비스 개발 — 김시환</title>
+  <meta name="description" content="Allmize의 초기 멤버로 RAG 워크플로와 AI 서비스 기능을 구현했습니다." data-ko="Allmize의 초기 멤버로 RAG 워크플로와 AI 서비스 기능을 구현했습니다." data-en="As an early member of Allmize, I implemented RAG workflows and AI service features.">
+  <link rel="canonical" href="https://sihxan.github.io/projects/allmize/">
+  <link rel="preload" href="../../assets/PortfolioLatin.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/PortfolioHangul.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/portfolio.css?v=details-20261012">
+  <link rel="stylesheet" href="../../assets/project-details.css?v=details-20261012">
+</head>
+<body class="project-detail">
+  <a class="skip" data-ko="본문 바로가기" data-en="Skip to content" href="#main">본문 바로가기</a>
+  <canvas id="loss-landscape" class="contour-background" role="img" aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬"></canvas>
+  <div class="motion-tools">
+    <button id="toggle-motion" type="button" aria-label="애니메이션 일시 정지"><svg class="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9m5-9v9"/></svg><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 7 5-7 5z"/></svg></button>
+    <button id="restart-motion" type="button" aria-label="애니메이션 처음부터 다시 보기"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"/></svg></button>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <a class="wordmark" data-ko="김시환" data-en="Sihwan Kim" href="../../" data-home-link>김시환</a>
+      <nav aria-label="주 메뉴">
+        <a class="" data-ko="프로젝트" data-en="Projects" href="../../#work" data-home-link>프로젝트</a>
+        <a class="" data-ko="경험" data-en="Experience" href="../../#profile" data-home-link>경험</a>
+        <a href="../../#contact" data-home-link data-ko="Contact" data-en="Contact">Contact</a>
+        <button class="language" type="button" aria-label="Switch to English"><strong>KO</strong> / EN</button>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="detail-hero" aria-labelledby="project-title">
+        <a class="back-link" data-ko="← 프로젝트 목록" data-en="← All projects" href="../../#project-allmize" data-home-link>← 프로젝트 목록</a>
+        <p class="detail-kicker" data-ko="서비스 개발" data-en="Product engineering" >서비스 개발</p>
+        <h1 class="" data-ko="Allmize AI 서비스 개발" data-en="AI service development at Allmize" id="project-title">Allmize AI 서비스 개발</h1>
+        <p class="detail-lead" data-ko="Allmize의 초기 멤버로 RAG 워크플로와 AI 서비스 기능을 구현했습니다." data-en="As an early member of Allmize, I implemented RAG workflows and AI service features." >Allmize의 초기 멤버로 RAG 워크플로와 AI 서비스 기능을 구현했습니다.</p>
+        <dl class="detail-facts">
+          <div><dt class="" data-ko="맡은 일" data-en="My role" >맡은 일</dt><dd class="" data-ko="초기 멤버 · AI 기능·애플리케이션 로직 개발" data-en="Early member · AI features and application logic" >초기 멤버 · AI 기능·애플리케이션 로직 개발</dd></div>
+          <div><dt class="" data-ko="현재 단계" data-en="Status" >현재 단계</dt><dd class="" data-ko="2025.02–08 참여" data-en="Participation: Feb–Aug 2025" >2025.02–08 참여</dd></div>
+        </dl>
+      </section>
+      <nav class="detail-sections" aria-label="프로젝트 상세 목차"><a class="" data-ko="어떤 일을 했나" data-en="The work" href="#question">어떤 일을 했나</a><a class="" data-ko="내가 맡은 일" data-en="My contribution" href="#contribution">내가 맡은 일</a><a class="" data-ko="구현한 것" data-en="What I built" href="#results">구현한 것</a></nav>
+      <article class="detail-story"><section class="detail-section" id="question" aria-labelledby="question-title">
+          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;어떤 일을 했나" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;The work" id="question-title"><span class="section-number" aria-hidden="true">01</span>어떤 일을 했나</h2>
+          <div class="detail-prose"><p class="" data-ko="AI 기능을 서비스 흐름에 연결하는 개발에 참여했습니다. 문서를 검색해 답변 생성에 활용하는 RAG 워크플로와, 이를 서비스에서 동작시키는 애플리케이션 로직을 다뤘습니다." data-en="I helped connect AI features to the service workflow, working on retrieval-augmented generation and the application logic that supported those features." >AI 기능을 서비스 흐름에 연결하는 개발에 참여했습니다. 문서를 검색해 답변 생성에 활용하는 RAG 워크플로와, 이를 서비스에서 동작시키는 애플리케이션 로직을 다뤘습니다.</p></div>
+        </section><section class="detail-section" id="contribution" aria-labelledby="contribution-title">
+          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;내가 맡은 일" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;My contribution" id="contribution-title"><span class="section-number" aria-hidden="true">02</span>내가 맡은 일</h2>
+          <div class="detail-prose"><ul><li class="" data-ko="RAG 기반 워크플로와 AI 기능을 구현했습니다." data-en="I implemented RAG-based workflows and AI features." >RAG 기반 워크플로와 AI 기능을 구현했습니다.</li><li class="" data-ko="서비스의 애플리케이션 로직을 개발했습니다." data-en="I developed application logic for the service." >서비스의 애플리케이션 로직을 개발했습니다.</li><li class="" data-ko="서비스 방향을 검토하고 제품·기술 개선안을 제안했습니다." data-en="I reviewed the service direction and proposed product and technical improvements." >서비스 방향을 검토하고 제품·기술 개선안을 제안했습니다.</li></ul></div>
+        </section><section class="detail-section" id="results" aria-labelledby="results-title">
+          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;구현한 것" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;What I built" id="results-title"><span class="section-number" aria-hidden="true">03</span>구현한 것</h2>
+          <div class="detail-prose"><p class="" data-ko="RAG 워크플로와 이를 연결하는 AI 서비스 기능·애플리케이션 로직을 구현했습니다. 초기 서비스 개발 과정에서 기능 구현과 제품 개선 논의에 함께 참여했습니다." data-en="I implemented RAG workflows, related AI service features and application logic, contributing to both feature development and product-improvement discussions during the early service-development phase." >RAG 워크플로와 이를 연결하는 AI 서비스 기능·애플리케이션 로직을 구현했습니다. 초기 서비스 개발 과정에서 기능 구현과 제품 개선 논의에 함께 참여했습니다.</p></div>
+        </section></article>
+      <div class="detail-pagination" aria-label="다른 프로젝트"><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;← 이전 프로젝트&lt;/span&gt;데이터 증류와 선택 편향" data-en="&lt;span class=&quot;direction&quot;&gt;← Previous project&lt;/span&gt;Dataset distillation &amp;amp; selection bias" href="../samba/" data-project-nav><span class="direction">← 이전 프로젝트</span>데이터 증류와 선택 편향</a><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;다음 프로젝트 →&lt;/span&gt;생성 모델 논문 읽기·구현" data-en="&lt;span class=&quot;direction&quot;&gt;Next project →&lt;/span&gt;Generative models: reading &amp;amp; implementation" href="../generative-models/" data-project-nav><span class="direction">다음 프로젝트 →</span>생성 모델 논문 읽기·구현</a></div>
+      <section class="contact" id="contact" aria-label="Contact">
+        <span data-ko="Contact" data-en="Contact">Contact</span>
+        <a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+    <footer><span class="" data-ko="김시환 / Sihwan Kim" data-en="Sihwan Kim / 김시환" >김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+  </div>
+  <script src="../../assets/contour-terrain.js?v=details-20261012"></script>
+  <script src="../../assets/scroll-motion-model.js?v=details-20261012"></script>
+  <script src="../../assets/scroll-contour.js?v=details-20261012"></script>
+  <script type="module" src="../../assets/portfolio.js?v=details-20261012"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#faf9f6">
+  <title data-ko="모델컷 생성·가상 피팅 — 김시환" data-en="Model-cut generation &amp; virtual try-on — Sihwan Kim">모델컷 생성·가상 피팅 — 김시환</title>
+  <meta name="description" content="가상 피팅의 실행 흐름을 정리하고, 외부 API가 맡던 핏 지시문 생성을 로컬 VLM으로 옮겼습니다." data-ko="가상 피팅의 실행 흐름을 정리하고, 외부 API가 맡던 핏 지시문 생성을 로컬 VLM으로 옮겼습니다." data-en="I organized the virtual try-on workflow and moved fit-instruction generation from an external API to a local VLM.">
+  <link rel="canonical" href="https://sihxan.github.io/projects/sunicon-vton/">
+  <link rel="preload" href="../../assets/PortfolioLatin.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/PortfolioHangul.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/portfolio.css?v=details-20261012">
+  <link rel="stylesheet" href="../../assets/project-details.css?v=details-20261012">
+</head>
+<body class="project-detail">
+  <a class="skip" data-ko="본문 바로가기" data-en="Skip to content" href="#main">본문 바로가기</a>
+  <canvas id="loss-landscape" class="contour-background" role="img" aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬"></canvas>
+  <div class="motion-tools">
+    <button id="toggle-motion" type="button" aria-label="애니메이션 일시 정지"><svg class="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9m5-9v9"/></svg><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 7 5-7 5z"/></svg></button>
+    <button id="restart-motion" type="button" aria-label="애니메이션 처음부터 다시 보기"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"/></svg></button>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <a class="wordmark" data-ko="김시환" data-en="Sihwan Kim" href="../../" data-home-link>김시환</a>
+      <nav aria-label="주 메뉴">
+        <a class="" data-ko="프로젝트" data-en="Projects" href="../../#work" data-home-link>프로젝트</a>
+        <a class="" data-ko="경험" data-en="Experience" href="../../#profile" data-home-link>경험</a>
+        <a href="../../#contact" data-home-link data-ko="Contact" data-en="Contact">Contact</a>
+        <button class="language" type="button" aria-label="Switch to English"><strong>KO</strong> / EN</button>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="detail-hero" aria-labelledby="project-title">
+        <a class="back-link" data-ko="← 프로젝트 목록" data-en="← All projects" href="../../#project-sunicon-vton" data-home-link>← 프로젝트 목록</a>
+        <p class="detail-kicker" data-ko="산학협력 · 파이프라인 개발" data-en="Industry collaboration · Pipeline engineering" >산학협력 · 파이프라인 개발</p>
+        <h1 class="" data-ko="모델컷 생성·가상 피팅" data-en="Model-cut generation &amp;amp; virtual try-on" id="project-title">모델컷 생성·가상 피팅</h1>
+        <p class="detail-lead" data-ko="가상 피팅의 실행 흐름을 정리하고, 외부 API가 맡던 핏 지시문 생성을 로컬 VLM으로 옮겼습니다." data-en="I organized the virtual try-on workflow and moved fit-instruction generation from an external API to a local VLM." >가상 피팅의 실행 흐름을 정리하고, 외부 API가 맡던 핏 지시문 생성을 로컬 VLM으로 옮겼습니다.</p>
+        <dl class="detail-facts">
+          <div><dt class="" data-ko="맡은 일" data-en="My role" >맡은 일</dt><dd class="" data-ko="파이프라인 통합 · 로컬 VLM 구현 · 실행 검증" data-en="Pipeline integration · Local VLM implementation · Execution validation" >파이프라인 통합 · 로컬 VLM 구현 · 실행 검증</dd></div>
+          <div><dt class="" data-ko="현재 단계" data-en="Status" >현재 단계</dt><dd class="" data-ko="Rewake / Sunicon 산학협력 · 2026.09–10 구현·검증 자료 기준" data-en="Rewake / Sunicon collaboration · Implementation and validation records, Sep–Oct 2026" >Rewake / Sunicon 산학협력 · 2026.09–10 구현·검증 자료 기준</dd></div>
+        </dl>
+      </section>
+      <nav class="detail-sections" aria-label="프로젝트 상세 목차"><a class="" data-ko="무엇을 해결하려 했나" data-en="The problem" href="#question">무엇을 해결하려 했나</a><a class="" data-ko="내가 맡은 일" data-en="My contribution" href="#contribution">내가 맡은 일</a><a class="" data-ko="결과와 산출물" data-en="Outcomes and deliverables" href="#results">결과와 산출물</a><a class="" data-ko="검증 범위와 남은 점" data-en="Validation scope and open issues" href="#next">검증 범위와 남은 점</a></nav>
+      <article class="detail-story"><section class="detail-section" id="question" aria-labelledby="question-title">
+          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;무엇을 해결하려 했나" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;The problem" id="question-title"><span class="section-number" aria-hidden="true">01</span>무엇을 해결하려 했나</h2>
+          <div class="detail-prose"><p class="" data-ko="제품 사진과 착용 참조에서 의상의 길이·핏을 읽고, 이를 이미지 생성에 전달하는 흐름이 필요했습니다. 실험 코드를 다른 환경에서도 실행할 수 있도록 입력·설정·출력을 연결하는 일도 맡았습니다." data-en="The workflow needed to read garment length and fit from product and wearing-reference images, then pass those instructions to image generation. I also connected inputs, configurations and outputs so the experimental code could be transferred to another environment." >제품 사진과 착용 참조에서 의상의 길이·핏을 읽고, 이를 이미지 생성에 전달하는 흐름이 필요했습니다. 실험 코드를 다른 환경에서도 실행할 수 있도록 입력·설정·출력을 연결하는 일도 맡았습니다.</p></div>
+        </section><section class="detail-section" id="contribution" aria-labelledby="contribution-title">
+          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;내가 맡은 일" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;My contribution" id="contribution-title"><span class="section-number" aria-hidden="true">02</span>내가 맡은 일</h2>
+          <div class="detail-prose"><ul><li class="" data-ko="모델컷 생성과 가상 피팅의 실행 설정을 정리하고, 전처리 → 핏 측정 → 지시문 → 이미지 생성 단계를 연결했습니다." data-en="I organized model-cut and virtual try-on configurations and connected preprocessing, fit measurement, instruction generation and image generation." >모델컷 생성과 가상 피팅의 실행 설정을 정리하고, 전처리 → 핏 측정 → 지시문 → 이미지 생성 단계를 연결했습니다.</li><li class="" data-ko="핏 지시문 단계를 로컬 VLM으로 교체하고, vLLM·FP8 추론, JSON 검증·재시도, 추론 길이 제어를 구현했습니다." data-en="I replaced the fit-instruction stage with a local VLM and implemented vLLM/FP8 inference, JSON validation, retries and reasoning-length controls." >핏 지시문 단계를 로컬 VLM으로 교체하고, vLLM·FP8 추론, JSON 검증·재시도, 추론 길이 제어를 구현했습니다.</li><li class="" data-ko="입력 해시·실행 조건·실패 기록을 남기고, 단일 GPU에서 서버 기동·종료와 단계별 실행을 관리하는 배치 흐름을 구성했습니다." data-en="I retained input hashes, execution settings and failure records, and organized server startup, shutdown and sequential batch execution on a single GPU." >입력 해시·실행 조건·실패 기록을 남기고, 단일 GPU에서 서버 기동·종료와 단계별 실행을 관리하는 배치 흐름을 구성했습니다.</li></ul></div>
+        </section><section class="detail-section" id="results" aria-labelledby="results-title">
+          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;결과와 산출물" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;Outcomes and deliverables" id="results-title"><span class="section-number" aria-hidden="true">03</span>결과와 산출물</h2>
+          <div class="detail-prose"><p class="" data-ko="전달용 코드·실행 설정·사용 가이드를 만들었습니다. 로컬 핏 지시문 생성부터 가상 피팅 이미지 생성까지 단일 GPU에서 순차 실행하는 경로를 확인했습니다." data-en="I produced a handoff code package, execution configurations and a usage guide, and verified sequential local fit-instruction and try-on image generation on a single GPU." >전달용 코드·실행 설정·사용 가이드를 만들었습니다. 로컬 핏 지시문 생성부터 가상 피팅 이미지 생성까지 단일 GPU에서 순차 실행하는 경로를 확인했습니다.</p><p class="" data-ko="추론 속도·메모리 사용·출력 오류를 비교한 기록을 남겼습니다. 정상 종료와 실패·중단 시 서버 정리 동작도 확인했습니다." data-en="I documented inference time, memory use and output failures, and checked server cleanup after normal completion, failure and interruption." >추론 속도·메모리 사용·출력 오류를 비교한 기록을 남겼습니다. 정상 종료와 실패·중단 시 서버 정리 동작도 확인했습니다.</p></div>
+        </section><section class="detail-section" id="next" aria-labelledby="next-title">
+          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;04&lt;/span&gt;검증 범위와 남은 점" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;04&lt;/span&gt;Validation scope and open issues" id="next-title"><span class="section-number" aria-hidden="true">04</span>검증 범위와 남은 점</h2>
+          <div class="detail-prose"><p class="" data-ko="검증은 일부 상의 사례를 대상으로 했습니다. JSON 형식이 올바른 경우에도 의상 길이·핏을 잘못 읽는 사례가 남아, 지시문의 정확성과 최종 이미지 품질을 따로 확인해야 합니다." data-en="Validation covered a limited set of tops. Some valid JSON outputs still misread garment length or fit, so instruction correctness and final-image quality need separate evaluation." >검증은 일부 상의 사례를 대상으로 했습니다. JSON 형식이 올바른 경우에도 의상 길이·핏을 잘못 읽는 사례가 남아, 지시문의 정확성과 최종 이미지 품질을 따로 확인해야 합니다.</p></div>
+        </section></article>
+      <div class="detail-pagination" aria-label="다른 프로젝트"><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;← 이전 프로젝트&lt;/span&gt;영상 모델의 KV-cache 압축" data-en="&lt;span class=&quot;direction&quot;&gt;← Previous project&lt;/span&gt;KV-cache compression for video models" href="../kv-cache/" data-project-nav><span class="direction">← 이전 프로젝트</span>영상 모델의 KV-cache 압축</a><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;다음 프로젝트 →&lt;/span&gt;데이터 증류와 선택 편향" data-en="&lt;span class=&quot;direction&quot;&gt;Next project →&lt;/span&gt;Dataset distillation &amp;amp; selection bias" href="../samba/" data-project-nav><span class="direction">다음 프로젝트 →</span>데이터 증류와 선택 편향</a></div>
+      <section class="contact" id="contact" aria-label="Contact">
+        <span data-ko="Contact" data-en="Contact">Contact</span>
+        <a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+    <footer><span class="" data-ko="김시환 / Sihwan Kim" data-en="Sihwan Kim / 김시환" >김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+  </div>
+  <script src="../../assets/contour-terrain.js?v=details-20261012"></script>
+  <script src="../../assets/scroll-motion-model.js?v=details-20261012"></script>
+  <script src="../../assets/scroll-contour.js?v=details-20261012"></script>
+  <script type="module" src="../../assets/portfolio.js?v=details-20261012"></script>
+</body>
+</html>

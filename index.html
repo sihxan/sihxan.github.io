@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#faf9f6">
-  <title>김시환 — AI Research & Engineering</title>
+  <title data-ko="김시환 — AI Research &amp; Engineering" data-en="Sihwan Kim — AI Research &amp; Engineering">김시환 — AI Research & Engineering</title>
   <meta name="description" content="김시환의 AI 연구와 개발 포트폴리오. CLIP 작은 객체·문맥 분석, VideoLLM 내부 신호와 답변 진단, KV-cache 압축, 가상 피팅·로컬 VLM 파이프라인과 RAG 서비스 개발." data-ko="김시환의 AI 연구와 개발 포트폴리오. CLIP 작은 객체·문맥 분석, VideoLLM 내부 신호와 답변 진단, KV-cache 압축, 가상 피팅·로컬 VLM 파이프라인과 RAG 서비스 개발." data-en="Sihwan Kim’s AI research and engineering portfolio: CLIP small-object/context analysis, VideoLLM readout diagnostics, KV-cache compression, local-VLM virtual try-on pipelines, and RAG service development.">
-  <link rel="preload" href="assets/PortfolioLatin.woff2?v=concise-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/PortfolioHangul.woff2?v=concise-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/portfolio.css?v=concise-20261012">
+  <link rel="preload" href="assets/PortfolioLatin.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/PortfolioHangul.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/portfolio.css?v=details-20261012">
+  <link rel="stylesheet" href="assets/project-details.css?v=details-20261012">
   <!-- Profile source: sihxan/pages/profile.md, blob 30ebba93d901a186428a1368f3ac42781ade647d.
        Exact student-council title and Defense AI award wording remain to be clarified.
        Recent research copy is audited against received reports and the current manuscript.
@@ -50,54 +51,62 @@
       </section>
       <section class="work" id="work" aria-labelledby="work-title">
         <div class="section-heading reveal"><h2 class="" data-ko="연구와 프로젝트" data-en="Research &amp; projects" id="work-title">연구와 프로젝트</h2></div>
-        <div class="work-grid"><article class="project reveal">
+        <div class="work-grid"><article class="project reveal" id="project-clip-context">
       <div class="project-meta"><span class="index" aria-hidden="true">01</span><span class="" data-ko="연구 · 원고 작성" data-en="Research · Manuscript preparation" >연구 · 원고 작성</span></div>
-      <h3 class="" data-ko="CLIP의 작은 객체 판별" data-en="Small-object discrimination in CLIP" >CLIP의 작은 객체 판별</h3>
+      <h3 id="title-clip-context"><a class="" data-ko="CLIP의 작은 객체 판별" data-en="Small-object discrimination in CLIP" href="projects/clip-context/" data-project-link>CLIP의 작은 객체 판별</a></h3>
       <p class="purpose" data-ko="작은 객체와 주변 문맥의 역할 비교" data-en="Comparing small objects and their context" >작은 객체와 주변 문맥의 역할 비교</p>
-      <p class="activity" data-ko="맡은 일: 객체 영역을 가리거나 다른 이미지에 옮기는 대조 실험을 설계·분석했습니다.&lt;br&gt;&lt;br&gt;결과: 객체 영역 밖에도 판별 단서가 남는 조건을 확인했고, KSC 2026 제1저자 원고를 작성 중입니다." data-en="My work: Designed and analyzed experiments that mask or transplant object regions.&lt;br&gt;&lt;br&gt;Finding: Identified conditions where discriminative cues remain outside the object region; preparing a first-author KSC 2026 manuscript." >맡은 일: 객체 영역을 가리거나 다른 이미지에 옮기는 대조 실험을 설계·분석했습니다.<br><br>결과: 객체 영역 밖에도 판별 단서가 남는 조건을 확인했고, KSC 2026 제1저자 원고를 작성 중입니다.</p>
+      <p class="activity" data-ko="맡은 일: 객체 영역을 가리거나 다른 이미지에 옮기는 대조 실험을 설계·분석했습니다.&lt;br&gt;&lt;br&gt;결과: 객체 영역을 가린 뒤에도 판별력이 남는 조건을 확인했고, KSC 2026 제1저자 원고를 작성 중입니다." data-en="My work: Designed and analyzed experiments that mask or transplant object regions.&lt;br&gt;&lt;br&gt;Finding: Identified conditions where discrimination remains after masking the object region; preparing a first-author KSC 2026 manuscript." >맡은 일: 객체 영역을 가리거나 다른 이미지에 옮기는 대조 실험을 설계·분석했습니다.<br><br>결과: 객체 영역을 가린 뒤에도 판별력이 남는 조건을 확인했고, KSC 2026 제1저자 원고를 작성 중입니다.</p>
       <p class="methods" data-ko="CLIP · 가림·이식 실험" data-en="CLIP · Masking &amp; transplantation" >CLIP · 가림·이식 실험</p>
-    </article><article class="project reveal">
+      <a class="project-link" data-ko="자세히 보기 &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" data-en="View project &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" href="projects/clip-context/" data-project-link aria-describedby="title-clip-context">자세히 보기 <span aria-hidden="true">→</span></a>
+    </article><article class="project reveal" id="project-spot-videollm">
       <div class="project-meta"><span class="index" aria-hidden="true">02</span><span class="" data-ko="연구 · 진행 중" data-en="Research · Ongoing" >연구 · 진행 중</span></div>
-      <h3 class="" data-ko="작은 객체와 VideoLLM" data-en="Small objects in VideoLLMs" >작은 객체와 VideoLLM</h3>
+      <h3 id="title-spot-videollm"><a class="" data-ko="작은 객체와 VideoLLM" data-en="Small objects in VideoLLMs" href="projects/spot-videollm/" data-project-link>작은 객체와 VideoLLM</a></h3>
       <p class="purpose" data-ko="모델 내부 정보와 실제 답변 비교" data-en="Comparing internal information with actual answers" >모델 내부 정보와 실제 답변 비교</p>
       <p class="activity" data-ko="맡은 일: 객체 크기와 배경을 통제하고, 내부 정보로 학습한 분류기와 모델의 실제 답변을 비교했습니다.&lt;br&gt;&lt;br&gt;결과: 두 객체의 합성 실험에서 동일한 1,104조건 중 분류기는 874개, 모델 답변은 577개를 맞혔습니다." data-en="My work: Controlled object size and backgrounds, comparing a classifier trained on internal states with the model&#x27;s own answers.&lt;br&gt;&lt;br&gt;Finding: In synthetic scenes with two fixed objects, the classifier answered 874 of the same 1,104 conditions correctly, versus 577 native answers." >맡은 일: 객체 크기와 배경을 통제하고, 내부 정보로 학습한 분류기와 모델의 실제 답변을 비교했습니다.<br><br>결과: 두 객체의 합성 실험에서 동일한 1,104조건 중 분류기는 874개, 모델 답변은 577개를 맞혔습니다.</p>
       <p class="methods" data-ko="VideoLLM · 내부 상태 분석" data-en="VideoLLM · Internal-state analysis" >VideoLLM · 내부 상태 분석</p>
-    </article><article class="project reveal">
+      <a class="project-link" data-ko="자세히 보기 &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" data-en="View project &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" href="projects/spot-videollm/" data-project-link aria-describedby="title-spot-videollm">자세히 보기 <span aria-hidden="true">→</span></a>
+    </article><article class="project reveal" id="project-kv-cache">
       <div class="project-meta"><span class="index" aria-hidden="true">03</span><span class="" data-ko="연구 · 오프라인 실험" data-en="Research · Offline experiments" >연구 · 오프라인 실험</span></div>
-      <h3 class="" data-ko="영상 모델의 KV-cache 압축" data-en="KV-cache compression for video models" >영상 모델의 KV-cache 압축</h3>
+      <h3 id="title-kv-cache"><a class="" data-ko="영상 모델의 KV-cache 압축" data-en="KV-cache compression for video models" href="projects/kv-cache/" data-project-link>영상 모델의 KV-cache 압축</a></h3>
       <p class="purpose" data-ko="메모리 압축이 모델 계산에 미치는 영향" data-en="How memory compression affects model computation" >메모리 압축이 모델 계산에 미치는 영향</p>
       <p class="activity" data-ko="맡은 일: 영상 모델의 메모리 압축·복원 코드를 구현하고, 저장량과 계산 오차를 비교했습니다.&lt;br&gt;&lt;br&gt;결과: 오프라인 실험에서 복원 오차가 줄어도 attention 출력 오차는 커질 수 있음을 확인했습니다." data-en="My work: Implemented memory compression and reconstruction, comparing storage costs and computation errors.&lt;br&gt;&lt;br&gt;Finding: Offline experiments showed that better reconstruction can still produce greater attention-output error." >맡은 일: 영상 모델의 메모리 압축·복원 코드를 구현하고, 저장량과 계산 오차를 비교했습니다.<br><br>결과: 오프라인 실험에서 복원 오차가 줄어도 attention 출력 오차는 커질 수 있음을 확인했습니다.</p>
       <p class="methods" data-ko="KV-cache · 압축·복원 · 오프라인 평가" data-en="KV-cache · Compression &amp; reconstruction · Offline evaluation" >KV-cache · 압축·복원 · 오프라인 평가</p>
-    </article><article class="project reveal">
+      <a class="project-link" data-ko="자세히 보기 &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" data-en="View project &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" href="projects/kv-cache/" data-project-link aria-describedby="title-kv-cache">자세히 보기 <span aria-hidden="true">→</span></a>
+    </article><article class="project reveal" id="project-sunicon-vton">
       <div class="project-meta"><span class="index" aria-hidden="true">04</span><span class="" data-ko="산학협력 · 파이프라인 개발" data-en="Industry collaboration · Pipeline engineering" >산학협력 · 파이프라인 개발</span></div>
-      <h3 class="" data-ko="모델컷 생성·가상 피팅" data-en="Model-cut generation &amp; virtual try-on" >모델컷 생성·가상 피팅</h3>
+      <h3 id="title-sunicon-vton"><a class="" data-ko="모델컷 생성·가상 피팅" data-en="Model-cut generation &amp; virtual try-on" href="projects/sunicon-vton/" data-project-link>모델컷 생성·가상 피팅</a></h3>
       <p class="purpose" data-ko="가상 피팅을 실행·전달 가능한 코드로" data-en="Making virtual try-on runnable and transferable" >가상 피팅을 실행·전달 가능한 코드로</p>
       <p class="activity" data-ko="맡은 일: Rewake / Sunicon 산학협력에서 가상 피팅 실행 흐름을 정리하고, 핏 지시문 생성을 로컬 VLM으로 교체했습니다.&lt;br&gt;&lt;br&gt;산출물: 단일 GPU 순차 실행을 확인하고, 전달용 코드·설정·사용 가이드를 제작했습니다." data-en="My work: Organized virtual try-on execution with Rewake / Sunicon and replaced external fit-text generation with a local VLM.&lt;br&gt;&lt;br&gt;Outcome: Verified sequential execution on one GPU and produced handoff code, settings and a usage guide." >맡은 일: Rewake / Sunicon 산학협력에서 가상 피팅 실행 흐름을 정리하고, 핏 지시문 생성을 로컬 VLM으로 교체했습니다.<br><br>산출물: 단일 GPU 순차 실행을 확인하고, 전달용 코드·설정·사용 가이드를 제작했습니다.</p>
       <p class="methods" data-ko="VTON · 로컬 VLM · 실행·인수인계" data-en="VTON · Local VLM · Execution &amp; handoff" >VTON · 로컬 VLM · 실행·인수인계</p>
-    </article><article class="project reveal">
+      <a class="project-link" data-ko="자세히 보기 &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" data-en="View project &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" href="projects/sunicon-vton/" data-project-link aria-describedby="title-sunicon-vton">자세히 보기 <span aria-hidden="true">→</span></a>
+    </article><article class="project reveal" id="project-samba">
       <div class="project-meta"><span class="index" aria-hidden="true">05</span><span class="" data-ko="연구 설계" data-en="Research design" >연구 설계</span></div>
-      <h3 class="" data-ko="데이터 증류와 선택 편향" data-en="Dataset distillation &amp; selection bias" >데이터 증류와 선택 편향</h3>
+      <h3 id="title-samba"><a class="" data-ko="데이터 증류와 선택 편향" data-en="Dataset distillation &amp; selection bias" href="projects/samba/" data-project-link>데이터 증류와 선택 편향</a></h3>
       <p class="purpose" data-ko="작은 데이터셋에서도 소수 그룹을 보존" data-en="Preserving minority groups in compact datasets" >작은 데이터셋에서도 소수 그룹을 보존</p>
       <p class="activity" data-ko="맡은 일: 데이터 선택 편향을 검토하고, 소수 그룹을 보존하는 샘플 선택 방식을 설계했습니다.&lt;br&gt;&lt;br&gt;산출물: SAMBA 설계와 그룹별 평가 기준을 마련했으며, 구현·성능 평가는 후속 단계입니다." data-en="My work: Examined selection bias and designed sample selection to preserve minority groups.&lt;br&gt;&lt;br&gt;Deliverable: A SAMBA design and group-level evaluation criteria; implementation and performance testing remain follow-up work." >맡은 일: 데이터 선택 편향을 검토하고, 소수 그룹을 보존하는 샘플 선택 방식을 설계했습니다.<br><br>산출물: SAMBA 설계와 그룹별 평가 기준을 마련했으며, 구현·성능 평가는 후속 단계입니다.</p>
       <p class="methods" data-ko="데이터 증류 · 그룹별 평가" data-en="Dataset distillation · Group-level evaluation" >데이터 증류 · 그룹별 평가</p>
-    </article><article class="project reveal">
+      <a class="project-link" data-ko="자세히 보기 &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" data-en="View project &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" href="projects/samba/" data-project-link aria-describedby="title-samba">자세히 보기 <span aria-hidden="true">→</span></a>
+    </article><article class="project reveal" id="project-allmize">
       <div class="project-meta"><span class="index" aria-hidden="true">06</span><span class="" data-ko="서비스 개발" data-en="Product engineering" >서비스 개발</span></div>
-      <h3 class="" data-ko="Allmize AI 서비스 개발" data-en="AI service development at Allmize" >Allmize AI 서비스 개발</h3>
+      <h3 id="title-allmize"><a class="" data-ko="Allmize AI 서비스 개발" data-en="AI service development at Allmize" href="projects/allmize/" data-project-link>Allmize AI 서비스 개발</a></h3>
       <p class="purpose" data-ko="RAG와 AI 기능 개발" data-en="Building RAG and AI features" >RAG와 AI 기능 개발</p>
       <p class="activity" data-ko="맡은 일: Allmize 초기 멤버로 RAG 워크플로와 AI 기능 개발에 참여했습니다.&lt;br&gt;&lt;br&gt;산출물: 애플리케이션 로직을 구현하고, 제품·기술 개선안을 제안했습니다." data-en="My work: Contributed to RAG workflows and AI features as an early Allmize member.&lt;br&gt;&lt;br&gt;Deliverable: Application logic and proposals for product and technical improvements." >맡은 일: Allmize 초기 멤버로 RAG 워크플로와 AI 기능 개발에 참여했습니다.<br><br>산출물: 애플리케이션 로직을 구현하고, 제품·기술 개선안을 제안했습니다.</p>
       <p class="methods" data-ko="RAG · AI 서비스" data-en="RAG · AI services" >RAG · AI 서비스</p>
-    </article><article class="project reveal">
+      <a class="project-link" data-ko="자세히 보기 &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" data-en="View project &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" href="projects/allmize/" data-project-link aria-describedby="title-allmize">자세히 보기 <span aria-hidden="true">→</span></a>
+    </article><article class="project reveal" id="project-generative-models">
       <div class="project-meta"><span class="index" aria-hidden="true">07</span><span class="" data-ko="논문 읽기·구현" data-en="Reading &amp; implementation" >논문 읽기·구현</span></div>
-      <h3 class="" data-ko="생성 모델 논문 읽기·구현" data-en="Generative models: reading &amp; implementation" >생성 모델 논문 읽기·구현</h3>
+      <h3 id="title-generative-models"><a class="" data-ko="생성 모델 논문 읽기·구현" data-en="Generative models: reading &amp; implementation" href="projects/generative-models/" data-project-link>생성 모델 논문 읽기·구현</a></h3>
       <p class="purpose" data-ko="생성 모델의 수식을 코드로 확인" data-en="Connecting generative-model mathematics with code" >생성 모델의 수식을 코드로 확인</p>
       <p class="activity" data-ko="맡은 일: 생성 모델 논문을 읽고, 주요 수식과 동작을 코드로 확인했습니다.&lt;br&gt;&lt;br&gt;산출물: VAE·DDPM·DDIM을 구현하며 잠재 공간과 확산 과정을 익혔습니다." data-en="My work: Read generative-model papers and examined their mathematics through implementation.&lt;br&gt;&lt;br&gt;Outcome: Implemented VAE, DDPM and DDIM models to study latent representations and diffusion processes." >맡은 일: 생성 모델 논문을 읽고, 주요 수식과 동작을 코드로 확인했습니다.<br><br>산출물: VAE·DDPM·DDIM을 구현하며 잠재 공간과 확산 과정을 익혔습니다.</p>
       <p class="methods" data-ko="VAE · DDPM · DDIM" data-en="VAE · DDPM · DDIM" >VAE · DDPM · DDIM</p>
-    </article><article class="project reveal">
+      <a class="project-link" data-ko="자세히 보기 &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" data-en="View project &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" href="projects/generative-models/" data-project-link aria-describedby="title-generative-models">자세히 보기 <span aria-hidden="true">→</span></a>
+    </article><article class="project reveal" id="project-khuda">
       <div class="project-meta"><span class="index" aria-hidden="true">08</span><span class="" data-ko="동아리 프로젝트" data-en="Club projects" >동아리 프로젝트</span></div>
-      <h3 class="" data-ko="도서 추천·욕설 탐지" data-en="Book recommendation &amp; profanity detection" >도서 추천·욕설 탐지</h3>
+      <h3 id="title-khuda"><a class="" data-ko="도서 추천·욕설 탐지" data-en="Book recommendation &amp; profanity detection" href="projects/khuda/" data-project-link>도서 추천·욕설 탐지</a></h3>
       <p class="purpose" data-ko="추천·자연어 처리 기능 구현" data-en="Building recommendation and NLP features" >추천·자연어 처리 기능 구현</p>
       <p class="activity" data-ko="맡은 일: KHUDA에서 추천 시스템과 자연어 처리 프로젝트를 진행했습니다.&lt;br&gt;&lt;br&gt;산출물: 도서 추천과 욕설 탐지·마스킹 기능을 만들었습니다." data-en="My work: Worked on recommendation and NLP projects through KHUDA.&lt;br&gt;&lt;br&gt;Deliverable: Book recommendation and profanity detection/masking features." >맡은 일: KHUDA에서 추천 시스템과 자연어 처리 프로젝트를 진행했습니다.<br><br>산출물: 도서 추천과 욕설 탐지·마스킹 기능을 만들었습니다.</p>
       <p class="methods" data-ko="추천 시스템 · NLP" data-en="Recommendation systems · NLP" >추천 시스템 · NLP</p>
+      <a class="project-link" data-ko="자세히 보기 &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" data-en="View project &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;" href="projects/khuda/" data-project-link aria-describedby="title-khuda">자세히 보기 <span aria-hidden="true">→</span></a>
     </article></div>
       </section>
       <section class="profile" id="profile" aria-labelledby="profile-title">
@@ -171,9 +180,9 @@
     </main>
     <footer><span class="" data-ko="김시환 / Sihwan Kim" data-en="Sihwan Kim / 김시환" >김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
   </div>
-  <script src="assets/contour-terrain.js?v=concise-20261012"></script>
-  <script src="assets/scroll-motion-model.js?v=concise-20261012"></script>
-  <script src="assets/scroll-contour.js?v=concise-20261012"></script>
-  <script type="module" src="assets/portfolio.js?v=concise-20261012"></script>
+  <script src="assets/contour-terrain.js?v=details-20261012"></script>
+  <script src="assets/scroll-motion-model.js?v=details-20261012"></script>
+  <script src="assets/scroll-contour.js?v=details-20261012"></script>
+  <script type="module" src="assets/portfolio.js?v=details-20261012"></script>
 </body>
 </html>
