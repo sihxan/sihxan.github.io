@@ -1,27 +1,25 @@
-# AI Portfolio for GitHub Pages
+# Sihwan Kim
 
-This folder is a static GitHub Pages version of the portfolio. It does not include the Express server, OAuth, MySQL, admin editor, uploads, or tRPC API.
+Public portfolio: **https://sihxan.github.io/**
 
-## Local Development
+A static Korean/English portfolio with a continuous contour background and rolling animation. It runs directly in the browser; no installation or build step is needed.
 
-```bash
-corepack enable
-corepack pnpm install
-corepack pnpm run dev
+## Update and deploy
+
+Edit `index.html` and the relevant files in `assets/`, then commit and push to `main`. GitHub Pages publishes the repository root automatically. The repository's Pages settings use **Deploy from a branch → main → / (root)**, with HTTPS enabled.
+
+Change the `?v=` asset version in `index.html` and the font URLs in `assets/portfolio.css` when updating assets to refresh browser caches. Keep font preloads and CSS URLs consistent.
+
+## Local preview
+
+```sh
+python3 -m http.server 8000
 ```
 
-## Build
+Open http://localhost:8000/.
 
-```bash
-corepack pnpm run build
-```
+## Fonts
 
-## GitHub Pages
+Instrument Sans and SUIT are locally hosted, renamed subsets licensed under SIL OFL 1.1. Source information and both licenses are included in `assets/`.
 
-Push this folder as a standalone repository, then enable **Settings > Pages > Build and deployment > GitHub Actions**.
-
-The workflow in `.github/workflows/deploy.yml` builds and publishes `dist`. For a normal project page, the asset base path is inferred from the repository name. If you need a custom base path, set `VITE_BASE_PATH`, for example:
-
-```bash
-VITE_BASE_PATH=/my-repo/ corepack pnpm run build
-```
+The contour landscape is decorative and does not represent experimental data.
