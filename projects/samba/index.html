@@ -1,71 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#faf9f6">
-  <title data-ko="데이터 증류와 선택 편향 — 김시환" data-en="Dataset distillation &amp; selection bias — Sihwan Kim">데이터 증류와 선택 편향 — 김시환</title>
-  <meta name="description" content="학습 데이터를 줄일 때 소수 그룹의 사례까지 남기는 선택 방식을 설계했습니다. 평균 성능만 보면 놓칠 수 있는 문제를 그룹별 평가로 확인하는 것이 핵심입니다." data-ko="학습 데이터를 줄일 때 소수 그룹의 사례까지 남기는 선택 방식을 설계했습니다. 평균 성능만 보면 놓칠 수 있는 문제를 그룹별 평가로 확인하는 것이 핵심입니다." data-en="I designed a sample-selection approach that aims to retain minority-group examples when reducing a training dataset. Group-level evaluation addresses problems that overall average performance can hide.">
-  <link rel="canonical" href="https://sihxan.github.io/projects/samba/">
-  <link rel="preload" href="../../assets/PortfolioLatin.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../../assets/PortfolioHangul.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/portfolio.css?v=details-20261012">
-  <link rel="stylesheet" href="../../assets/project-details.css?v=details-20261012">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#f5f5f0" name="theme-color"/>
+<title data-en="Dataset distillation &amp; selection bias — Sihwan Kim" data-ko="데이터 증류와 선택 편향 — 김시환">데이터 증류와 선택 편향 — 김시환</title>
+<meta content="학습 데이터를 줄일 때 소수 그룹의 사례까지 남기는 선택 방식을 설계했습니다. 평균 성능만 보면 놓칠 수 있는 문제를 그룹별 평가로 확인하는 것이 핵심입니다." data-en="I designed a sample-selection approach that aims to retain minority-group examples when reducing a training dataset. Group-level evaluation addresses problems that overall average performance can hide." data-ko="학습 데이터를 줄일 때 소수 그룹의 사례까지 남기는 선택 방식을 설계했습니다. 평균 성능만 보면 놓칠 수 있는 문제를 그룹별 평가로 확인하는 것이 핵심입니다." name="description"/>
+<link href="https://sihxan.github.io/projects/samba/" rel="canonical"/>
+<link as="font" crossorigin="" href="../../assets/PortfolioLatin.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../assets/PortfolioHangul.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
+<link href="../../assets/portfolio.css?v=editorial-20261018" rel="stylesheet"/>
+<link href="../../assets/project-details.css?v=editorial-20261018" rel="stylesheet"/>
 </head>
 <body class="project-detail">
-  <a class="skip" data-ko="본문 바로가기" data-en="Skip to content" href="#main">본문 바로가기</a>
-  <canvas id="loss-landscape" class="contour-background" role="img" aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬"></canvas>
-  <div class="motion-tools">
-    <button id="toggle-motion" type="button" aria-label="애니메이션 일시 정지"><svg class="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9m5-9v9"/></svg><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 7 5-7 5z"/></svg></button>
-    <button id="restart-motion" type="button" aria-label="애니메이션 처음부터 다시 보기"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"/></svg></button>
-  </div>
-
-  <div class="wrap">
-    <header>
-      <a class="wordmark" data-ko="김시환" data-en="Sihwan Kim" href="../../" data-home-link>김시환</a>
-      <nav aria-label="주 메뉴">
-        <a class="" data-ko="프로젝트" data-en="Projects" href="../../#work" data-home-link>프로젝트</a>
-        <a class="" data-ko="경험" data-en="Experience" href="../../#profile" data-home-link>경험</a>
-        <a href="../../#contact" data-home-link data-ko="Contact" data-en="Contact">Contact</a>
-        <button class="language" type="button" aria-label="Switch to English"><strong>KO</strong> / EN</button>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="detail-hero" aria-labelledby="project-title">
-        <a class="back-link" data-ko="← 프로젝트 목록" data-en="← All projects" href="../../#project-samba" data-home-link>← 프로젝트 목록</a>
-        <p class="detail-kicker" data-ko="연구 설계" data-en="Research design" >연구 설계</p>
-        <h1 class="" data-ko="데이터 증류와 선택 편향" data-en="Dataset distillation &amp;amp; selection bias" id="project-title">데이터 증류와 선택 편향</h1>
-        <p class="detail-lead" data-ko="학습 데이터를 줄일 때 소수 그룹의 사례까지 남기는 선택 방식을 설계했습니다. 평균 성능만 보면 놓칠 수 있는 문제를 그룹별 평가로 확인하는 것이 핵심입니다." data-en="I designed a sample-selection approach that aims to retain minority-group examples when reducing a training dataset. Group-level evaluation addresses problems that overall average performance can hide." >학습 데이터를 줄일 때 소수 그룹의 사례까지 남기는 선택 방식을 설계했습니다. 평균 성능만 보면 놓칠 수 있는 문제를 그룹별 평가로 확인하는 것이 핵심입니다.</p>
-        <dl class="detail-facts">
-          <div><dt class="" data-ko="맡은 일" data-en="My role" >맡은 일</dt><dd class="" data-ko="선택 편향 검토, SAMBA 샘플 선택 설계, 그룹별 평가 기준 정리" data-en="Selection-bias review, SAMBA sample-selection design and group-level evaluation criteria" >선택 편향 검토, SAMBA 샘플 선택 설계, 그룹별 평가 기준 정리</dd></div>
-          <div><dt class="" data-ko="현재 단계" data-en="Status" >현재 단계</dt><dd class="" data-ko="설계·수정 명세 완료 · 제안 방식의 구현과 성능 평가는 후속 단계" data-en="Design and revision specification completed · Implementation and performance evaluation remain next steps" >설계·수정 명세 완료 · 제안 방식의 구현과 성능 평가는 후속 단계</dd></div>
-        </dl>
-      </section>
-      <nav class="detail-sections" aria-label="프로젝트 상세 목차"><a class="" data-ko="무엇을 알아보려 했나" data-en="The question" href="#question">무엇을 알아보려 했나</a><a class="" data-ko="맡은 일" data-en="My work" href="#contribution">맡은 일</a><a class="" data-ko="정리한 산출물" data-en="Deliverables" href="#results">정리한 산출물</a><a class="" data-ko="다음 검증" data-en="Next steps" href="#next">다음 검증</a></nav>
-      <article class="detail-story"><section class="detail-section" id="question" aria-labelledby="question-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;무엇을 알아보려 했나" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;The question" id="question-title"><span class="section-number" aria-hidden="true">01</span>무엇을 알아보려 했나</h2>
-          <div class="detail-prose"><p class="" data-ko="적은 데이터만으로 학습하려면 어떤 사례를 남길지 선택해야 합니다. 이때 전체 데이터를 잘 대표하는 샘플을 골라도, 수가 적은 그룹은 충분히 포함되지 않을 수 있습니다." data-en="Training on a smaller dataset requires deciding which examples to keep. Even samples that represent the overall dataset may leave groups with fewer examples underrepresented." >적은 데이터만으로 학습하려면 어떤 사례를 남길지 선택해야 합니다. 이때 전체 데이터를 잘 대표하는 샘플을 골라도, 수가 적은 그룹은 충분히 포함되지 않을 수 있습니다.</p><p class="" data-ko="Waterbirds·CelebA를 대상으로 선택 편향을 검토하고, 작은 데이터셋에서도 소수 그룹을 보존하는 SAMBA 선택 방식을 설계했습니다. 목표는 전체 평균과 함께 가장 취약한 그룹의 성능을 살피는 것입니다." data-en="I reviewed selection bias on Waterbirds and CelebA and specified SAMBA to preserve minority groups in a compact dataset. The evaluation tracks the weakest group&amp;#x27;s performance alongside the overall average." >Waterbirds·CelebA를 대상으로 선택 편향을 검토하고, 작은 데이터셋에서도 소수 그룹을 보존하는 SAMBA 선택 방식을 설계했습니다. 목표는 전체 평균과 함께 가장 취약한 그룹의 성능을 살피는 것입니다.</p></div>
-        </section><section class="detail-section" id="contribution" aria-labelledby="contribution-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;맡은 일" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;My work" id="contribution-title"><span class="section-number" aria-hidden="true">02</span>맡은 일</h2>
-          <div class="detail-prose"><ul><li class="" data-ko="기존 군집 기반 선택 방식에서 소수 그룹이 누락될 수 있는 지점과, 데이터셋에 따라 달라지는 선택 기준의 위험을 검토했습니다." data-en="Examined how existing cluster-based selection can omit minority groups and how geometric selection criteria can introduce dataset-dependent risks." >기존 군집 기반 선택 방식에서 소수 그룹이 누락될 수 있는 지점과, 데이터셋에 따라 달라지는 선택 기준의 위험을 검토했습니다.</li><li class="" data-ko="VAE·DINOv2 특징을 결합해 데이터를 세분화하고, 군집마다 최소 표본 수를 확보한 뒤 남은 예산을 비례 배분하는 v0 설계를 정리했습니다." data-en="Specified a v0 design that combines VAE and DINOv2 features, divides data into finer clusters, guarantees a minimum sample allocation per cluster and distributes the remaining budget proportionally." >VAE·DINOv2 특징을 결합해 데이터를 세분화하고, 군집마다 최소 표본 수를 확보한 뒤 남은 예산을 비례 배분하는 v0 설계를 정리했습니다.</li><li class="" data-ko="군집의 대표 사례를 선택하는 방식과 v0.1 수정 명세를 마련했습니다. 평가에서는 평균·최저 그룹 점수와 각 그룹의 성능표를 함께 확인하도록 정리했습니다." data-en="Defined representative-example selection and a v0.1 revision specification. Evaluation criteria include overall and worst-group scores together with a per-group performance table." >군집의 대표 사례를 선택하는 방식과 v0.1 수정 명세를 마련했습니다. 평가에서는 평균·최저 그룹 점수와 각 그룹의 성능표를 함께 확인하도록 정리했습니다.</li></ul></div>
-        </section><section class="detail-section" id="results" aria-labelledby="results-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;정리한 산출물" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;Deliverables" id="results-title"><span class="section-number" aria-hidden="true">03</span>정리한 산출물</h2>
-          <div class="detail-prose"><p class="" data-ko="산출물은 SAMBA v0 설계, v0.1 수정 명세와 그룹별 평가 기준입니다. 전체 평균이나 최저 그룹 점수 하나만으로는 특정 그룹을 희생하는 선택을 놓칠 수 있어, 그룹별 결과표를 필수 항목으로 정리했습니다." data-en="Deliverables are the SAMBA v0 design, v0.1 revision specification and group-level evaluation criteria. Overall or worst-group scores alone can miss a selection strategy that sacrifices a particular group, so a per-group table is required." >산출물은 SAMBA v0 설계, v0.1 수정 명세와 그룹별 평가 기준입니다. 전체 평균이나 최저 그룹 점수 하나만으로는 특정 그룹을 희생하는 선택을 놓칠 수 있어, 그룹별 결과표를 필수 항목으로 정리했습니다.</p><p class="" data-ko="현재 확인 가능한 기록은 설계 단계까지입니다. 제안 방식으로 정확도를 높였다는 실험 결과는 아직 없으며, 성능 개선 수치를 제시하지 않습니다." data-en="Available records establish design-stage work. There is no verified performance result for the proposed method, so no accuracy improvement is reported." >현재 확인 가능한 기록은 설계 단계까지입니다. 제안 방식으로 정확도를 높였다는 실험 결과는 아직 없으며, 성능 개선 수치를 제시하지 않습니다.</p></div>
-        </section><section class="detail-section" id="next" aria-labelledby="next-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;04&lt;/span&gt;다음 검증" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;04&lt;/span&gt;Next steps" id="next-title"><span class="section-number" aria-hidden="true">04</span>다음 검증</h2>
-          <div class="detail-prose"><ul><li class="" data-ko="v0.1 명세를 구현하고, 동일한 샘플 예산에서 기존 선택 방식과 비교합니다." data-en="Implement the v0.1 specification and compare it with existing selection methods under the same sample budget." >v0.1 명세를 구현하고, 동일한 샘플 예산에서 기존 선택 방식과 비교합니다.</li><li class="" data-ko="Waterbirds·CelebA에서 평균과 그룹별 성능을 함께 평가해, 최소 표본 배분이 실제로 소수 그룹 보존에 도움이 되는지 확인합니다." data-en="Evaluate average and per-group performance on Waterbirds and CelebA to test whether minimum sample allocation actually helps preserve minority-group performance." >Waterbirds·CelebA에서 평균과 그룹별 성능을 함께 평가해, 최소 표본 배분이 실제로 소수 그룹 보존에 도움이 되는지 확인합니다.</li></ul></div>
-        </section></article>
-      <div class="detail-pagination" aria-label="다른 프로젝트"><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;← 이전 프로젝트&lt;/span&gt;모델컷 생성·가상 피팅" data-en="&lt;span class=&quot;direction&quot;&gt;← Previous project&lt;/span&gt;Model-cut generation &amp;amp; virtual try-on" href="../sunicon-vton/" data-project-nav><span class="direction">← 이전 프로젝트</span>모델컷 생성·가상 피팅</a><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;다음 프로젝트 →&lt;/span&gt;Allmize AI 서비스 개발" data-en="&lt;span class=&quot;direction&quot;&gt;Next project →&lt;/span&gt;AI service development at Allmize" href="../allmize/" data-project-nav><span class="direction">다음 프로젝트 →</span>Allmize AI 서비스 개발</a></div>
-      <section class="contact" id="contact" aria-label="Contact">
-        <span data-ko="Contact" data-en="Contact">Contact</span>
-        <a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
-      </section>
-    </main>
-    <footer><span class="" data-ko="김시환 / Sihwan Kim" data-en="Sihwan Kim / 김시환" >김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
-  </div>
-  <script src="../../assets/contour-terrain.js?v=details-20261012"></script>
-  <script src="../../assets/scroll-motion-model.js?v=details-20261012"></script>
-  <script src="../../assets/scroll-contour.js?v=details-20261012"></script>
-  <script type="module" src="../../assets/portfolio.js?v=details-20261012"></script>
+<a class="skip" data-en="Skip to content" data-ko="본문 바로가기" href="#main">본문 바로가기</a>
+<canvas aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬" class="contour-background" id="loss-landscape" role="img"></canvas>
+<div class="motion-tools">
+<button aria-label="애니메이션 일시 정지" id="toggle-motion" type="button"><svg aria-hidden="true" class="pause-icon" viewbox="0 0 16 16"><path d="M5.5 3.5v9m5-9v9"></path></svg><svg aria-hidden="true" class="play-icon" viewbox="0 0 16 16"><path d="m5 3 7 5-7 5z"></path></svg></button>
+<button aria-label="애니메이션 처음부터 다시 보기" id="restart-motion" type="button"><svg aria-hidden="true" viewbox="0 0 16 16"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"></path></svg></button>
+</div>
+<div class="wrap">
+<header>
+<a aria-label="Sihwan Kim — Home" class="wordmark" data-home-link="" href="../../">SK</a>
+<nav aria-label="주 메뉴">
+<a class="" data-en="Projects" data-home-link="" data-ko="프로젝트" href="../../#work">프로젝트</a>
+<a class="" data-en="Experience" data-home-link="" data-ko="경험" href="../../#profile">경험</a>
+<a data-en="Contact" data-home-link="" data-ko="Contact" href="../../#contact">Contact</a>
+<button aria-label="Switch to English" class="language" type="button"><strong>KO</strong> / EN</button>
+</nav>
+</header>
+<main id="main">
+<section aria-labelledby="project-title" class="detail-hero">
+<a class="back-link" data-en="← All projects" data-home-link="" data-ko="← 프로젝트 목록" href="../../#project-samba">← 프로젝트 목록</a>
+<p class="detail-kicker" data-en="Research design" data-ko="연구 설계">연구 설계</p>
+<h1 class="" data-en="Dataset distillation &amp;amp; selection bias" data-ko="데이터 증류와 선택 편향" id="project-title">데이터 증류와 선택 편향</h1>
+<p class="detail-lead" data-en="I designed a sample-selection approach that aims to retain minority-group examples when reducing a training dataset. Group-level evaluation addresses problems that overall average performance can hide." data-ko="학습 데이터를 줄일 때 소수 그룹의 사례까지 남기는 선택 방식을 설계했습니다. 평균 성능만 보면 놓칠 수 있는 문제를 그룹별 평가로 확인하는 것이 핵심입니다.">학습 데이터를 줄일 때 소수 그룹의 사례까지 남기는 선택 방식을 설계했습니다. 평균 성능만 보면 놓칠 수 있는 문제를 그룹별 평가로 확인하는 것이 핵심입니다.</p>
+<dl class="detail-facts">
+<div><dt class="" data-en="My role" data-ko="맡은 일">맡은 일</dt><dd class="" data-en="Selection-bias review, SAMBA sample-selection design and group-level evaluation criteria" data-ko="선택 편향 검토, SAMBA 샘플 선택 설계, 그룹별 평가 기준 정리">선택 편향 검토, SAMBA 샘플 선택 설계, 그룹별 평가 기준 정리</dd></div>
+<div><dt class="" data-en="Status" data-ko="현재 단계">현재 단계</dt><dd class="" data-en="Design and revision specification completed · Implementation and performance evaluation remain next steps" data-ko="설계·수정 명세 완료 · 제안 방식의 구현과 성능 평가는 후속 단계">설계·수정 명세 완료 · 제안 방식의 구현과 성능 평가는 후속 단계</dd></div>
+</dl>
+</section>
+<nav aria-label="프로젝트 상세 목차" class="detail-sections"><a class="" data-en="The question" data-ko="무엇을 알아보려 했나" href="#question">무엇을 알아보려 했나</a><a class="" data-en="My work" data-ko="맡은 일" href="#contribution">맡은 일</a><a class="" data-en="Deliverables" data-ko="정리한 산출물" href="#results">정리한 산출물</a><a class="" data-en="Next steps" data-ko="다음 검증" href="#next">다음 검증</a></nav>
+<article class="detail-story"><section aria-labelledby="question-title" class="detail-section" id="question">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;01&lt;/span&gt;The question' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;01&lt;/span&gt;무엇을 알아보려 했나' id="question-title"><span aria-hidden="true" class="section-number">01</span>무엇을 알아보려 했나</h2>
+<div class="detail-prose"><p class="" data-en="Training on a smaller dataset requires deciding which examples to keep. Even samples that represent the overall dataset may leave groups with fewer examples underrepresented." data-ko="적은 데이터만으로 학습하려면 어떤 사례를 남길지 선택해야 합니다. 이때 전체 데이터를 잘 대표하는 샘플을 골라도, 수가 적은 그룹은 충분히 포함되지 않을 수 있습니다.">적은 데이터만으로 학습하려면 어떤 사례를 남길지 선택해야 합니다. 이때 전체 데이터를 잘 대표하는 샘플을 골라도, 수가 적은 그룹은 충분히 포함되지 않을 수 있습니다.</p><p class="" data-en="I reviewed selection bias on Waterbirds and CelebA and specified SAMBA to preserve minority groups in a compact dataset. The evaluation tracks the weakest group&amp;#x27;s performance alongside the overall average." data-ko="Waterbirds·CelebA를 대상으로 선택 편향을 검토하고, 작은 데이터셋에서도 소수 그룹을 보존하는 SAMBA 선택 방식을 설계했습니다. 목표는 전체 평균과 함께 가장 취약한 그룹의 성능을 살피는 것입니다.">Waterbirds·CelebA를 대상으로 선택 편향을 검토하고, 작은 데이터셋에서도 소수 그룹을 보존하는 SAMBA 선택 방식을 설계했습니다. 목표는 전체 평균과 함께 가장 취약한 그룹의 성능을 살피는 것입니다.</p></div>
+</section><section aria-labelledby="contribution-title" class="detail-section" id="contribution">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;02&lt;/span&gt;My work' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;02&lt;/span&gt;맡은 일' id="contribution-title"><span aria-hidden="true" class="section-number">02</span>맡은 일</h2>
+<div class="detail-prose"><ul><li class="" data-en="Examined how existing cluster-based selection can omit minority groups and how geometric selection criteria can introduce dataset-dependent risks." data-ko="기존 군집 기반 선택 방식에서 소수 그룹이 누락될 수 있는 지점과, 데이터셋에 따라 달라지는 선택 기준의 위험을 검토했습니다.">기존 군집 기반 선택 방식에서 소수 그룹이 누락될 수 있는 지점과, 데이터셋에 따라 달라지는 선택 기준의 위험을 검토했습니다.</li><li class="" data-en="Specified a v0 design that combines VAE and DINOv2 features, divides data into finer clusters, guarantees a minimum sample allocation per cluster and distributes the remaining budget proportionally." data-ko="VAE·DINOv2 특징을 결합해 데이터를 세분화하고, 군집마다 최소 표본 수를 확보한 뒤 남은 예산을 비례 배분하는 v0 설계를 정리했습니다.">VAE·DINOv2 특징을 결합해 데이터를 세분화하고, 군집마다 최소 표본 수를 확보한 뒤 남은 예산을 비례 배분하는 v0 설계를 정리했습니다.</li><li class="" data-en="Defined representative-example selection and a v0.1 revision specification. Evaluation criteria include overall and worst-group scores together with a per-group performance table." data-ko="군집의 대표 사례를 선택하는 방식과 v0.1 수정 명세를 마련했습니다. 평가에서는 평균·최저 그룹 점수와 각 그룹의 성능표를 함께 확인하도록 정리했습니다.">군집의 대표 사례를 선택하는 방식과 v0.1 수정 명세를 마련했습니다. 평가에서는 평균·최저 그룹 점수와 각 그룹의 성능표를 함께 확인하도록 정리했습니다.</li></ul></div>
+</section><section aria-labelledby="results-title" class="detail-section" id="results">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;03&lt;/span&gt;Deliverables' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;03&lt;/span&gt;정리한 산출물' id="results-title"><span aria-hidden="true" class="section-number">03</span>정리한 산출물</h2>
+<div class="detail-prose"><p class="" data-en="Deliverables are the SAMBA v0 design, v0.1 revision specification and group-level evaluation criteria. Overall or worst-group scores alone can miss a selection strategy that sacrifices a particular group, so a per-group table is required." data-ko="산출물은 SAMBA v0 설계, v0.1 수정 명세와 그룹별 평가 기준입니다. 전체 평균이나 최저 그룹 점수 하나만으로는 특정 그룹을 희생하는 선택을 놓칠 수 있어, 그룹별 결과표를 필수 항목으로 정리했습니다.">산출물은 SAMBA v0 설계, v0.1 수정 명세와 그룹별 평가 기준입니다. 전체 평균이나 최저 그룹 점수 하나만으로는 특정 그룹을 희생하는 선택을 놓칠 수 있어, 그룹별 결과표를 필수 항목으로 정리했습니다.</p><p class="" data-en="Available records establish design-stage work. There is no verified performance result for the proposed method, so no accuracy improvement is reported." data-ko="현재 확인 가능한 기록은 설계 단계까지입니다. 제안 방식으로 정확도를 높였다는 실험 결과는 아직 없으며, 성능 개선 수치를 제시하지 않습니다.">현재 확인 가능한 기록은 설계 단계까지입니다. 제안 방식으로 정확도를 높였다는 실험 결과는 아직 없으며, 성능 개선 수치를 제시하지 않습니다.</p></div>
+</section><section aria-labelledby="next-title" class="detail-section" id="next">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;04&lt;/span&gt;Next steps' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;04&lt;/span&gt;다음 검증' id="next-title"><span aria-hidden="true" class="section-number">04</span>다음 검증</h2>
+<div class="detail-prose"><ul><li class="" data-en="Implement the v0.1 specification and compare it with existing selection methods under the same sample budget." data-ko="v0.1 명세를 구현하고, 동일한 샘플 예산에서 기존 선택 방식과 비교합니다.">v0.1 명세를 구현하고, 동일한 샘플 예산에서 기존 선택 방식과 비교합니다.</li><li class="" data-en="Evaluate average and per-group performance on Waterbirds and CelebA to test whether minimum sample allocation actually helps preserve minority-group performance." data-ko="Waterbirds·CelebA에서 평균과 그룹별 성능을 함께 평가해, 최소 표본 배분이 실제로 소수 그룹 보존에 도움이 되는지 확인합니다.">Waterbirds·CelebA에서 평균과 그룹별 성능을 함께 평가해, 최소 표본 배분이 실제로 소수 그룹 보존에 도움이 되는지 확인합니다.</li></ul></div>
+</section></article>
+<div aria-label="다른 프로젝트" class="detail-pagination"><a class="" data-en='&lt;span class="direction"&gt;← Previous project&lt;/span&gt;Model-cut generation &amp;amp; virtual try-on' data-ko='&lt;span class="direction"&gt;← 이전 프로젝트&lt;/span&gt;모델컷 생성·가상 피팅' data-project-nav="" href="../sunicon-vton/"><span class="direction">← 이전 프로젝트</span>모델컷 생성·가상 피팅</a><a class="" data-en='&lt;span class="direction"&gt;Next project →&lt;/span&gt;AI service development at Allmize' data-ko='&lt;span class="direction"&gt;다음 프로젝트 →&lt;/span&gt;Allmize AI 서비스 개발' data-project-nav="" href="../allmize/"><span class="direction">다음 프로젝트 →</span>Allmize AI 서비스 개발</a></div>
+<section aria-label="Contact" class="contact" id="contact">
+<span data-en="Contact" data-ko="Contact">Contact</span>
+<a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
+</section>
+</main>
+<footer><span class="" data-en="Sihwan Kim / 김시환" data-ko="김시환 / Sihwan Kim">김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" rel="noopener noreferrer" target="_blank">GitHub ↗</a></footer>
+</div>
+<script src="../../assets/contour-terrain.js?v=editorial-20261018"></script>
+<script src="../../assets/scroll-motion-model.js?v=editorial-20261018"></script>
+<script src="../../assets/scroll-contour.js?v=editorial-20261018"></script>
+<script src="../../assets/portfolio.js?v=editorial-20261018" type="module"></script>
 </body>
 </html>

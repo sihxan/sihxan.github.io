@@ -1,75 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#faf9f6">
-  <title data-ko="CLIP의 작은 객체 판별 — 김시환" data-en="Small-object discrimination in CLIP — Sihwan Kim">CLIP의 작은 객체 판별 — 김시환</title>
-  <meta name="description" content="CLIP의 작은 객체 판별 성능과 객체 위치를 가렸을 때의 변화를 함께 비교했습니다." data-ko="CLIP의 작은 객체 판별 성능과 객체 위치를 가렸을 때의 변화를 함께 비교했습니다." data-en="I compared CLIP&#x27;s small-object discrimination with the changes caused by masking the object&#x27;s location.">
-  <link rel="canonical" href="https://sihxan.github.io/projects/clip-context/">
-  <link rel="preload" href="../../assets/PortfolioLatin.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../../assets/PortfolioHangul.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/portfolio.css?v=details-20261012">
-  <link rel="stylesheet" href="../../assets/project-details.css?v=details-20261012">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#f5f5f0" name="theme-color"/>
+<title data-en="Small-object discrimination in CLIP — Sihwan Kim" data-ko="CLIP의 작은 객체 판별 — 김시환">CLIP의 작은 객체 판별 — 김시환</title>
+<meta content="CLIP의 작은 객체 판별 성능과 객체 위치를 가렸을 때의 변화를 함께 비교했습니다." data-en="I compared CLIP's small-object discrimination with the changes caused by masking the object's location." data-ko="CLIP의 작은 객체 판별 성능과 객체 위치를 가렸을 때의 변화를 함께 비교했습니다." name="description"/>
+<link href="https://sihxan.github.io/projects/clip-context/" rel="canonical"/>
+<link as="font" crossorigin="" href="../../assets/PortfolioLatin.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../assets/PortfolioHangul.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
+<link href="../../assets/portfolio.css?v=editorial-20261018" rel="stylesheet"/>
+<link href="../../assets/project-details.css?v=editorial-20261018" rel="stylesheet"/>
 </head>
 <body class="project-detail">
-  <a class="skip" data-ko="본문 바로가기" data-en="Skip to content" href="#main">본문 바로가기</a>
-  <canvas id="loss-landscape" class="contour-background" role="img" aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬"></canvas>
-  <div class="motion-tools">
-    <button id="toggle-motion" type="button" aria-label="애니메이션 일시 정지"><svg class="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9m5-9v9"/></svg><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 7 5-7 5z"/></svg></button>
-    <button id="restart-motion" type="button" aria-label="애니메이션 처음부터 다시 보기"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"/></svg></button>
-  </div>
-
-  <div class="wrap">
-    <header>
-      <a class="wordmark" data-ko="김시환" data-en="Sihwan Kim" href="../../" data-home-link>김시환</a>
-      <nav aria-label="주 메뉴">
-        <a class="" data-ko="프로젝트" data-en="Projects" href="../../#work" data-home-link>프로젝트</a>
-        <a class="" data-ko="경험" data-en="Experience" href="../../#profile" data-home-link>경험</a>
-        <a href="../../#contact" data-home-link data-ko="Contact" data-en="Contact">Contact</a>
-        <button class="language" type="button" aria-label="Switch to English"><strong>KO</strong> / EN</button>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="detail-hero" aria-labelledby="project-title">
-        <a class="back-link" data-ko="← 프로젝트 목록" data-en="← All projects" href="../../#project-clip-context" data-home-link>← 프로젝트 목록</a>
-        <p class="detail-kicker" data-ko="연구 · 원고 작성" data-en="Research · Manuscript preparation" >연구 · 원고 작성</p>
-        <h1 class="" data-ko="CLIP의 작은 객체 판별" data-en="Small-object discrimination in CLIP" id="project-title">CLIP의 작은 객체 판별</h1>
-        <p class="detail-lead" data-ko="CLIP의 작은 객체 판별 성능과 객체 위치를 가렸을 때의 변화를 함께 비교했습니다." data-en="I compared CLIP&amp;#x27;s small-object discrimination with the changes caused by masking the object&amp;#x27;s location." >CLIP의 작은 객체 판별 성능과 객체 위치를 가렸을 때의 변화를 함께 비교했습니다.</p>
-        <dl class="detail-facts">
-          <div><dt class="" data-ko="맡은 일" data-en="My role" >맡은 일</dt><dd class="" data-ko="실험 설계·구축, 결과 분석, 원고 작성" data-en="Experiment design and implementation, analysis, and manuscript writing" >실험 설계·구축, 결과 분석, 원고 작성</dd></div>
-          <div><dt class="" data-ko="현재 단계" data-en="Status" >현재 단계</dt><dd class="" data-ko="KSC 2026 원고 작성 중" data-en="KSC 2026 manuscript in preparation" >KSC 2026 원고 작성 중</dd></div>
-        </dl>
-      </section>
-      <nav class="detail-sections" aria-label="프로젝트 상세 목차"><a class="" data-ko="무엇이 궁금했나" data-en="The question" href="#question">무엇이 궁금했나</a><a class="" data-ko="내가 맡은 일" data-en="My work" href="#contribution">내가 맡은 일</a><a class="" data-ko="무엇을 확인했나" data-en="What I found" href="#results">무엇을 확인했나</a><a class="" data-ko="지금 단계와 다음 질문" data-en="Status and next question" href="#next">지금 단계와 다음 질문</a></nav>
-      <article class="detail-story"><section class="detail-section" id="question" aria-labelledby="question-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;무엇이 궁금했나" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;The question" id="question-title"><span class="section-number" aria-hidden="true">01</span>무엇이 궁금했나</h2>
-          <div class="detail-prose"><p class="" data-ko="작은 객체를 더 잘 구분하는 점수 산출 방식은, 그 객체가 있는 위치를 가렸을 때도 더 큰 영향을 받을까? 객체는 특정 배경과 함께 나타나는 일이 많아서, 높은 판별 성능만으로 객체를 직접 보고 판단했다고 말하기 어렵습니다." data-en="Does a scoring method that distinguishes small objects better also change more when the object&amp;#x27;s location is masked? Objects often occur with predictable backgrounds, so higher discrimination alone does not establish that the object itself drove the score." >작은 객체를 더 잘 구분하는 점수 산출 방식은, 그 객체가 있는 위치를 가렸을 때도 더 큰 영향을 받을까? 객체는 특정 배경과 함께 나타나는 일이 많아서, 높은 판별 성능만으로 객체를 직접 보고 판단했다고 말하기 어렵습니다.</p></div>
-        </section><section class="detail-section" id="contribution" aria-labelledby="contribution-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;내가 맡은 일" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;My work" id="contribution-title"><span class="section-number" aria-hidden="true">02</span>내가 맡은 일</h2>
-          <div class="detail-prose"><ul><li class="" data-ko="COCO·PASCAL VOC에서 객체 크기별 평가를 구성하고, CLIP 가중치를 고정한 채 이미지 전체와 작은 패치의 특징을 쓰는 다섯 점수 산출 방식을 비교했습니다." data-en="Built size-stratified evaluations on COCO and PASCAL VOC and compared five scoring methods using global and patch features while keeping CLIP&amp;#x27;s pretrained weights fixed." >COCO·PASCAL VOC에서 객체 크기별 평가를 구성하고, CLIP 가중치를 고정한 채 이미지 전체와 작은 패치의 특징을 쓰는 다섯 점수 산출 방식을 비교했습니다.</li><li class="" data-ko="객체의 경계 상자와 다른 위치를 가린 조건을 비교했습니다. 별도 COCO 실험에서는 객체 영역과 무작위 영역을 같은 배경 이미지에 옮겨 붙이는 대조도 구성했습니다." data-en="Compared masking the object&amp;#x27;s bounding boxes with masking other locations. A separate COCO experiment compared transplanting bounding-box regions and random regions into matched host images." >객체의 경계 상자와 다른 위치를 가린 조건을 비교했습니다. 별도 COCO 실험에서는 객체 영역과 무작위 영역을 같은 배경 이미지에 옮겨 붙이는 대조도 구성했습니다.</li><li class="" data-ko="이미지·클래스를 다시 뽑는 분석과 여러 비교를 함께 고려하는 보정으로 결과를 점검하고, 실험과 한계를 KSC 2026 원고로 정리했습니다." data-en="Checked the findings with image and class resampling and multiple-comparison correction, then developed the experiments and their limits into a KSC 2026 manuscript." >이미지·클래스를 다시 뽑는 분석과 여러 비교를 함께 고려하는 보정으로 결과를 점검하고, 실험과 한계를 KSC 2026 원고로 정리했습니다.</li></ul></div>
-        </section><section class="detail-section" id="results" aria-labelledby="results-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;무엇을 확인했나" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;What I found" id="results-title"><span class="section-number" aria-hidden="true">03</span>무엇을 확인했나</h2>
-          <div class="detail-prose"><p class="" data-ko="COCO·ViT-L/14의 기본 분석에서, 비교한 세 방식 변경은 모두 원본 판별 성능을 높였습니다. 하지만 객체 위치와 다른 위치를 가린 조건의 성능 차이는 커지거나 작아졌고, 변화가 확인되지 않은 비교도 있었습니다. 판별 성능과 가림 효과를 함께 평가해야 한다는 결과입니다." data-en="In the basic COCO/ViT-L/14 analysis, all three selected scoring changes improved discrimination on the original images. The difference between object-location and other-location masking increased, decreased, or showed no detected change. The result calls for evaluating discrimination and masking sensitivity together." >COCO·ViT-L/14의 기본 분석에서, 비교한 세 방식 변경은 모두 원본 판별 성능을 높였습니다. 하지만 객체 위치와 다른 위치를 가린 조건의 성능 차이는 커지거나 작아졌고, 변화가 확인되지 않은 비교도 있었습니다. 판별 성능과 가림 효과를 함께 평가해야 한다는 결과입니다.</p><p class="" data-ko="객체 위치를 가린 뒤에도 판별력이 상당 부분 남았습니다. 별도 COCO 이식 실험에서는 객체의 경계 상자 영역을 옮긴 조건이 같은 크기의 무작위 영역을 옮긴 조건보다 높은 판별력을 보였습니다." data-en="Substantial discrimination remained after masking the object&amp;#x27;s location. In the separate COCO transplantation experiment, bounding-box regions retained more discrimination than matched random regions." >객체 위치를 가린 뒤에도 판별력이 상당 부분 남았습니다. 별도 COCO 이식 실험에서는 객체의 경계 상자 영역을 옮긴 조건이 같은 크기의 무작위 영역을 옮긴 조건보다 높은 판별력을 보였습니다.</p><p class="" data-ko="다만 클래스 재표본과 다중검정 보정 뒤에는 일부 결과가 유지되지 않았습니다. 가림은 입력을 바꾸고, 경계 상자는 주변 픽셀도 포함합니다. 이 결과를 객체 자체의 정보 사용량이나 모든 CLIP 설정의 공통 특성으로 해석하지 않습니다." data-en="Some findings did not survive class resampling and multiple-comparison correction. Masking changes the input, and bounding boxes include surrounding pixels. These measurements do not quantify object-only information use or establish a universal property of CLIP." >다만 클래스 재표본과 다중검정 보정 뒤에는 일부 결과가 유지되지 않았습니다. 가림은 입력을 바꾸고, 경계 상자는 주변 픽셀도 포함합니다. 이 결과를 객체 자체의 정보 사용량이나 모든 CLIP 설정의 공통 특성으로 해석하지 않습니다.</p><table class="detail-metrics">
-      <caption class="" data-ko="확인한 수치와 평가 범위" data-en="Recorded figures and evaluation scope" >확인한 수치와 평가 범위</caption>
-      <thead><tr><th class="" data-ko="구분" data-en="Measure" scope="col">구분</th><th class="" data-ko="수치" data-en="Value" scope="col">수치</th><th class="" data-ko="조건" data-en="Scope" scope="col">조건</th></tr></thead>
-      <tbody><tr><td class="" data-ko="비교한 점수 산출 방식" data-en="Scoring methods compared" >비교한 점수 산출 방식</td><td>5</td><td class="" data-ko="사전학습 CLIP 가중치는 고정" data-en="Pretrained CLIP weights held fixed" >사전학습 CLIP 가중치는 고정</td></tr><tr><td class="" data-ko="COCO 극소 객체 주분석" data-en="Main COCO very-small-object panel" >COCO 극소 객체 주분석</td><td>3,244</td><td class="" data-ko="57개 클래스의 양성 이미지–클래스 쌍. 이식 표본과는 별도" data-en="Positive image–class pairs across 57 classes; separate from the transplantation sample" >57개 클래스의 양성 이미지–클래스 쌍. 이식 표본과는 별도</td></tr></tbody>
-    </table></div>
-        </section><section class="detail-section" id="next" aria-labelledby="next-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;04&lt;/span&gt;지금 단계와 다음 질문" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;04&lt;/span&gt;Status and next question" id="next-title"><span class="section-number" aria-hidden="true">04</span>지금 단계와 다음 질문</h2>
-          <div class="detail-prose"><p class="" data-ko="현재는 원고를 작성·검토하는 단계입니다. 성능 향상과 가림 효과를 구분하는 평가를 다른 조건에서도 점검하고, 결과 선택과 통계 처리에 따른 해석의 범위를 명확히 정리하고 있습니다." data-en="The manuscript is being prepared and reviewed. I am checking how the distinction between discrimination and masking sensitivity holds across settings and making the effects of comparison selection and statistical procedures explicit." >현재는 원고를 작성·검토하는 단계입니다. 성능 향상과 가림 효과를 구분하는 평가를 다른 조건에서도 점검하고, 결과 선택과 통계 처리에 따른 해석의 범위를 명확히 정리하고 있습니다.</p></div>
-        </section></article>
-      <div class="detail-pagination" aria-label="다른 프로젝트"><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;← 이전 프로젝트&lt;/span&gt;도서 추천·욕설 탐지" data-en="&lt;span class=&quot;direction&quot;&gt;← Previous project&lt;/span&gt;Book recommendation &amp;amp; profanity detection" href="../khuda/" data-project-nav><span class="direction">← 이전 프로젝트</span>도서 추천·욕설 탐지</a><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;다음 프로젝트 →&lt;/span&gt;작은 객체와 VideoLLM" data-en="&lt;span class=&quot;direction&quot;&gt;Next project →&lt;/span&gt;Small objects in VideoLLMs" href="../spot-videollm/" data-project-nav><span class="direction">다음 프로젝트 →</span>작은 객체와 VideoLLM</a></div>
-      <section class="contact" id="contact" aria-label="Contact">
-        <span data-ko="Contact" data-en="Contact">Contact</span>
-        <a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
-      </section>
-    </main>
-    <footer><span class="" data-ko="김시환 / Sihwan Kim" data-en="Sihwan Kim / 김시환" >김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
-  </div>
-  <script src="../../assets/contour-terrain.js?v=details-20261012"></script>
-  <script src="../../assets/scroll-motion-model.js?v=details-20261012"></script>
-  <script src="../../assets/scroll-contour.js?v=details-20261012"></script>
-  <script type="module" src="../../assets/portfolio.js?v=details-20261012"></script>
+<a class="skip" data-en="Skip to content" data-ko="본문 바로가기" href="#main">본문 바로가기</a>
+<canvas aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬" class="contour-background" id="loss-landscape" role="img"></canvas>
+<div class="motion-tools">
+<button aria-label="애니메이션 일시 정지" id="toggle-motion" type="button"><svg aria-hidden="true" class="pause-icon" viewbox="0 0 16 16"><path d="M5.5 3.5v9m5-9v9"></path></svg><svg aria-hidden="true" class="play-icon" viewbox="0 0 16 16"><path d="m5 3 7 5-7 5z"></path></svg></button>
+<button aria-label="애니메이션 처음부터 다시 보기" id="restart-motion" type="button"><svg aria-hidden="true" viewbox="0 0 16 16"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"></path></svg></button>
+</div>
+<div class="wrap">
+<header>
+<a aria-label="Sihwan Kim — Home" class="wordmark" data-home-link="" href="../../">SK</a>
+<nav aria-label="주 메뉴">
+<a class="" data-en="Projects" data-home-link="" data-ko="프로젝트" href="../../#work">프로젝트</a>
+<a class="" data-en="Experience" data-home-link="" data-ko="경험" href="../../#profile">경험</a>
+<a data-en="Contact" data-home-link="" data-ko="Contact" href="../../#contact">Contact</a>
+<button aria-label="Switch to English" class="language" type="button"><strong>KO</strong> / EN</button>
+</nav>
+</header>
+<main id="main">
+<section aria-labelledby="project-title" class="detail-hero">
+<a class="back-link" data-en="← All projects" data-home-link="" data-ko="← 프로젝트 목록" href="../../#project-clip-context">← 프로젝트 목록</a>
+<p class="detail-kicker" data-en="Research · Manuscript preparation" data-ko="연구 · 원고 작성">연구 · 원고 작성</p>
+<h1 class="" data-en="Small-object discrimination in CLIP" data-ko="CLIP의 작은 객체 판별" id="project-title">CLIP의 작은 객체 판별</h1>
+<p class="detail-lead" data-en="I compared CLIP&amp;#x27;s small-object discrimination with the changes caused by masking the object&amp;#x27;s location." data-ko="CLIP의 작은 객체 판별 성능과 객체 위치를 가렸을 때의 변화를 함께 비교했습니다.">CLIP의 작은 객체 판별 성능과 객체 위치를 가렸을 때의 변화를 함께 비교했습니다.</p>
+<dl class="detail-facts">
+<div><dt class="" data-en="My role" data-ko="맡은 일">맡은 일</dt><dd class="" data-en="Experiment design and implementation, analysis, and manuscript writing" data-ko="실험 설계·구축, 결과 분석, 원고 작성">실험 설계·구축, 결과 분석, 원고 작성</dd></div>
+<div><dt class="" data-en="Status" data-ko="현재 단계">현재 단계</dt><dd class="" data-en="KSC 2026 manuscript in preparation" data-ko="KSC 2026 원고 작성 중">KSC 2026 원고 작성 중</dd></div>
+</dl>
+</section>
+<nav aria-label="프로젝트 상세 목차" class="detail-sections"><a class="" data-en="The question" data-ko="무엇이 궁금했나" href="#question">무엇이 궁금했나</a><a class="" data-en="My work" data-ko="내가 맡은 일" href="#contribution">내가 맡은 일</a><a class="" data-en="What I found" data-ko="무엇을 확인했나" href="#results">무엇을 확인했나</a><a class="" data-en="Status and next question" data-ko="지금 단계와 다음 질문" href="#next">지금 단계와 다음 질문</a></nav>
+<article class="detail-story"><section aria-labelledby="question-title" class="detail-section" id="question">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;01&lt;/span&gt;The question' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;01&lt;/span&gt;무엇이 궁금했나' id="question-title"><span aria-hidden="true" class="section-number">01</span>무엇이 궁금했나</h2>
+<div class="detail-prose"><p class="" data-en="Does a scoring method that distinguishes small objects better also change more when the object&amp;#x27;s location is masked? Objects often occur with predictable backgrounds, so higher discrimination alone does not establish that the object itself drove the score." data-ko="작은 객체를 더 잘 구분하는 점수 산출 방식은, 그 객체가 있는 위치를 가렸을 때도 더 큰 영향을 받을까? 객체는 특정 배경과 함께 나타나는 일이 많아서, 높은 판별 성능만으로 객체를 직접 보고 판단했다고 말하기 어렵습니다.">작은 객체를 더 잘 구분하는 점수 산출 방식은, 그 객체가 있는 위치를 가렸을 때도 더 큰 영향을 받을까? 객체는 특정 배경과 함께 나타나는 일이 많아서, 높은 판별 성능만으로 객체를 직접 보고 판단했다고 말하기 어렵습니다.</p></div>
+</section><section aria-labelledby="contribution-title" class="detail-section" id="contribution">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;02&lt;/span&gt;My work' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;02&lt;/span&gt;내가 맡은 일' id="contribution-title"><span aria-hidden="true" class="section-number">02</span>내가 맡은 일</h2>
+<div class="detail-prose"><ul><li class="" data-en="Built size-stratified evaluations on COCO and PASCAL VOC and compared five scoring methods using global and patch features while keeping CLIP&amp;#x27;s pretrained weights fixed." data-ko="COCO·PASCAL VOC에서 객체 크기별 평가를 구성하고, CLIP 가중치를 고정한 채 이미지 전체와 작은 패치의 특징을 쓰는 다섯 점수 산출 방식을 비교했습니다.">COCO·PASCAL VOC에서 객체 크기별 평가를 구성하고, CLIP 가중치를 고정한 채 이미지 전체와 작은 패치의 특징을 쓰는 다섯 점수 산출 방식을 비교했습니다.</li><li class="" data-en="Compared masking the object&amp;#x27;s bounding boxes with masking other locations. A separate COCO experiment compared transplanting bounding-box regions and random regions into matched host images." data-ko="객체의 경계 상자와 다른 위치를 가린 조건을 비교했습니다. 별도 COCO 실험에서는 객체 영역과 무작위 영역을 같은 배경 이미지에 옮겨 붙이는 대조도 구성했습니다.">객체의 경계 상자와 다른 위치를 가린 조건을 비교했습니다. 별도 COCO 실험에서는 객체 영역과 무작위 영역을 같은 배경 이미지에 옮겨 붙이는 대조도 구성했습니다.</li><li class="" data-en="Checked the findings with image and class resampling and multiple-comparison correction, then developed the experiments and their limits into a KSC 2026 manuscript." data-ko="이미지·클래스를 다시 뽑는 분석과 여러 비교를 함께 고려하는 보정으로 결과를 점검하고, 실험과 한계를 KSC 2026 원고로 정리했습니다.">이미지·클래스를 다시 뽑는 분석과 여러 비교를 함께 고려하는 보정으로 결과를 점검하고, 실험과 한계를 KSC 2026 원고로 정리했습니다.</li></ul></div>
+</section><section aria-labelledby="results-title" class="detail-section" id="results">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;03&lt;/span&gt;What I found' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;03&lt;/span&gt;무엇을 확인했나' id="results-title"><span aria-hidden="true" class="section-number">03</span>무엇을 확인했나</h2>
+<div class="detail-prose"><p class="" data-en="In the basic COCO/ViT-L/14 analysis, all three selected scoring changes improved discrimination on the original images. The difference between object-location and other-location masking increased, decreased, or showed no detected change. The result calls for evaluating discrimination and masking sensitivity together." data-ko="COCO·ViT-L/14의 기본 분석에서, 비교한 세 방식 변경은 모두 원본 판별 성능을 높였습니다. 하지만 객체 위치와 다른 위치를 가린 조건의 성능 차이는 커지거나 작아졌고, 변화가 확인되지 않은 비교도 있었습니다. 판별 성능과 가림 효과를 함께 평가해야 한다는 결과입니다.">COCO·ViT-L/14의 기본 분석에서, 비교한 세 방식 변경은 모두 원본 판별 성능을 높였습니다. 하지만 객체 위치와 다른 위치를 가린 조건의 성능 차이는 커지거나 작아졌고, 변화가 확인되지 않은 비교도 있었습니다. 판별 성능과 가림 효과를 함께 평가해야 한다는 결과입니다.</p><p class="" data-en="Substantial discrimination remained after masking the object&amp;#x27;s location. In the separate COCO transplantation experiment, bounding-box regions retained more discrimination than matched random regions." data-ko="객체 위치를 가린 뒤에도 판별력이 상당 부분 남았습니다. 별도 COCO 이식 실험에서는 객체의 경계 상자 영역을 옮긴 조건이 같은 크기의 무작위 영역을 옮긴 조건보다 높은 판별력을 보였습니다.">객체 위치를 가린 뒤에도 판별력이 상당 부분 남았습니다. 별도 COCO 이식 실험에서는 객체의 경계 상자 영역을 옮긴 조건이 같은 크기의 무작위 영역을 옮긴 조건보다 높은 판별력을 보였습니다.</p><p class="" data-en="Some findings did not survive class resampling and multiple-comparison correction. Masking changes the input, and bounding boxes include surrounding pixels. These measurements do not quantify object-only information use or establish a universal property of CLIP." data-ko="다만 클래스 재표본과 다중검정 보정 뒤에는 일부 결과가 유지되지 않았습니다. 가림은 입력을 바꾸고, 경계 상자는 주변 픽셀도 포함합니다. 이 결과를 객체 자체의 정보 사용량이나 모든 CLIP 설정의 공통 특성으로 해석하지 않습니다.">다만 클래스 재표본과 다중검정 보정 뒤에는 일부 결과가 유지되지 않았습니다. 가림은 입력을 바꾸고, 경계 상자는 주변 픽셀도 포함합니다. 이 결과를 객체 자체의 정보 사용량이나 모든 CLIP 설정의 공통 특성으로 해석하지 않습니다.</p><table class="detail-metrics">
+<caption class="" data-en="Recorded figures and evaluation scope" data-ko="확인한 수치와 평가 범위">확인한 수치와 평가 범위</caption>
+<thead><tr><th class="" data-en="Measure" data-ko="구분" scope="col">구분</th><th class="" data-en="Value" data-ko="수치" scope="col">수치</th><th class="" data-en="Scope" data-ko="조건" scope="col">조건</th></tr></thead>
+<tbody><tr><td class="" data-en="Scoring methods compared" data-ko="비교한 점수 산출 방식">비교한 점수 산출 방식</td><td>5</td><td class="" data-en="Pretrained CLIP weights held fixed" data-ko="사전학습 CLIP 가중치는 고정">사전학습 CLIP 가중치는 고정</td></tr><tr><td class="" data-en="Main COCO very-small-object panel" data-ko="COCO 극소 객체 주분석">COCO 극소 객체 주분석</td><td>3,244</td><td class="" data-en="Positive image–class pairs across 57 classes; separate from the transplantation sample" data-ko="57개 클래스의 양성 이미지–클래스 쌍. 이식 표본과는 별도">57개 클래스의 양성 이미지–클래스 쌍. 이식 표본과는 별도</td></tr></tbody>
+</table></div>
+</section><section aria-labelledby="next-title" class="detail-section" id="next">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;04&lt;/span&gt;Status and next question' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;04&lt;/span&gt;지금 단계와 다음 질문' id="next-title"><span aria-hidden="true" class="section-number">04</span>지금 단계와 다음 질문</h2>
+<div class="detail-prose"><p class="" data-en="The manuscript is being prepared and reviewed. I am checking how the distinction between discrimination and masking sensitivity holds across settings and making the effects of comparison selection and statistical procedures explicit." data-ko="현재는 원고를 작성·검토하는 단계입니다. 성능 향상과 가림 효과를 구분하는 평가를 다른 조건에서도 점검하고, 결과 선택과 통계 처리에 따른 해석의 범위를 명확히 정리하고 있습니다.">현재는 원고를 작성·검토하는 단계입니다. 성능 향상과 가림 효과를 구분하는 평가를 다른 조건에서도 점검하고, 결과 선택과 통계 처리에 따른 해석의 범위를 명확히 정리하고 있습니다.</p></div>
+</section></article>
+<div aria-label="다른 프로젝트" class="detail-pagination"><a class="" data-en='&lt;span class="direction"&gt;← Previous project&lt;/span&gt;Book recommendation &amp;amp; profanity detection' data-ko='&lt;span class="direction"&gt;← 이전 프로젝트&lt;/span&gt;도서 추천·욕설 탐지' data-project-nav="" href="../khuda/"><span class="direction">← 이전 프로젝트</span>도서 추천·욕설 탐지</a><a class="" data-en='&lt;span class="direction"&gt;Next project →&lt;/span&gt;Small objects in VideoLLMs' data-ko='&lt;span class="direction"&gt;다음 프로젝트 →&lt;/span&gt;작은 객체와 VideoLLM' data-project-nav="" href="../spot-videollm/"><span class="direction">다음 프로젝트 →</span>작은 객체와 VideoLLM</a></div>
+<section aria-label="Contact" class="contact" id="contact">
+<span data-en="Contact" data-ko="Contact">Contact</span>
+<a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
+</section>
+</main>
+<footer><span class="" data-en="Sihwan Kim / 김시환" data-ko="김시환 / Sihwan Kim">김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" rel="noopener noreferrer" target="_blank">GitHub ↗</a></footer>
+</div>
+<script src="../../assets/contour-terrain.js?v=editorial-20261018"></script>
+<script src="../../assets/scroll-motion-model.js?v=editorial-20261018"></script>
+<script src="../../assets/scroll-contour.js?v=editorial-20261018"></script>
+<script src="../../assets/portfolio.js?v=editorial-20261018" type="module"></script>
 </body>
 </html>

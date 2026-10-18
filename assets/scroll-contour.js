@@ -73,7 +73,7 @@
       }
       for (const [level, path] of paths) {
         const major = modulo(level, 8) === 0;
-        const ink = pen.createLinearGradient(0, 0, width, 0), alpha = major ? .22 : .13;
+        const ink = pen.createLinearGradient(0, 0, width, 0), alpha = major ? .30 : .19;
         for (const [stop, strength] of [[0,.13],[.2,.24],[.45,.4],[.68,.67],[.86,1],[1,.8]]) {
           ink.addColorStop(stop, 'rgba(67,76,79,' + alpha * strength + ')');
         }
@@ -123,7 +123,7 @@
       ctx.strokeStyle = 'rgba(226,231,231,.36)'; ctx.lineWidth = .7; ctx.stroke(); ctx.restore();
     }
     function collectMasks() {
-      textMasks = [...document.querySelectorAll('.intro-detail, .activity, .experience .detail')].map(element => {
+      textMasks = [...document.querySelectorAll('.reading-zone, .detail-prose, .detail-lead, .detail-facts')].map(element => {
         const box = element.getBoundingClientRect();
         return { x: box.x, y: box.y + scrollY, width: box.width, height: box.height };
       });
@@ -149,7 +149,7 @@
     function render() {
       if (destroyed) return;
       ctx.clearRect(0, 0, width, height);
-      const state = model.state(); drawField(state); softenTextAreas(); drawBall(state);
+      const state = model.state(); drawField(state); drawBall(state); softenTextAreas();
       window.__ready = true;
     }
     function getState() {

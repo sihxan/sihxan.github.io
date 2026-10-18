@@ -1,68 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#faf9f6">
-  <title data-ko="생성 모델 논문 읽기·구현 — 김시환" data-en="Generative models: reading &amp; implementation — Sihwan Kim">생성 모델 논문 읽기·구현 — 김시환</title>
-  <meta name="description" content="VAE와 확산 모델을 논문과 구현으로 공부하며, 생성 과정의 수학과 코드가 어떻게 이어지는지 정리했습니다." data-ko="VAE와 확산 모델을 논문과 구현으로 공부하며, 생성 과정의 수학과 코드가 어떻게 이어지는지 정리했습니다." data-en="I studied VAEs and diffusion models through papers and implementation, connecting the mathematics of generation to code.">
-  <link rel="canonical" href="https://sihxan.github.io/projects/generative-models/">
-  <link rel="preload" href="../../assets/PortfolioLatin.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../../assets/PortfolioHangul.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/portfolio.css?v=details-20261012">
-  <link rel="stylesheet" href="../../assets/project-details.css?v=details-20261012">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#f5f5f0" name="theme-color"/>
+<title data-en="Generative models: reading &amp; implementation — Sihwan Kim" data-ko="생성 모델 논문 읽기·구현 — 김시환">생성 모델 논문 읽기·구현 — 김시환</title>
+<meta content="VAE와 확산 모델을 논문과 구현으로 공부하며, 생성 과정의 수학과 코드가 어떻게 이어지는지 정리했습니다." data-en="I studied VAEs and diffusion models through papers and implementation, connecting the mathematics of generation to code." data-ko="VAE와 확산 모델을 논문과 구현으로 공부하며, 생성 과정의 수학과 코드가 어떻게 이어지는지 정리했습니다." name="description"/>
+<link href="https://sihxan.github.io/projects/generative-models/" rel="canonical"/>
+<link as="font" crossorigin="" href="../../assets/PortfolioLatin.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../assets/PortfolioHangul.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
+<link href="../../assets/portfolio.css?v=editorial-20261018" rel="stylesheet"/>
+<link href="../../assets/project-details.css?v=editorial-20261018" rel="stylesheet"/>
 </head>
 <body class="project-detail">
-  <a class="skip" data-ko="본문 바로가기" data-en="Skip to content" href="#main">본문 바로가기</a>
-  <canvas id="loss-landscape" class="contour-background" role="img" aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬"></canvas>
-  <div class="motion-tools">
-    <button id="toggle-motion" type="button" aria-label="애니메이션 일시 정지"><svg class="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9m5-9v9"/></svg><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 7 5-7 5z"/></svg></button>
-    <button id="restart-motion" type="button" aria-label="애니메이션 처음부터 다시 보기"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"/></svg></button>
-  </div>
-
-  <div class="wrap">
-    <header>
-      <a class="wordmark" data-ko="김시환" data-en="Sihwan Kim" href="../../" data-home-link>김시환</a>
-      <nav aria-label="주 메뉴">
-        <a class="" data-ko="프로젝트" data-en="Projects" href="../../#work" data-home-link>프로젝트</a>
-        <a class="" data-ko="경험" data-en="Experience" href="../../#profile" data-home-link>경험</a>
-        <a href="../../#contact" data-home-link data-ko="Contact" data-en="Contact">Contact</a>
-        <button class="language" type="button" aria-label="Switch to English"><strong>KO</strong> / EN</button>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="detail-hero" aria-labelledby="project-title">
-        <a class="back-link" data-ko="← 프로젝트 목록" data-en="← All projects" href="../../#project-generative-models" data-home-link>← 프로젝트 목록</a>
-        <p class="detail-kicker" data-ko="논문 읽기·구현" data-en="Reading &amp;amp; implementation" >논문 읽기·구현</p>
-        <h1 class="" data-ko="생성 모델 논문 읽기·구현" data-en="Generative models: reading &amp;amp; implementation" id="project-title">생성 모델 논문 읽기·구현</h1>
-        <p class="detail-lead" data-ko="VAE와 확산 모델을 논문과 구현으로 공부하며, 생성 과정의 수학과 코드가 어떻게 이어지는지 정리했습니다." data-en="I studied VAEs and diffusion models through papers and implementation, connecting the mathematics of generation to code." >VAE와 확산 모델을 논문과 구현으로 공부하며, 생성 과정의 수학과 코드가 어떻게 이어지는지 정리했습니다.</p>
-        <dl class="detail-facts">
-          <div><dt class="" data-ko="맡은 일" data-en="My role" >맡은 일</dt><dd class="" data-ko="개인 학습 · 논문 분석·모델 구현" data-en="Independent study · Paper analysis and model implementation" >개인 학습 · 논문 분석·모델 구현</dd></div>
-          <div><dt class="" data-ko="현재 단계" data-en="Status" >현재 단계</dt><dd class="" data-ko="논문 읽기·구현 학습" data-en="Paper reading and implementation study" >논문 읽기·구현 학습</dd></div>
-        </dl>
-      </section>
-      <nav class="detail-sections" aria-label="프로젝트 상세 목차"><a class="" data-ko="무엇을 공부했나" data-en="The focus" href="#question">무엇을 공부했나</a><a class="" data-ko="내가 한 일" data-en="My work" href="#contribution">내가 한 일</a><a class="" data-ko="정리한 내용" data-en="What I learned and implemented" href="#results">정리한 내용</a></nav>
-      <article class="detail-story"><section class="detail-section" id="question" aria-labelledby="question-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;무엇을 공부했나" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;The focus" id="question-title"><span class="section-number" aria-hidden="true">01</span>무엇을 공부했나</h2>
-          <div class="detail-prose"><p class="" data-ko="생성 모델이 데이터를 표현하고 새로운 샘플을 만드는 원리를 공부했습니다. 논문의 수식과 모델 구조를 읽고, 구현을 통해 각 구성 요소의 역할을 이해하는 데 집중했습니다." data-en="I studied how generative models represent data and produce new samples, using papers and implementation to understand the roles of their mathematical and architectural components." >생성 모델이 데이터를 표현하고 새로운 샘플을 만드는 원리를 공부했습니다. 논문의 수식과 모델 구조를 읽고, 구현을 통해 각 구성 요소의 역할을 이해하는 데 집중했습니다.</p></div>
-        </section><section class="detail-section" id="contribution" aria-labelledby="contribution-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;내가 한 일" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;My work" id="contribution-title"><span class="section-number" aria-hidden="true">02</span>내가 한 일</h2>
-          <div class="detail-prose"><ul><li class="" data-ko="VAE의 이론과 구현을 공부했습니다." data-en="I studied VAE theory and implementation." >VAE의 이론과 구현을 공부했습니다.</li><li class="" data-ko="DDPM·DDIM·점수 기반 생성 모델의 구조와 수학적 기반을 분석했습니다." data-en="I analyzed DDPM, DDIM and score-based models and their mathematical foundations." >DDPM·DDIM·점수 기반 생성 모델의 구조와 수학적 기반을 분석했습니다.</li><li class="" data-ko="Latent diffusion과 조건부 생성 방식을 살펴봤습니다." data-en="I explored latent diffusion and conditioning mechanisms." >Latent diffusion과 조건부 생성 방식을 살펴봤습니다.</li></ul></div>
-        </section><section class="detail-section" id="results" aria-labelledby="results-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;정리한 내용" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;What I learned and implemented" id="results-title"><span class="section-number" aria-hidden="true">03</span>정리한 내용</h2>
-          <div class="detail-prose"><p class="" data-ko="생성 모델의 수학적 기반과 구현 방식을 정리했습니다. VAE·확산 모델의 논문 읽기와 구현 학습 경험을 쌓았습니다." data-en="I organized the mathematical foundations and implementation approaches of generative models, building paper-reading and implementation experience with VAEs and diffusion models." >생성 모델의 수학적 기반과 구현 방식을 정리했습니다. VAE·확산 모델의 논문 읽기와 구현 학습 경험을 쌓았습니다.</p></div>
-        </section></article>
-      <div class="detail-pagination" aria-label="다른 프로젝트"><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;← 이전 프로젝트&lt;/span&gt;Allmize AI 서비스 개발" data-en="&lt;span class=&quot;direction&quot;&gt;← Previous project&lt;/span&gt;AI service development at Allmize" href="../allmize/" data-project-nav><span class="direction">← 이전 프로젝트</span>Allmize AI 서비스 개발</a><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;다음 프로젝트 →&lt;/span&gt;도서 추천·욕설 탐지" data-en="&lt;span class=&quot;direction&quot;&gt;Next project →&lt;/span&gt;Book recommendation &amp;amp; profanity detection" href="../khuda/" data-project-nav><span class="direction">다음 프로젝트 →</span>도서 추천·욕설 탐지</a></div>
-      <section class="contact" id="contact" aria-label="Contact">
-        <span data-ko="Contact" data-en="Contact">Contact</span>
-        <a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
-      </section>
-    </main>
-    <footer><span class="" data-ko="김시환 / Sihwan Kim" data-en="Sihwan Kim / 김시환" >김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
-  </div>
-  <script src="../../assets/contour-terrain.js?v=details-20261012"></script>
-  <script src="../../assets/scroll-motion-model.js?v=details-20261012"></script>
-  <script src="../../assets/scroll-contour.js?v=details-20261012"></script>
-  <script type="module" src="../../assets/portfolio.js?v=details-20261012"></script>
+<a class="skip" data-en="Skip to content" data-ko="본문 바로가기" href="#main">본문 바로가기</a>
+<canvas aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬" class="contour-background" id="loss-landscape" role="img"></canvas>
+<div class="motion-tools">
+<button aria-label="애니메이션 일시 정지" id="toggle-motion" type="button"><svg aria-hidden="true" class="pause-icon" viewbox="0 0 16 16"><path d="M5.5 3.5v9m5-9v9"></path></svg><svg aria-hidden="true" class="play-icon" viewbox="0 0 16 16"><path d="m5 3 7 5-7 5z"></path></svg></button>
+<button aria-label="애니메이션 처음부터 다시 보기" id="restart-motion" type="button"><svg aria-hidden="true" viewbox="0 0 16 16"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"></path></svg></button>
+</div>
+<div class="wrap">
+<header>
+<a aria-label="Sihwan Kim — Home" class="wordmark" data-home-link="" href="../../">SK</a>
+<nav aria-label="주 메뉴">
+<a class="" data-en="Projects" data-home-link="" data-ko="프로젝트" href="../../#work">프로젝트</a>
+<a class="" data-en="Experience" data-home-link="" data-ko="경험" href="../../#profile">경험</a>
+<a data-en="Contact" data-home-link="" data-ko="Contact" href="../../#contact">Contact</a>
+<button aria-label="Switch to English" class="language" type="button"><strong>KO</strong> / EN</button>
+</nav>
+</header>
+<main id="main">
+<section aria-labelledby="project-title" class="detail-hero">
+<a class="back-link" data-en="← All projects" data-home-link="" data-ko="← 프로젝트 목록" href="../../#project-generative-models">← 프로젝트 목록</a>
+<p class="detail-kicker" data-en="Reading &amp;amp; implementation" data-ko="논문 읽기·구현">논문 읽기·구현</p>
+<h1 class="" data-en="Generative models: reading &amp;amp; implementation" data-ko="생성 모델 논문 읽기·구현" id="project-title">생성 모델 논문 읽기·구현</h1>
+<p class="detail-lead" data-en="I studied VAEs and diffusion models through papers and implementation, connecting the mathematics of generation to code." data-ko="VAE와 확산 모델을 논문과 구현으로 공부하며, 생성 과정의 수학과 코드가 어떻게 이어지는지 정리했습니다.">VAE와 확산 모델을 논문과 구현으로 공부하며, 생성 과정의 수학과 코드가 어떻게 이어지는지 정리했습니다.</p>
+<dl class="detail-facts">
+<div><dt class="" data-en="My role" data-ko="맡은 일">맡은 일</dt><dd class="" data-en="Independent study · Paper analysis and model implementation" data-ko="개인 학습 · 논문 분석·모델 구현">개인 학습 · 논문 분석·모델 구현</dd></div>
+<div><dt class="" data-en="Status" data-ko="현재 단계">현재 단계</dt><dd class="" data-en="Paper reading and implementation study" data-ko="논문 읽기·구현 학습">논문 읽기·구현 학습</dd></div>
+</dl>
+</section>
+<nav aria-label="프로젝트 상세 목차" class="detail-sections"><a class="" data-en="The focus" data-ko="무엇을 공부했나" href="#question">무엇을 공부했나</a><a class="" data-en="My work" data-ko="내가 한 일" href="#contribution">내가 한 일</a><a class="" data-en="What I learned and implemented" data-ko="정리한 내용" href="#results">정리한 내용</a></nav>
+<article class="detail-story"><section aria-labelledby="question-title" class="detail-section" id="question">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;01&lt;/span&gt;The focus' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;01&lt;/span&gt;무엇을 공부했나' id="question-title"><span aria-hidden="true" class="section-number">01</span>무엇을 공부했나</h2>
+<div class="detail-prose"><p class="" data-en="I studied how generative models represent data and produce new samples, using papers and implementation to understand the roles of their mathematical and architectural components." data-ko="생성 모델이 데이터를 표현하고 새로운 샘플을 만드는 원리를 공부했습니다. 논문의 수식과 모델 구조를 읽고, 구현을 통해 각 구성 요소의 역할을 이해하는 데 집중했습니다.">생성 모델이 데이터를 표현하고 새로운 샘플을 만드는 원리를 공부했습니다. 논문의 수식과 모델 구조를 읽고, 구현을 통해 각 구성 요소의 역할을 이해하는 데 집중했습니다.</p></div>
+</section><section aria-labelledby="contribution-title" class="detail-section" id="contribution">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;02&lt;/span&gt;My work' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;02&lt;/span&gt;내가 한 일' id="contribution-title"><span aria-hidden="true" class="section-number">02</span>내가 한 일</h2>
+<div class="detail-prose"><ul><li class="" data-en="I studied VAE theory and implementation." data-ko="VAE의 이론과 구현을 공부했습니다.">VAE의 이론과 구현을 공부했습니다.</li><li class="" data-en="I analyzed DDPM, DDIM and score-based models and their mathematical foundations." data-ko="DDPM·DDIM·점수 기반 생성 모델의 구조와 수학적 기반을 분석했습니다.">DDPM·DDIM·점수 기반 생성 모델의 구조와 수학적 기반을 분석했습니다.</li><li class="" data-en="I explored latent diffusion and conditioning mechanisms." data-ko="Latent diffusion과 조건부 생성 방식을 살펴봤습니다.">Latent diffusion과 조건부 생성 방식을 살펴봤습니다.</li></ul></div>
+</section><section aria-labelledby="results-title" class="detail-section" id="results">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;03&lt;/span&gt;What I learned and implemented' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;03&lt;/span&gt;정리한 내용' id="results-title"><span aria-hidden="true" class="section-number">03</span>정리한 내용</h2>
+<div class="detail-prose"><p class="" data-en="I organized the mathematical foundations and implementation approaches of generative models, building paper-reading and implementation experience with VAEs and diffusion models." data-ko="생성 모델의 수학적 기반과 구현 방식을 정리했습니다. VAE·확산 모델의 논문 읽기와 구현 학습 경험을 쌓았습니다.">생성 모델의 수학적 기반과 구현 방식을 정리했습니다. VAE·확산 모델의 논문 읽기와 구현 학습 경험을 쌓았습니다.</p></div>
+</section></article>
+<div aria-label="다른 프로젝트" class="detail-pagination"><a class="" data-en='&lt;span class="direction"&gt;← Previous project&lt;/span&gt;AI service development at Allmize' data-ko='&lt;span class="direction"&gt;← 이전 프로젝트&lt;/span&gt;Allmize AI 서비스 개발' data-project-nav="" href="../allmize/"><span class="direction">← 이전 프로젝트</span>Allmize AI 서비스 개발</a><a class="" data-en='&lt;span class="direction"&gt;Next project →&lt;/span&gt;Book recommendation &amp;amp; profanity detection' data-ko='&lt;span class="direction"&gt;다음 프로젝트 →&lt;/span&gt;도서 추천·욕설 탐지' data-project-nav="" href="../khuda/"><span class="direction">다음 프로젝트 →</span>도서 추천·욕설 탐지</a></div>
+<section aria-label="Contact" class="contact" id="contact">
+<span data-en="Contact" data-ko="Contact">Contact</span>
+<a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
+</section>
+</main>
+<footer><span class="" data-en="Sihwan Kim / 김시환" data-ko="김시환 / Sihwan Kim">김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" rel="noopener noreferrer" target="_blank">GitHub ↗</a></footer>
+</div>
+<script src="../../assets/contour-terrain.js?v=editorial-20261018"></script>
+<script src="../../assets/scroll-motion-model.js?v=editorial-20261018"></script>
+<script src="../../assets/scroll-contour.js?v=editorial-20261018"></script>
+<script src="../../assets/portfolio.js?v=editorial-20261018" type="module"></script>
 </body>
 </html>

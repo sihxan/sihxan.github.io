@@ -1,75 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#faf9f6">
-  <title data-ko="영상 모델의 KV-cache 압축 — 김시환" data-en="KV-cache compression for video models — Sihwan Kim">영상 모델의 KV-cache 압축 — 김시환</title>
-  <meta name="description" content="영상 모델이 기억해 둔 정보를 더 작은 메모리에 담는 방법을 연구합니다. 압축·복원 코드를 구현하고, 저장량이 줄어드는 것과 모델 계산이 유지되는 것을 따로 확인했습니다." data-ko="영상 모델이 기억해 둔 정보를 더 작은 메모리에 담는 방법을 연구합니다. 압축·복원 코드를 구현하고, 저장량이 줄어드는 것과 모델 계산이 유지되는 것을 따로 확인했습니다." data-en="I study how to fit a video model&#x27;s stored information into less memory. I implemented compression and reconstruction, evaluating storage savings separately from changes in model computation.">
-  <link rel="canonical" href="https://sihxan.github.io/projects/kv-cache/">
-  <link rel="preload" href="../../assets/PortfolioLatin.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../../assets/PortfolioHangul.woff2?v=details-20261012" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/portfolio.css?v=details-20261012">
-  <link rel="stylesheet" href="../../assets/project-details.css?v=details-20261012">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#f5f5f0" name="theme-color"/>
+<title data-en="KV-cache compression for video models — Sihwan Kim" data-ko="영상 모델의 KV-cache 압축 — 김시환">영상 모델의 KV-cache 압축 — 김시환</title>
+<meta content="영상 모델이 기억해 둔 정보를 더 작은 메모리에 담는 방법을 연구합니다. 압축·복원 코드를 구현하고, 저장량이 줄어드는 것과 모델 계산이 유지되는 것을 따로 확인했습니다." data-en="I study how to fit a video model's stored information into less memory. I implemented compression and reconstruction, evaluating storage savings separately from changes in model computation." data-ko="영상 모델이 기억해 둔 정보를 더 작은 메모리에 담는 방법을 연구합니다. 압축·복원 코드를 구현하고, 저장량이 줄어드는 것과 모델 계산이 유지되는 것을 따로 확인했습니다." name="description"/>
+<link href="https://sihxan.github.io/projects/kv-cache/" rel="canonical"/>
+<link as="font" crossorigin="" href="../../assets/PortfolioLatin.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../assets/PortfolioHangul.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
+<link href="../../assets/portfolio.css?v=editorial-20261018" rel="stylesheet"/>
+<link href="../../assets/project-details.css?v=editorial-20261018" rel="stylesheet"/>
 </head>
 <body class="project-detail">
-  <a class="skip" data-ko="본문 바로가기" data-en="Skip to content" href="#main">본문 바로가기</a>
-  <canvas id="loss-landscape" class="contour-background" role="img" aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬"></canvas>
-  <div class="motion-tools">
-    <button id="toggle-motion" type="button" aria-label="애니메이션 일시 정지"><svg class="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9m5-9v9"/></svg><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 7 5-7 5z"/></svg></button>
-    <button id="restart-motion" type="button" aria-label="애니메이션 처음부터 다시 보기"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"/></svg></button>
-  </div>
-
-  <div class="wrap">
-    <header>
-      <a class="wordmark" data-ko="김시환" data-en="Sihwan Kim" href="../../" data-home-link>김시환</a>
-      <nav aria-label="주 메뉴">
-        <a class="" data-ko="프로젝트" data-en="Projects" href="../../#work" data-home-link>프로젝트</a>
-        <a class="" data-ko="경험" data-en="Experience" href="../../#profile" data-home-link>경험</a>
-        <a href="../../#contact" data-home-link data-ko="Contact" data-en="Contact">Contact</a>
-        <button class="language" type="button" aria-label="Switch to English"><strong>KO</strong> / EN</button>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="detail-hero" aria-labelledby="project-title">
-        <a class="back-link" data-ko="← 프로젝트 목록" data-en="← All projects" href="../../#project-kv-cache" data-home-link>← 프로젝트 목록</a>
-        <p class="detail-kicker" data-ko="연구 · 오프라인 실험" data-en="Research · Offline experiments" >연구 · 오프라인 실험</p>
-        <h1 class="" data-ko="영상 모델의 KV-cache 압축" data-en="KV-cache compression for video models" id="project-title">영상 모델의 KV-cache 압축</h1>
-        <p class="detail-lead" data-ko="영상 모델이 기억해 둔 정보를 더 작은 메모리에 담는 방법을 연구합니다. 압축·복원 코드를 구현하고, 저장량이 줄어드는 것과 모델 계산이 유지되는 것을 따로 확인했습니다." data-en="I study how to fit a video model&amp;#x27;s stored information into less memory. I implemented compression and reconstruction, evaluating storage savings separately from changes in model computation." >영상 모델이 기억해 둔 정보를 더 작은 메모리에 담는 방법을 연구합니다. 압축·복원 코드를 구현하고, 저장량이 줄어드는 것과 모델 계산이 유지되는 것을 따로 확인했습니다.</p>
-        <dl class="detail-facts">
-          <div><dt class="" data-ko="맡은 일" data-en="My role" >맡은 일</dt><dd class="" data-ko="압축 표현·독립 복원기 구현, 비교 실험 구성, 층·헤드별 오차 분석" data-en="Compression representations, independent readers, comparative experiments and layer/head error analysis" >압축 표현·독립 복원기 구현, 비교 실험 구성, 층·헤드별 오차 분석</dd></div>
-          <div><dt class="" data-ko="현재 단계" data-en="Status" >현재 단계</dt><dd class="" data-ko="오프라인 구현·비교 결과 확보 · 질문 정답률과 전체 추론 속도는 후속 평가" data-en="Offline implementations and comparative results available · QA and full-model speed remain follow-up evaluations" >오프라인 구현·비교 결과 확보 · 질문 정답률과 전체 추론 속도는 후속 평가</dd></div>
-        </dl>
-      </section>
-      <nav class="detail-sections" aria-label="프로젝트 상세 목차"><a class="" data-ko="무엇을 알아보려 했나" data-en="The question" href="#question">무엇을 알아보려 했나</a><a class="" data-ko="맡은 일" data-en="My work" href="#contribution">맡은 일</a><a class="" data-ko="확인한 결과" data-en="Findings" href="#results">확인한 결과</a><a class="" data-ko="다음 검증" data-en="Next steps" href="#next">다음 검증</a></nav>
-      <article class="detail-story"><section class="detail-section" id="question" aria-labelledby="question-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;무엇을 알아보려 했나" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;The question" id="question-title"><span class="section-number" aria-hidden="true">01</span>무엇을 알아보려 했나</h2>
-          <div class="detail-prose"><p class="" data-ko="긴 영상을 처리하면 모델이 보관하는 중간 정보인 KV-cache도 커집니다. 미래에 어떤 질문이 들어올지 모르는 상태에서, 제한된 메모리 안에 필요한 정보를 얼마나 남길 수 있는지가 연구 질문입니다." data-en="As a model processes longer videos, its KV cache—the intermediate information retained for attention—grows. The question is how to preserve useful information under a fixed memory budget before future questions are known." >긴 영상을 처리하면 모델이 보관하는 중간 정보인 KV-cache도 커집니다. 미래에 어떤 질문이 들어올지 모르는 상태에서, 제한된 메모리 안에 필요한 정보를 얼마나 남길 수 있는지가 연구 질문입니다.</p><p class="" data-ko="압축한 데이터를 원본처럼 복원하는 것만으로는 충분하지 않습니다. 복원된 정보로 모델이 계산한 attention 출력까지 비교해야 압축의 영향을 알 수 있습니다." data-en="Reconstructing the original data is only part of the evaluation. Comparing attention outputs computed from the reconstructed information reveals how compression changes the model&amp;#x27;s computation." >압축한 데이터를 원본처럼 복원하는 것만으로는 충분하지 않습니다. 복원된 정보로 모델이 계산한 attention 출력까지 비교해야 압축의 영향을 알 수 있습니다.</p></div>
-        </section><section class="detail-section" id="contribution" aria-labelledby="contribution-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;맡은 일" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;My work" id="contribution-title"><span class="section-number" aria-hidden="true">02</span>맡은 일</h2>
-          <div class="detail-prose"><ul><li class="" data-ko="Qwen2.5-VL에서 수집한 실제 KV로 저비트 양자화, 평균·잔차 공유, 학습형 압축기를 비교했습니다." data-en="Compared low-bit quantization, shared mean/residual representations and learned compressors using captured Qwen2.5-VL KV tensors." >Qwen2.5-VL에서 수집한 실제 KV로 저비트 양자화, 평균·잔차 공유, 학습형 압축기를 비교했습니다.</li><li class="" data-ko="압축 파일과 별도의 복원기를 구현해, 메타데이터를 포함한 실제 저장량과 복원 결과를 함께 검사했습니다." data-en="Implemented serialized compression formats and independent readers, checking reconstruction alongside actual storage bytes, including metadata." >압축 파일과 별도의 복원기를 구현해, 메타데이터를 포함한 실제 저장량과 복원 결과를 함께 검사했습니다.</li><li class="" data-ko="저장량·KV 복원 오차·attention 출력 오차를 분리해 측정했습니다. 학습형 비교에서는 5개 층, 3개 잠재 차원, 2개 시드와 두 구조를 조합한 60개 설정을 학습했습니다." data-en="Measured storage, KV reconstruction error and attention-output error separately. The learned-compressor study trained 60 configurations across five layers, three latent widths, two seeds and two architectures." >저장량·KV 복원 오차·attention 출력 오차를 분리해 측정했습니다. 학습형 비교에서는 5개 층, 3개 잠재 차원, 2개 시드와 두 구조를 조합한 60개 설정을 학습했습니다.</li></ul></div>
-        </section><section class="detail-section" id="results" aria-labelledby="results-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;확인한 결과" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;Findings" id="results-title"><span class="section-number" aria-hidden="true">03</span>확인한 결과</h2>
-          <div class="detail-prose"><p class="" data-ko="학습형 압축 실험에서 KV 복원 오차가 작아져도 attention 출력 오차는 커질 수 있음을 확인했습니다. 압축 데이터가 원본과 비슷하다는 사실이 모델 계산의 보존을 보장하지는 않았습니다." data-en="The learned-compression experiments showed that lower KV reconstruction error can still produce greater attention-output error. Similarity to the original data did not guarantee preservation of model computation." >학습형 압축 실험에서 KV 복원 오차가 작아져도 attention 출력 오차는 커질 수 있음을 확인했습니다. 압축 데이터가 원본과 비슷하다는 사실이 모델 계산의 보존을 보장하지는 않았습니다.</p><ul><li class="" data-ko="별도의 12개 영상 비교에서도 저장량과 attention 오차의 우열이 조건에 따라 달랐습니다. 추가 구조를 사용하는 압축 방식이 모든 조건에서 유리하지는 않았습니다." data-en="A separate 12-video comparison also found that storage and attention-error rankings varied by condition. Adding structure to the representation did not yield a uniform advantage." >별도의 12개 영상 비교에서도 저장량과 attention 오차의 우열이 조건에 따라 달랐습니다. 추가 구조를 사용하는 압축 방식이 모든 조건에서 유리하지는 않았습니다.</li><li class="" data-ko="1개 영상·2개 층의 실제 파일 검증에서는 10개 비교 파일 모두 바이트 상한과 독립 복원 검사를 통과했습니다. 추가 잔차 선택 기능은 이 두 조건에서 선택되지 않았고, 품질 이득 없이 계산 비용을 더했습니다." data-en="In a one-video, two-layer file-validation pilot, all 10 comparison files met their byte cap and passed independent decoding. The optional residual representation was not selected in these two cases and added processing cost without a quality benefit." >1개 영상·2개 층의 실제 파일 검증에서는 10개 비교 파일 모두 바이트 상한과 독립 복원 검사를 통과했습니다. 추가 잔차 선택 기능은 이 두 조건에서 선택되지 않았고, 품질 이득 없이 계산 비용을 더했습니다.</li></ul><table class="detail-metrics">
-      <caption class="" data-ko="확인한 수치와 평가 범위" data-en="Recorded figures and evaluation scope" >확인한 수치와 평가 범위</caption>
-      <thead><tr><th class="" data-ko="구분" data-en="Measure" scope="col">구분</th><th class="" data-ko="수치" data-en="Value" scope="col">수치</th><th class="" data-ko="조건" data-en="Scope" scope="col">조건</th></tr></thead>
-      <tbody><tr><td class="" data-ko="영상 비교 패널" data-en="Video comparison panel" >영상 비교 패널</td><td>12</td><td class="" data-ko="수집 영상의 층·헤드별 저장량·attention 비교. 학습형 실험과 별도 구성입니다." data-en="Captured-video storage and attention comparisons by layer/head; separate from the learned study." >수집 영상의 층·헤드별 저장량·attention 비교. 학습형 실험과 별도 구성입니다.</td></tr><tr><td class="" data-ko="학습한 압축기 설정" data-en="Trained compressor configurations" >학습한 압축기 설정</td><td>60</td><td class="" data-ko="5개 층 × 3개 잠재 차원 × 2개 시드 × 2개 구조. 학습형 실험은 총 13개 영상을 학습·검증·탐색 평가·참조로 분리했습니다." data-en="5 layers × 3 latent widths × 2 seeds × 2 architectures. A separate 13-video study split data into training, validation, exploratory evaluation and an anchor." >5개 층 × 3개 잠재 차원 × 2개 시드 × 2개 구조. 학습형 실험은 총 13개 영상을 학습·검증·탐색 평가·참조로 분리했습니다.</td></tr></tbody>
-    </table></div>
-        </section><section class="detail-section" id="next" aria-labelledby="next-title">
-          <h2 class="" data-ko="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;04&lt;/span&gt;다음 검증" data-en="&lt;span class=&quot;section-number&quot; aria-hidden=&quot;true&quot;&gt;04&lt;/span&gt;Next steps" id="next-title"><span class="section-number" aria-hidden="true">04</span>다음 검증</h2>
-          <div class="detail-prose"><p class="" data-ko="현재 결과는 저장된 KV를 이용한 오프라인 압축·수치 검증입니다. 12개 영상 비교와 학습형 압축 실험은 서로 다른 평가 구성으로, 하나의 성능 수치로 합치지 않았습니다." data-en="Current results cover offline compression and numerical evaluation of captured KV. The 12-video panel and learned-compressor study use separate evaluation cohorts and are not pooled into one performance claim." >현재 결과는 저장된 KV를 이용한 오프라인 압축·수치 검증입니다. 12개 영상 비교와 학습형 압축 실험은 서로 다른 평가 구성으로, 하나의 성능 수치로 합치지 않았습니다.</p><p class="" data-ko="앞으로는 압축한 상태에서 미래 질문의 정답률, 전체 추론 시간과 GPU 메모리를 평가해야 합니다. 이를 위해 기본 모델의 수치 차이를 먼저 분리하고, 같은 메모리 예산의 비교 기준을 유지할 계획입니다." data-en="Future evaluation needs to measure answers to later questions, full-model inference time and GPU memory after compression. This requires separating numerical baseline differences and retaining comparisons under the same memory budget." >앞으로는 압축한 상태에서 미래 질문의 정답률, 전체 추론 시간과 GPU 메모리를 평가해야 합니다. 이를 위해 기본 모델의 수치 차이를 먼저 분리하고, 같은 메모리 예산의 비교 기준을 유지할 계획입니다.</p></div>
-        </section></article>
-      <div class="detail-pagination" aria-label="다른 프로젝트"><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;← 이전 프로젝트&lt;/span&gt;작은 객체와 VideoLLM" data-en="&lt;span class=&quot;direction&quot;&gt;← Previous project&lt;/span&gt;Small objects in VideoLLMs" href="../spot-videollm/" data-project-nav><span class="direction">← 이전 프로젝트</span>작은 객체와 VideoLLM</a><a class="" data-ko="&lt;span class=&quot;direction&quot;&gt;다음 프로젝트 →&lt;/span&gt;모델컷 생성·가상 피팅" data-en="&lt;span class=&quot;direction&quot;&gt;Next project →&lt;/span&gt;Model-cut generation &amp;amp; virtual try-on" href="../sunicon-vton/" data-project-nav><span class="direction">다음 프로젝트 →</span>모델컷 생성·가상 피팅</a></div>
-      <section class="contact" id="contact" aria-label="Contact">
-        <span data-ko="Contact" data-en="Contact">Contact</span>
-        <a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
-      </section>
-    </main>
-    <footer><span class="" data-ko="김시환 / Sihwan Kim" data-en="Sihwan Kim / 김시환" >김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
-  </div>
-  <script src="../../assets/contour-terrain.js?v=details-20261012"></script>
-  <script src="../../assets/scroll-motion-model.js?v=details-20261012"></script>
-  <script src="../../assets/scroll-contour.js?v=details-20261012"></script>
-  <script type="module" src="../../assets/portfolio.js?v=details-20261012"></script>
+<a class="skip" data-en="Skip to content" data-ko="본문 바로가기" href="#main">본문 바로가기</a>
+<canvas aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬" class="contour-background" id="loss-landscape" role="img"></canvas>
+<div class="motion-tools">
+<button aria-label="애니메이션 일시 정지" id="toggle-motion" type="button"><svg aria-hidden="true" class="pause-icon" viewbox="0 0 16 16"><path d="M5.5 3.5v9m5-9v9"></path></svg><svg aria-hidden="true" class="play-icon" viewbox="0 0 16 16"><path d="m5 3 7 5-7 5z"></path></svg></button>
+<button aria-label="애니메이션 처음부터 다시 보기" id="restart-motion" type="button"><svg aria-hidden="true" viewbox="0 0 16 16"><path d="M3 5.5A5.5 5.5 0 1 1 2.6 10M3 2v4h4"></path></svg></button>
+</div>
+<div class="wrap">
+<header>
+<a aria-label="Sihwan Kim — Home" class="wordmark" data-home-link="" href="../../">SK</a>
+<nav aria-label="주 메뉴">
+<a class="" data-en="Projects" data-home-link="" data-ko="프로젝트" href="../../#work">프로젝트</a>
+<a class="" data-en="Experience" data-home-link="" data-ko="경험" href="../../#profile">경험</a>
+<a data-en="Contact" data-home-link="" data-ko="Contact" href="../../#contact">Contact</a>
+<button aria-label="Switch to English" class="language" type="button"><strong>KO</strong> / EN</button>
+</nav>
+</header>
+<main id="main">
+<section aria-labelledby="project-title" class="detail-hero">
+<a class="back-link" data-en="← All projects" data-home-link="" data-ko="← 프로젝트 목록" href="../../#project-kv-cache">← 프로젝트 목록</a>
+<p class="detail-kicker" data-en="Research · Offline experiments" data-ko="연구 · 오프라인 실험">연구 · 오프라인 실험</p>
+<h1 class="" data-en="KV-cache compression for video models" data-ko="영상 모델의 KV-cache 압축" id="project-title">영상 모델의 KV-cache 압축</h1>
+<p class="detail-lead" data-en="I study how to fit a video model&amp;#x27;s stored information into less memory. I implemented compression and reconstruction, evaluating storage savings separately from changes in model computation." data-ko="영상 모델이 기억해 둔 정보를 더 작은 메모리에 담는 방법을 연구합니다. 압축·복원 코드를 구현하고, 저장량이 줄어드는 것과 모델 계산이 유지되는 것을 따로 확인했습니다.">영상 모델이 기억해 둔 정보를 더 작은 메모리에 담는 방법을 연구합니다. 압축·복원 코드를 구현하고, 저장량이 줄어드는 것과 모델 계산이 유지되는 것을 따로 확인했습니다.</p>
+<dl class="detail-facts">
+<div><dt class="" data-en="My role" data-ko="맡은 일">맡은 일</dt><dd class="" data-en="Compression representations, independent readers, comparative experiments and layer/head error analysis" data-ko="압축 표현·독립 복원기 구현, 비교 실험 구성, 층·헤드별 오차 분석">압축 표현·독립 복원기 구현, 비교 실험 구성, 층·헤드별 오차 분석</dd></div>
+<div><dt class="" data-en="Status" data-ko="현재 단계">현재 단계</dt><dd class="" data-en="Offline implementations and comparative results available · QA and full-model speed remain follow-up evaluations" data-ko="오프라인 구현·비교 결과 확보 · 질문 정답률과 전체 추론 속도는 후속 평가">오프라인 구현·비교 결과 확보 · 질문 정답률과 전체 추론 속도는 후속 평가</dd></div>
+</dl>
+</section>
+<nav aria-label="프로젝트 상세 목차" class="detail-sections"><a class="" data-en="The question" data-ko="무엇을 알아보려 했나" href="#question">무엇을 알아보려 했나</a><a class="" data-en="My work" data-ko="맡은 일" href="#contribution">맡은 일</a><a class="" data-en="Findings" data-ko="확인한 결과" href="#results">확인한 결과</a><a class="" data-en="Next steps" data-ko="다음 검증" href="#next">다음 검증</a></nav>
+<article class="detail-story"><section aria-labelledby="question-title" class="detail-section" id="question">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;01&lt;/span&gt;The question' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;01&lt;/span&gt;무엇을 알아보려 했나' id="question-title"><span aria-hidden="true" class="section-number">01</span>무엇을 알아보려 했나</h2>
+<div class="detail-prose"><p class="" data-en="As a model processes longer videos, its KV cache—the intermediate information retained for attention—grows. The question is how to preserve useful information under a fixed memory budget before future questions are known." data-ko="긴 영상을 처리하면 모델이 보관하는 중간 정보인 KV-cache도 커집니다. 미래에 어떤 질문이 들어올지 모르는 상태에서, 제한된 메모리 안에 필요한 정보를 얼마나 남길 수 있는지가 연구 질문입니다.">긴 영상을 처리하면 모델이 보관하는 중간 정보인 KV-cache도 커집니다. 미래에 어떤 질문이 들어올지 모르는 상태에서, 제한된 메모리 안에 필요한 정보를 얼마나 남길 수 있는지가 연구 질문입니다.</p><p class="" data-en="Reconstructing the original data is only part of the evaluation. Comparing attention outputs computed from the reconstructed information reveals how compression changes the model&amp;#x27;s computation." data-ko="압축한 데이터를 원본처럼 복원하는 것만으로는 충분하지 않습니다. 복원된 정보로 모델이 계산한 attention 출력까지 비교해야 압축의 영향을 알 수 있습니다.">압축한 데이터를 원본처럼 복원하는 것만으로는 충분하지 않습니다. 복원된 정보로 모델이 계산한 attention 출력까지 비교해야 압축의 영향을 알 수 있습니다.</p></div>
+</section><section aria-labelledby="contribution-title" class="detail-section" id="contribution">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;02&lt;/span&gt;My work' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;02&lt;/span&gt;맡은 일' id="contribution-title"><span aria-hidden="true" class="section-number">02</span>맡은 일</h2>
+<div class="detail-prose"><ul><li class="" data-en="Compared low-bit quantization, shared mean/residual representations and learned compressors using captured Qwen2.5-VL KV tensors." data-ko="Qwen2.5-VL에서 수집한 실제 KV로 저비트 양자화, 평균·잔차 공유, 학습형 압축기를 비교했습니다.">Qwen2.5-VL에서 수집한 실제 KV로 저비트 양자화, 평균·잔차 공유, 학습형 압축기를 비교했습니다.</li><li class="" data-en="Implemented serialized compression formats and independent readers, checking reconstruction alongside actual storage bytes, including metadata." data-ko="압축 파일과 별도의 복원기를 구현해, 메타데이터를 포함한 실제 저장량과 복원 결과를 함께 검사했습니다.">압축 파일과 별도의 복원기를 구현해, 메타데이터를 포함한 실제 저장량과 복원 결과를 함께 검사했습니다.</li><li class="" data-en="Measured storage, KV reconstruction error and attention-output error separately. The learned-compressor study trained 60 configurations across five layers, three latent widths, two seeds and two architectures." data-ko="저장량·KV 복원 오차·attention 출력 오차를 분리해 측정했습니다. 학습형 비교에서는 5개 층, 3개 잠재 차원, 2개 시드와 두 구조를 조합한 60개 설정을 학습했습니다.">저장량·KV 복원 오차·attention 출력 오차를 분리해 측정했습니다. 학습형 비교에서는 5개 층, 3개 잠재 차원, 2개 시드와 두 구조를 조합한 60개 설정을 학습했습니다.</li></ul></div>
+</section><section aria-labelledby="results-title" class="detail-section" id="results">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;03&lt;/span&gt;Findings' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;03&lt;/span&gt;확인한 결과' id="results-title"><span aria-hidden="true" class="section-number">03</span>확인한 결과</h2>
+<div class="detail-prose"><p class="" data-en="The learned-compression experiments showed that lower KV reconstruction error can still produce greater attention-output error. Similarity to the original data did not guarantee preservation of model computation." data-ko="학습형 압축 실험에서 KV 복원 오차가 작아져도 attention 출력 오차는 커질 수 있음을 확인했습니다. 압축 데이터가 원본과 비슷하다는 사실이 모델 계산의 보존을 보장하지는 않았습니다.">학습형 압축 실험에서 KV 복원 오차가 작아져도 attention 출력 오차는 커질 수 있음을 확인했습니다. 압축 데이터가 원본과 비슷하다는 사실이 모델 계산의 보존을 보장하지는 않았습니다.</p><ul><li class="" data-en="A separate 12-video comparison also found that storage and attention-error rankings varied by condition. Adding structure to the representation did not yield a uniform advantage." data-ko="별도의 12개 영상 비교에서도 저장량과 attention 오차의 우열이 조건에 따라 달랐습니다. 추가 구조를 사용하는 압축 방식이 모든 조건에서 유리하지는 않았습니다.">별도의 12개 영상 비교에서도 저장량과 attention 오차의 우열이 조건에 따라 달랐습니다. 추가 구조를 사용하는 압축 방식이 모든 조건에서 유리하지는 않았습니다.</li><li class="" data-en="In a one-video, two-layer file-validation pilot, all 10 comparison files met their byte cap and passed independent decoding. The optional residual representation was not selected in these two cases and added processing cost without a quality benefit." data-ko="1개 영상·2개 층의 실제 파일 검증에서는 10개 비교 파일 모두 바이트 상한과 독립 복원 검사를 통과했습니다. 추가 잔차 선택 기능은 이 두 조건에서 선택되지 않았고, 품질 이득 없이 계산 비용을 더했습니다.">1개 영상·2개 층의 실제 파일 검증에서는 10개 비교 파일 모두 바이트 상한과 독립 복원 검사를 통과했습니다. 추가 잔차 선택 기능은 이 두 조건에서 선택되지 않았고, 품질 이득 없이 계산 비용을 더했습니다.</li></ul><table class="detail-metrics">
+<caption class="" data-en="Recorded figures and evaluation scope" data-ko="확인한 수치와 평가 범위">확인한 수치와 평가 범위</caption>
+<thead><tr><th class="" data-en="Measure" data-ko="구분" scope="col">구분</th><th class="" data-en="Value" data-ko="수치" scope="col">수치</th><th class="" data-en="Scope" data-ko="조건" scope="col">조건</th></tr></thead>
+<tbody><tr><td class="" data-en="Video comparison panel" data-ko="영상 비교 패널">영상 비교 패널</td><td>12</td><td class="" data-en="Captured-video storage and attention comparisons by layer/head; separate from the learned study." data-ko="수집 영상의 층·헤드별 저장량·attention 비교. 학습형 실험과 별도 구성입니다.">수집 영상의 층·헤드별 저장량·attention 비교. 학습형 실험과 별도 구성입니다.</td></tr><tr><td class="" data-en="Trained compressor configurations" data-ko="학습한 압축기 설정">학습한 압축기 설정</td><td>60</td><td class="" data-en="5 layers × 3 latent widths × 2 seeds × 2 architectures. A separate 13-video study split data into training, validation, exploratory evaluation and an anchor." data-ko="5개 층 × 3개 잠재 차원 × 2개 시드 × 2개 구조. 학습형 실험은 총 13개 영상을 학습·검증·탐색 평가·참조로 분리했습니다.">5개 층 × 3개 잠재 차원 × 2개 시드 × 2개 구조. 학습형 실험은 총 13개 영상을 학습·검증·탐색 평가·참조로 분리했습니다.</td></tr></tbody>
+</table></div>
+</section><section aria-labelledby="next-title" class="detail-section" id="next">
+<h2 class="" data-en='&lt;span class="section-number" aria-hidden="true"&gt;04&lt;/span&gt;Next steps' data-ko='&lt;span class="section-number" aria-hidden="true"&gt;04&lt;/span&gt;다음 검증' id="next-title"><span aria-hidden="true" class="section-number">04</span>다음 검증</h2>
+<div class="detail-prose"><p class="" data-en="Current results cover offline compression and numerical evaluation of captured KV. The 12-video panel and learned-compressor study use separate evaluation cohorts and are not pooled into one performance claim." data-ko="현재 결과는 저장된 KV를 이용한 오프라인 압축·수치 검증입니다. 12개 영상 비교와 학습형 압축 실험은 서로 다른 평가 구성으로, 하나의 성능 수치로 합치지 않았습니다.">현재 결과는 저장된 KV를 이용한 오프라인 압축·수치 검증입니다. 12개 영상 비교와 학습형 압축 실험은 서로 다른 평가 구성으로, 하나의 성능 수치로 합치지 않았습니다.</p><p class="" data-en="Future evaluation needs to measure answers to later questions, full-model inference time and GPU memory after compression. This requires separating numerical baseline differences and retaining comparisons under the same memory budget." data-ko="앞으로는 압축한 상태에서 미래 질문의 정답률, 전체 추론 시간과 GPU 메모리를 평가해야 합니다. 이를 위해 기본 모델의 수치 차이를 먼저 분리하고, 같은 메모리 예산의 비교 기준을 유지할 계획입니다.">앞으로는 압축한 상태에서 미래 질문의 정답률, 전체 추론 시간과 GPU 메모리를 평가해야 합니다. 이를 위해 기본 모델의 수치 차이를 먼저 분리하고, 같은 메모리 예산의 비교 기준을 유지할 계획입니다.</p></div>
+</section></article>
+<div aria-label="다른 프로젝트" class="detail-pagination"><a class="" data-en='&lt;span class="direction"&gt;← Previous project&lt;/span&gt;Small objects in VideoLLMs' data-ko='&lt;span class="direction"&gt;← 이전 프로젝트&lt;/span&gt;작은 객체와 VideoLLM' data-project-nav="" href="../spot-videollm/"><span class="direction">← 이전 프로젝트</span>작은 객체와 VideoLLM</a><a class="" data-en='&lt;span class="direction"&gt;Next project →&lt;/span&gt;Model-cut generation &amp;amp; virtual try-on' data-ko='&lt;span class="direction"&gt;다음 프로젝트 →&lt;/span&gt;모델컷 생성·가상 피팅' data-project-nav="" href="../sunicon-vton/"><span class="direction">다음 프로젝트 →</span>모델컷 생성·가상 피팅</a></div>
+<section aria-label="Contact" class="contact" id="contact">
+<span data-en="Contact" data-ko="Contact">Contact</span>
+<a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
+</section>
+</main>
+<footer><span class="" data-en="Sihwan Kim / 김시환" data-ko="김시환 / Sihwan Kim">김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" rel="noopener noreferrer" target="_blank">GitHub ↗</a></footer>
+</div>
+<script src="../../assets/contour-terrain.js?v=editorial-20261018"></script>
+<script src="../../assets/scroll-motion-model.js?v=editorial-20261018"></script>
+<script src="../../assets/scroll-contour.js?v=editorial-20261018"></script>
+<script src="../../assets/portfolio.js?v=editorial-20261018" type="module"></script>
 </body>
 </html>
