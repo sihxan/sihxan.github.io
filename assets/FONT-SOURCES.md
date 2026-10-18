@@ -1,19 +1,28 @@
 # Font sources
 
-Retrieved from official repositories on 2026-10-08.
+## Dot-inspired direction — 2026-10-18
 
-- Instrument Sans: https://github.com/Instrument/instrument-sans
-  - Original asset: `fonts/webfonts/InstrumentSans[wdth,wght].woff2`, master branch
-  - License: SIL Open Font License 1.1, included as `INSTRUMENT-LICENSE.txt`
-  - Local derived subset: `PortfolioLatin.woff2`, family `Portfolio Latin`
-- SUIT: https://github.com/sun-typeface/SUIT
-  - Original asset: `fonts/variable/woff2/SUIT-Variable.woff2`, main branch
-  - License: SIL Open Font License 1.1, included as `SUIT-LICENSE.txt`
-  - Local derived subset: `PortfolioHangul.woff2`, family `Portfolio Hangul`
+These fonts are self-hosted. No third-party font stylesheet or font CDN request is required.
 
-Subsets preserve the variable axes and OpenType features required by the current bilingual copy. They use renamed family and PostScript names. The reserved original names are not used as the derived fonts' family names. These fonts remain licensed under SIL OFL 1.1.
+### Montserrat
 
-Original asset SHA-256:
+- Author repository: https://github.com/JulietaUla/Montserrat
+- Distribution repository: https://github.com/google/fonts/tree/76fca9fd0bb4ea46583f92e978660f3984ab9442/ofl/montserrat
+- Original variable TTF: https://raw.githubusercontent.com/google/fonts/76fca9fd0bb4ea46583f92e978660f3984ab9442/ofl/montserrat/Montserrat%5Bwght%5D.ttf
+- Original SHA-256: `0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7`
+- Served file: `Montserrat.woff2` (216,396 bytes)
+- Served SHA-256: `7ba8a92ffc5fdd6501022c1b1e1280235345160b4495491e566d01f79438622d`
+- Family: `Montserrat`; upright variable weight axis 100–900.
+- Processing: lossless WOFF2 container conversion with fontTools; no subsetting, glyph changes, axis changes, or family renaming.
+- License: SIL Open Font License 1.1, included as `MONTSERRAT-LICENSE.txt`.
 
-- `SUIT-original.woff2`: `aa894a204d5a6fbae259dac6868d350cbd373a390caee0313f92946af741df23`
-- `InstrumentSans-original.woff2`: `aa72922aafcc0dc18f36ec1d805b0212057dabe8b9d5b8b57f67035aea1b826d`
+### Pretendard Variable
+
+- Author/distribution repository: https://github.com/orioncactus/pretendard
+- Official WOFF2: https://raw.githubusercontent.com/orioncactus/pretendard/6f167519eb309f39104b67a60d33bfcb15495cdc/packages/pretendard/dist/web/variable/woff2/PretendardVariable.woff2
+- Served file: `Pretendard.woff2` (2,057,688 bytes), identical to the official font binary.
+- SHA-256: `9599f12fd42fc0bce1cd50b47a0c022e108d7aa64dd0d1bb0ed44f3282d900b4`
+- Family: `Pretendard Variable`; upright variable weight axis 45–930. The design uses the conventional 100–900 range.
+- Processing: filename change only. No subsetting or font modifications.
+- License: SIL Open Font License 1.1, included as `PRETENDARD-LICENSE.txt`.
+- Retained full Korean coverage to allow copy changes without missing Hangul glyphs.

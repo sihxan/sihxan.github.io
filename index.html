@@ -4,21 +4,22 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="#f5f5f0" name="theme-color"/>
+<meta content="#F8F9FC" name="theme-color"/>
 <title data-en="Sihwan Kim — AI Research &amp; Engineering" data-ko="김시환 — AI Research &amp; Engineering">김시환 — AI Research &amp; Engineering</title>
 <meta content="김시환의 AI 연구와 개발 포트폴리오. CLIP 작은 객체·문맥 분석, VideoLLM 내부 신호와 답변 진단, KV-cache 압축, 가상 피팅·로컬 VLM 파이프라인과 RAG 서비스 개발." data-en="Sihwan Kim’s AI research and engineering portfolio: CLIP small-object/context analysis, VideoLLM readout diagnostics, KV-cache compression, local-VLM virtual try-on pipelines, and RAG service development." data-ko="김시환의 AI 연구와 개발 포트폴리오. CLIP 작은 객체·문맥 분석, VideoLLM 내부 신호와 답변 진단, KV-cache 압축, 가상 피팅·로컬 VLM 파이프라인과 RAG 서비스 개발." name="description"/>
-<link as="font" crossorigin="" href="assets/PortfolioLatin.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
-<link as="font" crossorigin="" href="assets/PortfolioHangul.woff2?v=editorial-20261018" rel="preload" type="font/woff2"/>
-<link href="assets/portfolio.css?v=editorial-20261018" rel="stylesheet"/>
-<link href="assets/project-details.css?v=editorial-20261018" rel="stylesheet"/>
+<link as="font" crossorigin="" href="assets/Montserrat.woff2?v=blue-20261018" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="assets/Pretendard.woff2?v=blue-20261018" rel="preload" type="font/woff2"/>
+<link href="assets/portfolio.css?v=blue-20261018" rel="stylesheet"/>
+<link href="assets/project-details.css?v=blue-20261018" rel="stylesheet"/>
 <!-- Profile source: sihxan/pages/profile.md, blob 30ebba93d901a186428a1368f3ac42781ade647d.
        Exact student-council title and Defense AI award wording remain to be clarified.
        Recent research copy is audited against received reports and the current manuscript.
        Manuscript preparation is not submission or acceptance. Probe results are diagnostic.
        No internal Sunicon images or experimental metrics are included.
        The terrain is decorative and does not represent experimental data. -->
+<link href="assets/color-system.css?v=blue-20261018" rel="stylesheet"/>
 </head>
-<body class="portfolio-home">
+<body class="portfolio-home dot-layout">
 <a class="skip" data-en="Skip to content" data-ko="본문 바로가기" href="#main">본문 바로가기</a>
 <canvas aria-label="페이지 전체를 이어가는 등고선과 스크롤을 뒤따라 굴러오는 구슬" class="contour-background" id="loss-landscape" role="img"></canvas>
 <div class="motion-tools">
@@ -27,131 +28,102 @@
 </div>
 <div class="wrap">
 <header>
-<a aria-label="Sihwan Kim — Home" class="wordmark" href="#main">SK</a>
+<a aria-label="Sihwan Kim — Home" class="wordmark" href="#main">Sihwan.</a>
 <nav aria-label="주 메뉴">
-<a class="" data-en="Projects" data-ko="프로젝트" href="#work">프로젝트</a>
-<a class="" data-en="Experience" data-ko="경험" href="#profile">경험</a>
+<a data-en="Work" data-ko="프로젝트" href="#work">프로젝트</a>
+<a data-en="About" data-ko="경험" href="#profile">경험</a>
 <a data-en="Contact" data-ko="Contact" href="#contact">Contact</a>
 <button aria-label="Switch to English" class="language" type="button"><strong>KO</strong> / EN</button>
 </nav>
 </header>
-<main id="main"><section aria-labelledby="name" class="hero">
-<div class="hero-caption"><span>AI RESEARCH &amp; ENGINEERING</span><span>김시환 / SIHWAN KIM</span></div>
-<h1 id="name">Sihwan Kim<span class="name-period">.</span></h1>
-<div class="hero-bottom">
-<div class="hero-intro reading-zone"><p class="intro" data-en="I study how visual models work&lt;br&gt;and build AI pipelines." data-ko="시각 모델의 판단을 분석하고,&lt;br&gt;AI 파이프라인을 개발합니다.">시각 모델의 판단을 분석하고,<br/>AI 파이프라인을 개발합니다.</p>
-<p class="intro-detail" data-en="Small-object recognition · Video model compression&lt;br&gt;Virtual try-on · RAG services" data-ko="작은 객체 인식 · 영상 모델의 메모리 압축&lt;br&gt;가상 피팅 · RAG 서비스">작은 객체 인식 · 영상 모델의 메모리 압축<br/>가상 피팅 · RAG 서비스</p></div>
-<div class="hero-affiliation reading-zone"><p>KDST Lab<br/>Kyung Hee University</p><p data-en="Undergraduate researcher" data-ko="학부연구생">학부연구생</p><a href="https://github.com/sihxan" rel="noopener noreferrer" target="_blank">GitHub ↗</a></div>
-</div>
-<a class="hero-index" href="#work"><span>SELECTED WORK</span><span aria-hidden="true">↓</span></a>
-</section><section aria-labelledby="work-title" class="work" id="work">
-<div class="work-heading"><h2 id="work-title">Selected<br/><span>work.</span></h2><p><span data-en="From research to implementation.&lt;br&gt;Three selected projects." data-ko="연구에서 구현까지,&lt;br&gt;세 가지 작업.">연구에서 구현까지,<br/>세 가지 작업.</span></p><span class="work-count">(01—03)</span></div>
-<article aria-labelledby="title-clip-context" class="feature feature-clip-context" id="project-clip-context">
-<div class="feature-top"><span class="feature-number">01</span><span>CLIP / VISUAL RECOGNITION</span><span class="feature-status" data-en="KSC 2026 manuscript in preparation" data-ko="KSC 2026 원고 작성 중">KSC 2026 원고 작성 중</span></div>
-<div class="feature-spread"><div class="feature-copy">
-<h3 id="title-clip-context"><a data-en="Small objects&lt;br&gt;in CLIP." data-ko="CLIP의&lt;br&gt;작은 객체 판별" data-project-link="" href="projects/clip-context/">CLIP의<br/>작은 객체 판별</a></h3>
-<p class="feature-summary reading-zone" data-en="I masked and transplanted object regions to analyze CLIP, identifying conditions where discrimination remains after the object is masked." data-ko="객체를 가리고, 옮기며 CLIP의 판단을 분석했습니다. 객체 영역을 가린 뒤에도 판별력이 남는 조건을 확인했습니다.">객체를 가리고, 옮기며 CLIP의 판단을 분석했습니다. 객체 영역을 가린 뒤에도 판별력이 남는 조건을 확인했습니다.</p>
-<p class="feature-role" data-en="Experiment design · Implementation · Analysis" data-ko="실험 설계 · 구현 · 분석">실험 설계 · 구현 · 분석</p>
-<a aria-describedby="title-clip-context" class="project-link" data-en='Read project &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;' data-ko='프로젝트 읽기 &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;' data-project-link="" href="projects/clip-context/">프로젝트 읽기 <span aria-hidden="true">↗</span></a>
-</div><a aria-labelledby="title-clip-context" class="project-plate" data-project-link="" href="projects/clip-context/" tabindex="-1"><div aria-hidden="true" class="object-study"><span class="plate-label">OBJECT / CONTEXT</span><span class="context-word">Context</span><span class="crop-box"><i></i><i></i><i></i><i></i><b>Object</b></span><span class="plate-foot">Mask. Transplant. Compare.</span></div></a></div>
-</article><article aria-labelledby="title-kv-cache" class="feature feature-kv-cache" id="project-kv-cache">
-<div class="feature-top"><span class="feature-number">02</span><span>VIDEO MODELS / COMPRESSION</span><span class="feature-status" data-en="Offline experiments" data-ko="오프라인 실험">오프라인 실험</span></div>
-<div class="feature-spread"><div class="feature-copy">
-<h3 id="title-kv-cache"><a data-en="Video models.&lt;br&gt;KV-cache compression." data-ko="영상 모델의&lt;br&gt;KV-cache 압축" data-project-link="" href="projects/kv-cache/">영상 모델의<br/>KV-cache 압축</a></h3>
-<p class="feature-summary reading-zone" data-en="I built KV-cache compression and decoding tools. Offline evaluation showed that lower reconstruction error can still mean higher attention-output error." data-ko="KV-cache 압축·복원 코드를 만들고 저장량과 오차를 비교했습니다. 복원 오차가 작아도 attention 출력 오차는 커질 수 있었습니다.">KV-cache 압축·복원 코드를 만들고 저장량과 오차를 비교했습니다. 복원 오차가 작아도 attention 출력 오차는 커질 수 있었습니다.</p>
-<p class="feature-role" data-en="Compression &amp; decoding · Offline evaluation" data-ko="압축·복원 구현 · 오프라인 평가">압축·복원 구현 · 오프라인 평가</p>
-<a aria-describedby="title-kv-cache" class="project-link" data-en='Read project &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;' data-ko='프로젝트 읽기 &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;' data-project-link="" href="projects/kv-cache/">프로젝트 읽기 <span aria-hidden="true">↗</span></a>
-</div><a aria-labelledby="title-kv-cache" class="project-plate" data-project-link="" href="projects/kv-cache/" tabindex="-1"><div aria-hidden="true" class="cache-study"><span class="plate-label">COMPRESS / RECONSTRUCT</span><div class="cache-columns"><span>K<br/>V</span><div class="cache-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="cache-direction">→</span><div class="cache-lines compact"><i></i><i></i><i></i><i></i><i></i></div></div><span class="plate-foot">Storage ≠ reconstruction ≠ output</span></div></a></div>
-</article><article aria-labelledby="title-sunicon-vton" class="feature feature-sunicon-vton" id="project-sunicon-vton">
-<div class="feature-top"><span class="feature-number">03</span><span>REWAKE / SUNICON</span><span class="feature-status" data-en="Industry collaboration" data-ko="산학협력">산학협력</span></div>
-<div class="feature-spread"><div class="feature-copy">
-<h3 id="title-sunicon-vton"><a data-en="Model generation.&lt;br&gt;Virtual try-on." data-ko="모델컷 생성과&lt;br&gt;가상 피팅" data-project-link="" href="projects/sunicon-vton/">모델컷 생성과<br/>가상 피팅</a></h3>
-<p class="feature-summary reading-zone" data-en="I integrated local VLM fit instructions and sequential execution on a single GPU, delivering the code, configuration and handoff guide." data-ko="핏 지시문 생성을 로컬 VLM으로 옮기고, 단일 GPU에서 순서대로 실행하도록 구성했습니다. 코드·설정·사용 가이드까지 정리해 전달했습니다.">핏 지시문 생성을 로컬 VLM으로 옮기고, 단일 GPU에서 순서대로 실행하도록 구성했습니다. 코드·설정·사용 가이드까지 정리해 전달했습니다.</p>
-<p class="feature-role" data-en="Pipeline engineering · Handoff" data-ko="파이프라인 개발 · 인수인계">파이프라인 개발 · 인수인계</p>
-<a aria-describedby="title-sunicon-vton" class="project-link" data-en='Read project &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;' data-ko='프로젝트 읽기 &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;' data-project-link="" href="projects/sunicon-vton/">프로젝트 읽기 <span aria-hidden="true">↗</span></a>
-</div><a aria-labelledby="title-sunicon-vton" class="project-plate" data-project-link="" href="projects/sunicon-vton/" tabindex="-1"><div aria-hidden="true" class="pipeline-study"><span class="plate-label">LOCAL VLM / VIRTUAL TRY-ON</span><div class="pipeline-words"><span>Image</span><span class="pipeline-mid">Fit <i>↘</i></span><span>Try-on</span></div><span class="plate-foot">One GPU. Sequential execution.</span></div></a></div>
-</article>
-<section aria-labelledby="archive-title" class="archive"><div class="archive-heading"><h2 data-en="More work" data-ko="더 많은 작업" id="archive-title">더 많은 작업</h2><span>(04—08)</span></div><article class="archive-row" id="project-spot-videollm"><span class="archive-number">04</span>
-<div><h3 id="title-spot-videollm"><a data-en="Small objects in VideoLLMs" data-ko="작은 객체와 VideoLLM" data-project-link="" href="projects/spot-videollm/">작은 객체와 VideoLLM</a></h3>
-<p data-en="Comparing internal signals and native answers under controlled conditions" data-ko="내부 신호와 실제 답변을 통제된 조건에서 비교">내부 신호와 실제 답변을 통제된 조건에서 비교</p></div><a aria-labelledby="title-spot-videollm" class="archive-arrow" data-project-link="" href="projects/spot-videollm/">↗</a></article><article class="archive-row" id="project-samba"><span class="archive-number">05</span>
-<div><h3 id="title-samba"><a data-en="Dataset distillation &amp; selection bias" data-ko="데이터 증류와 선택 편향" data-project-link="" href="projects/samba/">데이터 증류와 선택 편향</a></h3>
-<p data-en="Designing sample selection to preserve minority groups" data-ko="소수 그룹을 보존하는 데이터 선택 방식 설계">소수 그룹을 보존하는 데이터 선택 방식 설계</p></div><a aria-labelledby="title-samba" class="archive-arrow" data-project-link="" href="projects/samba/">↗</a></article><article class="archive-row" id="project-allmize"><span class="archive-number">06</span>
-<div><h3 id="title-allmize"><a data-en="AI service development at Allmize" data-ko="Allmize AI 서비스 개발" data-project-link="" href="projects/allmize/">Allmize AI 서비스 개발</a></h3>
-<p data-en="RAG workflows and AI features as an early team member" data-ko="초기 멤버로 RAG 워크플로와 AI 기능 개발">초기 멤버로 RAG 워크플로와 AI 기능 개발</p></div><a aria-labelledby="title-allmize" class="archive-arrow" data-project-link="" href="projects/allmize/">↗</a></article><article class="archive-row" id="project-generative-models"><span class="archive-number">07</span>
-<div><h3 id="title-generative-models"><a data-en="Generative models: reading &amp; implementation" data-ko="생성 모델 논문 읽기·구현" data-project-link="" href="projects/generative-models/">생성 모델 논문 읽기·구현</a></h3>
-<p data-en="Reading and implementing VAE, DDPM and DDIM" data-ko="VAE · DDPM · DDIM 논문 읽기와 구현">VAE · DDPM · DDIM 논문 읽기와 구현</p></div><a aria-labelledby="title-generative-models" class="archive-arrow" data-project-link="" href="projects/generative-models/">↗</a></article><article class="archive-row" id="project-khuda"><span class="archive-number">08</span>
-<div><h3 id="title-khuda"><a data-en="Book recommendation &amp; profanity detection" data-ko="도서 추천·욕설 탐지" data-project-link="" href="projects/khuda/">도서 추천·욕설 탐지</a></h3>
-<p data-en="Book recommendation and profanity detection / masking" data-ko="도서 추천과 욕설 탐지·마스킹 기능 구현">도서 추천과 욕설 탐지·마스킹 기능 구현</p></div><a aria-labelledby="title-khuda" class="archive-arrow" data-project-link="" href="projects/khuda/">↗</a></article></section>
+<main id="main">
+<section aria-labelledby="name" class="hero">
+<div class="hero-copy reading-zone"><h1 data-en="I study how visual models work &lt;br&gt;and build AI pipelines." data-ko="시각 모델의 판단을 분석하고, &lt;br&gt;AI 파이프라인을 개발합니다." id="name">시각 모델의 판단을 분석하고,<br/>AI 파이프라인을 개발합니다.</h1></div>
+<div aria-hidden="true" class="terrain-stage"></div>
 </section>
-<div class="cv-area"><section aria-labelledby="profile-title" class="profile" id="profile">
-<div class="section-heading"><h2 class="" data-en="Experience &amp; activities" data-ko="경험과 활동" id="profile-title">경험과 활동</h2></div>
+<section aria-labelledby="work-title" class="work surface-light" id="work">
+<h2 class="gallery-heading reading-zone" data-en="Research &amp; builds" data-ko="연구와 개발" id="work-title">연구와 개발</h2>
+<div class="work-gallery"><article class="work-card card-clip" id="project-clip-context">
+<a aria-labelledby="title-clip-context" class="project-cover cover-clip" data-project-link="" href="projects/clip-context/" tabindex="-1"><span aria-hidden="true" class="poster-word reading-zone">CLIP</span><span aria-hidden="true" class="cover-arrow">↗</span></a>
+<div class="card-copy"><h3 class="project-name reading-zone" id="title-clip-context"><a data-en="Small objects in CLIP." data-ko="CLIP의 작은 객체 판별" data-project-link="" href="projects/clip-context/">CLIP의 작은 객체 판별</a></h3><p class="project-summary reading-zone" data-en="I designed masking and transplant experiments, finding conditions where CLIP retains discrimination after the object is masked." data-ko="객체를 가리고 옮기는 실험을 설계·구현해, 객체가 가려져도 CLIP의 판별력이 남는 조건을 확인했습니다.">객체를 가리고 옮기는 실험을 설계·구현해, 객체가 가려져도 CLIP의 판별력이 남는 조건을 확인했습니다.</p></div></article><article class="work-card card-cache" id="project-kv-cache">
+<a aria-labelledby="title-kv-cache" class="project-cover cover-cache" data-project-link="" href="projects/kv-cache/" tabindex="-1"><span aria-hidden="true" class="poster-word reading-zone">K<br/>V</span><span aria-hidden="true" class="cover-arrow">↗</span></a>
+<div class="card-copy"><h3 class="project-name reading-zone" id="title-kv-cache"><a data-en="Video models. KV-cache compression." data-ko="영상 모델의 KV-cache 압축" data-project-link="" href="projects/kv-cache/">영상 모델의 KV-cache 압축</a></h3><p class="project-summary reading-zone" data-en="I built and compared compression methods offline, finding that lower reconstruction error does not always mean lower attention-output error." data-ko="압축·복원 코드를 구현해 오프라인으로 비교했습니다. 복원 오차가 작아도 attention 출력 오차는 커질 수 있었습니다.">압축·복원 코드를 구현해 오프라인으로 비교했습니다. 복원 오차가 작아도 attention 출력 오차는 커질 수 있었습니다.</p></div></article><article class="work-card card-tryon" id="project-sunicon-vton">
+<a aria-labelledby="title-sunicon-vton" class="project-cover cover-tryon" data-project-link="" href="projects/sunicon-vton/" tabindex="-1"><span aria-hidden="true" class="poster-word reading-zone">Try<br/>on.</span><span aria-hidden="true" class="cover-arrow">↗</span></a>
+<div class="card-copy"><h3 class="project-name reading-zone" id="title-sunicon-vton"><a data-en="Model generation. Virtual try-on." data-ko="모델컷 생성과 가상 피팅" data-project-link="" href="projects/sunicon-vton/">모델컷 생성과 가상 피팅</a></h3><p class="project-summary reading-zone" data-en="I connected local-VLM instructions and virtual try-on in a sequential single-GPU pipeline, then delivered the code and usage guide." data-ko="로컬 VLM과 가상 피팅을 단일 GPU에서 순차 실행하도록 연결하고, 코드와 사용 가이드를 전달했습니다.">로컬 VLM과 가상 피팅을 단일 GPU에서 순차 실행하도록 연결하고, 코드와 사용 가이드를 전달했습니다.</p></div></article><article class="work-card card-video" id="project-spot-videollm">
+<a aria-labelledby="title-spot-videollm" class="project-cover cover-video" data-project-link="" href="projects/spot-videollm/" tabindex="-1"><span aria-hidden="true" class="poster-word reading-zone">Video<br/>LLM</span><span aria-hidden="true" class="cover-arrow">↗</span></a>
+<div class="card-copy"><h3 class="project-name reading-zone" id="title-spot-videollm"><a data-en="Small objects in VideoLLMs" data-ko="작은 객체와 VideoLLM" data-project-link="" href="projects/spot-videollm/">작은 객체와 VideoLLM</a></h3><p class="project-summary reading-zone" data-en="Comparing internal signals and native answers under controlled conditions" data-ko="내부 신호와 실제 답변을 통제된 조건에서 비교">내부 신호와 실제 답변을 통제된 조건에서 비교</p></div></article><article class="work-card card-build" id="project-allmize">
+<a aria-labelledby="title-allmize" class="project-cover cover-build" data-project-link="" href="projects/allmize/" tabindex="-1"><span aria-hidden="true" class="poster-word reading-zone">Build<br/>with AI.</span><span aria-hidden="true" class="cover-arrow">↗</span></a>
+<div class="card-copy"><h3 class="project-name reading-zone" id="title-allmize"><a data-en="AI service development at Allmize" data-ko="Allmize AI 서비스 개발" data-project-link="" href="projects/allmize/">Allmize AI 서비스 개발</a></h3><p class="project-summary reading-zone" data-en="RAG workflows and AI features as an early team member" data-ko="초기 멤버로 RAG 워크플로와 AI 기능 개발">초기 멤버로 RAG 워크플로와 AI 기능 개발</p></div></article><article class="work-card card-data" id="project-samba">
+<a aria-labelledby="title-samba" class="project-cover cover-data" data-project-link="" href="projects/samba/" tabindex="-1"><span aria-hidden="true" class="poster-word reading-zone">Less<br/>data.</span><span aria-hidden="true" class="cover-arrow">↗</span></a>
+<div class="card-copy"><h3 class="project-name reading-zone" id="title-samba"><a data-en="Dataset distillation &amp; selection bias" data-ko="데이터 증류와 선택 편향" data-project-link="" href="projects/samba/">데이터 증류와 선택 편향</a></h3><p class="project-summary reading-zone" data-en="A sample-selection design to preserve minority groups. Not yet implemented or evaluated." data-ko="소수 그룹을 보존하는 데이터 선택 방식 설계. 구현·평가 전 단계입니다.">소수 그룹을 보존하는 데이터 선택 방식 설계. 구현·평가 전 단계입니다.</p></div></article><article class="work-card card-noise" id="project-generative-models">
+<a aria-labelledby="title-generative-models" class="project-cover cover-noise" data-project-link="" href="projects/generative-models/" tabindex="-1"><span aria-hidden="true" class="poster-word reading-zone">From<br/>noise.</span><span aria-hidden="true" class="cover-arrow">↗</span></a>
+<div class="card-copy"><h3 class="project-name reading-zone" id="title-generative-models"><a data-en="Generative models: reading &amp; implementation" data-ko="생성 모델 논문 읽기·구현" data-project-link="" href="projects/generative-models/">생성 모델 논문 읽기·구현</a></h3><p class="project-summary reading-zone" data-en="Reading and implementing VAE, DDPM and DDIM" data-ko="VAE · DDPM · DDIM 논문 읽기와 구현">VAE · DDPM · DDIM 논문 읽기와 구현</p></div></article><article class="work-card card-read" id="project-khuda">
+<a aria-labelledby="title-khuda" class="project-cover cover-read" data-project-link="" href="projects/khuda/" tabindex="-1"><span aria-hidden="true" class="poster-word reading-zone">Read.<br/>Filter.</span><span aria-hidden="true" class="cover-arrow">↗</span></a>
+<div class="card-copy"><h3 class="project-name reading-zone" id="title-khuda"><a data-en="Book recommendation &amp; profanity detection" data-ko="도서 추천·욕설 탐지" data-project-link="" href="projects/khuda/">도서 추천·욕설 탐지</a></h3><p class="project-summary reading-zone" data-en="Book recommendation and profanity detection / masking" data-ko="도서 추천과 욕설 탐지·마스킹 기능 구현">도서 추천과 욕설 탐지·마스킹 기능 구현</p></div></article></div>
+</section>
+<div class="about-surface surface-light"><div class="cv-area"><section aria-labelledby="profile-title" class="profile" id="profile">
+<div class="section-heading"><h2 data-en="Experience &amp; activities" data-ko="경험과 활동" id="profile-title">경험과 활동</h2></div>
 <div class="experience-list"><article class="experience experience-row">
-<p class="period" data-en="Nov 2025 — Present" data-ko="2025.11 — 현재">2025.11 — 현재</p>
 <div class="experience-body">
-<h3 class="" data-en="KDST Lab" data-ko="KDST Lab">KDST Lab</h3>
+<h3 data-en="KDST Lab" data-ko="KDST Lab">KDST Lab</h3>
 <p class="position" data-en="Undergraduate researcher" data-ko="학부연구생">학부연구생</p>
-<p class="institution" data-en="Deep learning research lab, Kyung Hee University" data-ko="경희대학교 딥러닝 연구실">경희대학교 딥러닝 연구실</p>
-<ul class="detail reading-zone"><li class="" data-en="Study small-object recognition in CLIP and VideoLLMs and KV-cache compression, building controlled experiments, internal-feature collection and error analyses." data-ko="CLIP·VideoLLM의 작은 객체 인식과 KV-cache 압축을 연구하며, 조건을 통제한 실험·내부 특징 수집·오차 분석 코드를 구축합니다.">CLIP·VideoLLM의 작은 객체 인식과 KV-cache 압축을 연구하며, 조건을 통제한 실험·내부 특징 수집·오차 분석 코드를 구축합니다.</li><li class="" data-en="Develop the small-object bbox/context experiments into a first-author KSC 2026 manuscript, and implement virtual try-on orchestration and local VLM inference in the Rewake / Sunicon collaboration." data-ko="작은 객체의 bbox·문맥 기여 실험을 KSC 2026 제1저자 원고로 정리하고, Rewake / Sunicon 산학협력에서는 가상 피팅 실행 흐름과 로컬 VLM 추론 경로를 개발했습니다.">작은 객체의 bbox·문맥 기여 실험을 KSC 2026 제1저자 원고로 정리하고, Rewake / Sunicon 산학협력에서는 가상 피팅 실행 흐름과 로컬 VLM 추론 경로를 개발했습니다.</li><li class="" data-en="Organize paper-reading groups and participate in multimodal study sessions, discussing implementation and experiments in lab seminars." data-ko="논문 읽기 모임을 운영하고 멀티모달 스터디에 참여하며, 연구실 세미나에서 구현과 실험 내용을 논의합니다.">논문 읽기 모임을 운영하고 멀티모달 스터디에 참여하며, 연구실 세미나에서 구현과 실험 내용을 논의합니다.</li></ul>
-</div>
+<ul class="detail reading-zone"><li data-en="Study small-object recognition in CLIP and VideoLLMs and KV-cache compression, building controlled experiments, internal-feature collection and error analyses." data-ko="CLIP·VideoLLM의 작은 객체 인식과 KV-cache 압축을 연구하며, 조건을 통제한 실험·내부 특징 수집·오차 분석 코드를 구축합니다.">CLIP·VideoLLM의 작은 객체 인식과 KV-cache 압축을 연구하며, 조건을 통제한 실험·내부 특징 수집·오차 분석 코드를 구축합니다.</li><li data-en="Develop the small-object bbox/context experiments into a first-author KSC 2026 manuscript, and implement virtual try-on orchestration and local VLM inference in the Rewake / Sunicon collaboration." data-ko="작은 객체의 bbox·문맥 기여 실험을 KSC 2026 제1저자 원고로 정리하고, Rewake / Sunicon 산학협력에서는 가상 피팅 실행 흐름과 로컬 VLM 추론 경로를 개발했습니다.">작은 객체의 bbox·문맥 기여 실험을 KSC 2026 제1저자 원고로 정리하고, Rewake / Sunicon 산학협력에서는 가상 피팅 실행 흐름과 로컬 VLM 추론 경로를 개발했습니다.</li><li data-en="Organize paper-reading groups and participate in multimodal study sessions, discussing implementation and experiments in lab seminars." data-ko="논문 읽기 모임을 운영하고 멀티모달 스터디에 참여하며, 연구실 세미나에서 구현과 실험 내용을 논의합니다.">논문 읽기 모임을 운영하고 멀티모달 스터디에 참여하며, 연구실 세미나에서 구현과 실험 내용을 논의합니다.</li></ul>
+<p class="period" data-en="Nov 2025 — Present" data-ko="2025.11 — 현재">2025.11 — 현재</p></div>
 </article><article class="experience experience-row">
-<p class="period" data-en="Feb — Aug 2025" data-ko="2025.02 — 2025.08">2025.02 — 2025.08</p>
 <div class="experience-body">
-<h3 class="" data-en="Allmize" data-ko="Allmize">Allmize</h3>
+<h3 data-en="Allmize" data-ko="Allmize">Allmize</h3>
 <p class="position" data-en="Early member · AI service development" data-ko="초기 멤버 · AI 서비스 개발">초기 멤버 · AI 서비스 개발</p>
-<p class="institution" data-en="AI services startup" data-ko="AI 서비스 스타트업">AI 서비스 스타트업</p>
-<ul class="detail reading-zone"><li class="" data-en="Implemented RAG workflows and application logic, contributing to AI feature development." data-ko="RAG 기반 워크플로와 애플리케이션 로직을 구현하고, AI 기능 개발에 참여했습니다.">RAG 기반 워크플로와 애플리케이션 로직을 구현하고, AI 기능 개발에 참여했습니다.</li><li class="" data-en="Reviewed service direction and proposed product and technical improvements." data-ko="서비스 방향을 검토하고 제품·기술 개선안을 제안했습니다.">서비스 방향을 검토하고 제품·기술 개선안을 제안했습니다.</li></ul>
-</div>
+<ul class="detail reading-zone"><li data-en="Implemented RAG workflows and application logic, contributing to AI feature development." data-ko="RAG 기반 워크플로와 애플리케이션 로직을 구현하고, AI 기능 개발에 참여했습니다.">RAG 기반 워크플로와 애플리케이션 로직을 구현하고, AI 기능 개발에 참여했습니다.</li><li data-en="Reviewed service direction and proposed product and technical improvements." data-ko="서비스 방향을 검토하고 제품·기술 개선안을 제안했습니다.">서비스 방향을 검토하고 제품·기술 개선안을 제안했습니다.</li></ul>
+<p class="period" data-en="Feb — Aug 2025" data-ko="2025.02 — 2025.08">2025.02 — 2025.08</p></div>
 </article><article class="experience experience-row">
-<p class="period" data-en="Jan — Dec 2025" data-ko="2025.01 — 2025.12">2025.01 — 2025.12</p>
 <div class="experience-body">
-<h3 class="" data-en="Student council, Kyung Hee University" data-ko="경희대학교 학생회">경희대학교 학생회</h3>
+<h3 data-en="Student council, Kyung Hee University" data-ko="경희대학교 학생회">경희대학교 학생회</h3>
 <p class="position" data-en="Partnerships &amp; event operations" data-ko="제휴 업무 · 행사 운영">제휴 업무 · 행사 운영</p>
-<p class="institution" data-en="Student council activities" data-ko="소프트웨어융합대학 학생회">소프트웨어융합대학 학생회</p>
-<ul class="detail reading-zone"><li class="" data-en="Proposed, negotiated, and managed nearly 20 partnerships with vendors and external companies." data-ko="외부 업체·기업과 약 20건의 제휴를 제안·협의하고 관리했습니다.">외부 업체·기업과 약 20건의 제휴를 제안·협의하고 관리했습니다.</li><li class="" data-en="Coordinated event schedules, budgets, partner benefits, and on-site operations, connecting students, university offices, and partners." data-ko="행사 일정·예산·제휴 혜택·현장 운영을 조율하고, 학생·학교·협력 업체 사이의 소통을 맡았습니다.">행사 일정·예산·제휴 혜택·현장 운영을 조율하고, 학생·학교·협력 업체 사이의 소통을 맡았습니다.</li></ul>
-</div>
+<ul class="detail reading-zone"><li data-en="Proposed, negotiated, and managed nearly 20 partnerships with vendors and external companies." data-ko="외부 업체·기업과 약 20건의 제휴를 제안·협의하고 관리했습니다.">외부 업체·기업과 약 20건의 제휴를 제안·협의하고 관리했습니다.</li><li data-en="Coordinated event schedules, budgets, partner benefits, and on-site operations, connecting students, university offices, and partners." data-ko="행사 일정·예산·제휴 혜택·현장 운영을 조율하고, 학생·학교·협력 업체 사이의 소통을 맡았습니다.">행사 일정·예산·제휴 혜택·현장 운영을 조율하고, 학생·학교·협력 업체 사이의 소통을 맡았습니다.</li></ul>
+<p class="period" data-en="Jan — Dec 2025" data-ko="2025.01 — 2025.12">2025.01 — 2025.12</p></div>
 </article><article class="experience experience-row">
-<p class="period" data-en="Jul 2022 — Jan 2023" data-ko="2022.07 — 2023.01">2022.07 — 2023.01</p>
 <div class="experience-body">
-<h3 class="" data-en="KHUDA" data-ko="KHUDA">KHUDA</h3>
+<h3 data-en="KHUDA" data-ko="KHUDA">KHUDA</h3>
 <p class="position" data-en="Second-cohort member" data-ko="2기 부원">2기 부원</p>
-<p class="institution" data-en="Data analysis club, Kyung Hee University" data-ko="경희대학교 데이터 분석 동아리">경희대학교 데이터 분석 동아리</p>
-<ul class="detail reading-zone"><li class="" data-en="Studied machine learning and deep learning fundamentals and worked on a book recommendation system." data-ko="머신러닝·딥러닝 기초를 공부하고 도서 추천 시스템 프로젝트를 진행했습니다.">머신러닝·딥러닝 기초를 공부하고 도서 추천 시스템 프로젝트를 진행했습니다.</li><li class="" data-en="Implemented profanity detection and masking in an NLP project." data-ko="자연어 처리 프로젝트에서 욕설 탐지·마스킹 기능을 구현했습니다.">자연어 처리 프로젝트에서 욕설 탐지·마스킹 기능을 구현했습니다.</li></ul>
-</div>
+<ul class="detail reading-zone"><li data-en="Studied machine learning and deep learning fundamentals and worked on a book recommendation system." data-ko="머신러닝·딥러닝 기초를 공부하고 도서 추천 시스템 프로젝트를 진행했습니다.">머신러닝·딥러닝 기초를 공부하고 도서 추천 시스템 프로젝트를 진행했습니다.</li><li data-en="Implemented profanity detection and masking in an NLP project." data-ko="자연어 처리 프로젝트에서 욕설 탐지·마스킹 기능을 구현했습니다.">자연어 처리 프로젝트에서 욕설 탐지·마스킹 기능을 구현했습니다.</li></ul>
+<p class="period" data-en="Jul 2022 — Jan 2023" data-ko="2022.07 — 2023.01">2022.07 — 2023.01</p></div>
 </article></div>
 </section><section aria-labelledby="education-title" class="education cv-section" id="education">
-<div class="section-heading"><h2 class="" data-en="Education" data-ko="학력" id="education-title">학력</h2></div>
+<div class="section-heading"><h2 data-en="Education" data-ko="학력" id="education-title">학력</h2></div>
 <article class="education-row">
 <p class="period" data-en="2022 — Present" data-ko="2022 — 현재">2022 — 현재</p>
-<div><h3 class="" data-en="Kyung Hee University" data-ko="경희대학교">경희대학교</h3>
+<div><h3 data-en="Kyung Hee University" data-ko="경희대학교">경희대학교</h3>
 <p class="education-detail reading-zone" data-en="Department of Artificial Intelligence · Undergraduate studies" data-ko="소프트웨어융합대학 인공지능학과 · 학부 과정">소프트웨어융합대학 인공지능학과 · 학부 과정</p>
 </div>
 </article>
 </section><section aria-labelledby="credentials-title" class="credentials cv-section" id="credentials">
-<div class="section-heading"><h2 class="" data-en="Awards &amp; certification" data-ko="수상·자격" id="credentials-title">수상·자격</h2></div>
+<div class="section-heading"><h2 data-en="Awards &amp; certification" data-ko="수상·자격" id="credentials-title">수상·자격</h2></div>
 <div class="credentials-list"><article class="credential"><p class="period">2024.10</p><div>
-<h3 class="" data-en="Intellectual Property Creation Patent Camp" data-ko="2024-2 지식재산 창출 특허 캠프">2024-2 지식재산 창출 특허 캠프</h3><p class="credential-detail reading-zone" data-en="Top excellence award" data-ko="최우수상">최우수상</p>
+<h3 data-en="Intellectual Property Creation Patent Camp" data-ko="2024-2 지식재산 창출 특허 캠프">2024-2 지식재산 창출 특허 캠프</h3><p class="credential-detail reading-zone" data-en="Top excellence award" data-ko="최우수상">최우수상</p>
 </div></article><article class="credential"><p class="period">2024</p><div>
-<h3 class="" data-en="Advanced Data Analytics Semi-Professional (ADsP)" data-ko="데이터분석 준전문가(ADsP)">데이터분석 준전문가(ADsP)</h3><p class="credential-detail reading-zone" data-en="Certification" data-ko="자격 취득">자격 취득</p>
+<h3 data-en="Advanced Data Analytics Semi-Professional (ADsP)" data-ko="데이터분석 준전문가(ADsP)">데이터분석 준전문가(ADsP)</h3><p class="credential-detail reading-zone" data-en="Certification" data-ko="자격 취득">자격 취득</p>
 </div></article><article class="credential"><p class="period">2023</p><div>
-<h3 class="" data-en="Defense AI Competition" data-ko="국방 AI 경진대회">국방 AI 경진대회</h3><p class="credential-detail reading-zone" data-en="Award, general-participant track" data-ko="일반인 부문 수상">일반인 부문 수상</p>
+<h3 data-en="Defense AI Competition" data-ko="국방 AI 경진대회">국방 AI 경진대회</h3><p class="credential-detail reading-zone" data-en="Award, general-participant track" data-ko="일반인 부문 수상">일반인 부문 수상</p>
 </div></article></div>
 </section><section aria-labelledby="skills-title" class="skills cv-section" id="skills">
-<div class="section-heading"><h2 class="" data-en="Tools &amp; technologies" data-ko="사용 기술" id="skills-title">사용 기술</h2></div>
+<div class="section-heading"><h2 data-en="Tools &amp; technologies" data-ko="사용 기술" id="skills-title">사용 기술</h2></div>
 <div class="skills-grid">
-<article class="skill-group reading-zone"><h3 class="" data-en="Modeling" data-ko="모델 구현">모델 구현</h3><p>Python · PyTorch · TensorFlow<br>Hugging Face · Transformers · scikit-learn</br></p></article>
-<article class="skill-group reading-zone"><h3 class="" data-en="Data &amp; experiments" data-ko="데이터·실험">데이터·실험</h3><p>NumPy · Pandas · Matplotlib<br>Jupyter · OpenCV</br></p></article>
-<article class="skill-group reading-zone"><h3 class="" data-en="Development &amp; infrastructure" data-ko="개발·실험 환경">개발·실험 환경</h3><p class="" data-en="Linux · Git · CUDA · SLURM&lt;br&gt;GPU servers" data-ko="Linux · Git · CUDA · SLURM&lt;br&gt;GPU 서버">Linux · Git · CUDA · SLURM<br>GPU 서버</br></p></article>
+<article class="skill-group reading-zone"><h3 data-en="Modeling" data-ko="모델 구현">모델 구현</h3><p>Python · PyTorch · TensorFlow<br/>Hugging Face · Transformers · scikit-learn</p></article>
+<article class="skill-group reading-zone"><h3 data-en="Data &amp; experiments" data-ko="데이터·실험">데이터·실험</h3><p>NumPy · Pandas · Matplotlib<br/>Jupyter · OpenCV</p></article>
+<article class="skill-group reading-zone"><h3 data-en="Development &amp; infrastructure" data-ko="개발·실험 환경">개발·실험 환경</h3><p data-en="Linux · Git · CUDA · SLURM&lt;br&gt;GPU servers" data-ko="Linux · Git · CUDA · SLURM&lt;br&gt;GPU 서버">Linux · Git · CUDA · SLURM<br/>GPU 서버</p></article>
 </div>
 <p class="interests" data-en="Interests: Efficient learning · Generative models · Multimodal AI · Trustworthy AI" data-ko="관심 분야: 효율적인 학습 · 생성 모델 · 멀티모달 AI · 신뢰할 수 있는 AI">관심 분야: 효율적인 학습 · 생성 모델 · 멀티모달 AI · 신뢰할 수 있는 AI</p>
-</section></div><section aria-label="Contact" class="contact reading-zone" id="contact">
+</section></div></div>
+<section aria-label="Contact" class="contact" id="contact">
 <span data-en="Contact" data-ko="Contact">Contact</span>
 <a class="email" href="mailto:shani03@khu.ac.kr">shani03@khu.ac.kr <span aria-hidden="true">↗</span></a>
-</section></main>
-<footer><span class="footer-note">RESEARCH &amp; ENGINEERING</span><span class="" data-en="Sihwan Kim / 김시환" data-ko="김시환 / Sihwan Kim">김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" rel="noopener noreferrer" target="_blank">GitHub ↗</a></footer>
+</section>
+</main>
+<footer class="footer"><span data-en="Sihwan Kim / 김시환" data-ko="김시환 / Sihwan Kim">김시환 / Sihwan Kim</span><a href="https://github.com/sihxan" rel="noopener noreferrer" target="_blank">GitHub ↗</a></footer>
 </div>
-<script src="assets/contour-terrain.js?v=editorial-20261018"></script>
-<script src="assets/scroll-motion-model.js?v=editorial-20261018"></script>
-<script src="assets/scroll-contour.js?v=editorial-20261018"></script>
-<script src="assets/portfolio.js?v=editorial-20261018" type="module"></script>
+<script src="assets/contour-terrain.js?v=blue-20261018"></script>
+<script src="assets/scroll-motion-model.js?v=blue-20261018"></script>
+<script src="assets/scroll-contour.js?v=blue-20261018"></script>
+<script src="assets/portfolio.js?v=blue-20261018" type="module"></script>
 </body>
 </html>

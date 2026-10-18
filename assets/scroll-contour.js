@@ -6,6 +6,14 @@
 
   function createLossLandscape(canvas, options = {}) {
     const ctx = canvas.getContext('2d', { alpha: true });
+    const ballCanvas = document.createElement('canvas');
+    ballCanvas.className = 'contour-ball';
+    ballCanvas.setAttribute('aria-hidden', 'true');
+    canvas.insertAdjacentElement('afterend', ballCanvas);
+    const ballCtx = ballCanvas.getContext('2d', { alpha: true });
+    const colors = getComputedStyle(document.documentElement);
+    const contourRgb = colors.getPropertyValue('--contour-rgb').trim() || '104,125,171';
+    const ballColors = ['--ball-light','--ball-mid','--ball-shade','--ball-dark'].map(name => colors.getPropertyValue(name).trim());
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     let width = innerWidth, height = innerHeight, lastTime = null, frame = null;
     let destroyed = false, explicitMotion = false, lastReport = '';
@@ -73,9 +81,9 @@
       }
       for (const [level, path] of paths) {
         const major = modulo(level, 8) === 0;
-        const ink = pen.createLinearGradient(0, 0, width, 0), alpha = major ? .30 : .19;
-        for (const [stop, strength] of [[0,.13],[.2,.24],[.45,.4],[.68,.67],[.86,1],[1,.8]]) {
-          ink.addColorStop(stop, 'rgba(67,76,79,' + alpha * strength + ')');
+        const ink = pen.createLinearGradient(0, 0, width, 0), alpha = major ? .26 : .16;
+        for (const [stop, strength] of [[0,.4],[.2,.5],[.45,.7],[.68,.9],[.86,1],[1,1]]) {
+          ink.addColorStop(stop, 'rgba(' + contourRgb + ',' + alpha * strength + ')');
         }
         pen.strokeStyle = ink; pen.lineWidth = major ? .95 : .7; pen.stroke(path);
       }
@@ -87,7 +95,8 @@
       }
     }
     function drawBall(state) {
-      const targetRadius = width <= 760 ? 8.8 : 10.5;
+      const ctx = ballCtx;
+      const targetRadius = width <= 760 ? 10 : 14;
       const turns = Math.max(1, Math.round(model.terrain.path.length / (TAU * targetRadius)));
       const radius = model.terrain.path.length / (TAU * turns);
       const x = state.ballWorldX, y = state.ballScreenY - radius * .85;
@@ -99,19 +108,19 @@
         const point = { x: past.x, y: past.y - state.cameraY };
         if (previous) {
           ctx.beginPath(); ctx.moveTo(previous.x, previous.y); ctx.lineTo(point.x, point.y);
-          ctx.strokeStyle = 'rgba(43,53,58,' + .20 * Math.pow(1 - step / 34, 1.5) + ')';
+          ctx.strokeStyle = 'rgba(' + contourRgb + ',' + .20 * Math.pow(1 - step / 34, 1.5) + ')';
           ctx.lineWidth = .85; ctx.stroke();
         }
         previous = point;
       }
       const shadow = ctx.createRadialGradient(x, y + radius, 0, x, y + radius, radius * 2);
-      shadow.addColorStop(0, 'rgba(31,40,46,.17)'); shadow.addColorStop(1, 'rgba(31,40,46,0)');
+      shadow.addColorStop(0, 'rgba(26,41,67,.21)'); shadow.addColorStop(1, 'rgba(26,41,67,0)');
       ctx.fillStyle = shadow; ctx.beginPath();
       ctx.ellipse(x, y + radius * .93, radius * 1.8, radius * .5, 0, 0, TAU); ctx.fill();
       const pearl = ctx.createRadialGradient(x - radius * .4, y - radius * .5, radius * .05,
         x + radius * .18, y + radius * .16, radius * 1.2);
-      pearl.addColorStop(0, '#bec5c6'); pearl.addColorStop(.28, '#7b878b');
-      pearl.addColorStop(.68, '#3e4b51'); pearl.addColorStop(1, '#202d34');
+      pearl.addColorStop(0, ballColors[0]); pearl.addColorStop(.28, ballColors[1]);
+      pearl.addColorStop(.68, ballColors[2]); pearl.addColorStop(1, ballColors[3]);
       ctx.fillStyle = pearl; ctx.beginPath(); ctx.arc(x, y, radius, 0, TAU); ctx.fill();
       ctx.save(); ctx.beginPath(); ctx.arc(x, y, radius - .4, 0, TAU); ctx.clip();
       ctx.translate(x, y);
@@ -129,7 +138,7 @@
       });
       render();
     }
-    function softenTextAreas() {
+    function softenTextAreas(ctx) {
       ctx.save(); ctx.globalCompositeOperation = 'destination-out';
       for (const box of textMasks) {
         const y = box.y - scrollY;
@@ -149,7 +158,10 @@
     function render() {
       if (destroyed) return;
       ctx.clearRect(0, 0, width, height);
-      const state = model.state(); drawField(state); drawBall(state); softenTextAreas();
+      ballCtx.clearRect(0, 0, width, height);
+      const state = model.state();
+      drawField(state); drawBall(state);
+      softenTextAreas(ctx); softenTextAreas(ballCtx);
       window.__ready = true;
     }
     function getState() {
@@ -193,8 +205,11 @@
     function resize() {
       const box = canvas.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
       width = Math.max(1, box.width); height = Math.max(1, box.height);
-      canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); model.setView(scrollY, anchor(), width);
+      canvas.width = ballCanvas.width = Math.round(width * dpr);
+      canvas.height = ballCanvas.height = Math.round(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ballCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      model.setView(scrollY, anchor(), width);
       buildTerrainTile(dpr);
       if (reduced.matches && !explicitMotion) model.step(0, true);
       render();
@@ -216,6 +231,7 @@
       if (frame !== null) cancelAnimationFrame(frame);
       observer.disconnect(); contentObserver.disconnect(); window.removeEventListener('scroll', onScroll);
       document.removeEventListener('visibilitychange', sync); reduced.removeEventListener('change', onMotion);
+      ballCanvas.remove();
     }
     return { play, pause, restart, seek, advance, getState, destroy };
   }

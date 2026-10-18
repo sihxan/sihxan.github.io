@@ -1,0 +1,25 @@
+/* Palette roles are shared by home, project covers, and detailed reading pages. */
+:root {
+  --paper:#F8F9FC; --ink:#202B45; --muted:#526079; --accent:#4055B5;
+  --light:#F8F9FC; --dark:#202B45; --wash:#E5EAF6;
+  --cover-primary:#4055B5; --cover-tint:#E3E9F5; --cover-neutral:#ECEEF3;
+  --cover-deep:#263451; --cover-white:#FAFBFF;
+  --contour-rgb:104,125,171;
+  --ball-light:#ECF1FF; --ball-mid:#8C9FD9; --ball-shade:#4059AF; --ball-dark:#21346E;
+}
+body{background:var(--paper);color:var(--ink)}
+.surface-light{background:var(--paper);color:var(--ink)}
+::selection{background:var(--accent);color:var(--cover-white)}
+.wordmark{color:var(--accent)}
+header nav>a:hover,.project-name a:hover,.email:hover{color:var(--accent);opacity:1}
+.contour-background,.contour-ball{mix-blend-mode:normal}
+.motion-tools{mix-blend-mode:normal;color:var(--ink)}
+.motion-tools button{background:var(--paper);border-radius:50%}
+.cover-clip,.cover-build{background:var(--cover-primary);color:var(--cover-white)}
+.cover-cache,.cover-data{background:var(--cover-tint);color:var(--ink)}
+.cover-tryon,.cover-noise{background:var(--cover-neutral);color:var(--ink)}
+.cover-video,.cover-read{background:var(--cover-deep);color:var(--cover-white)}
+.email{color:var(--accent)}
+.project-detail .detail-kicker,.project-detail .direction{color:var(--muted)}
+/* Leave the beginning of selected work visible on typical desktop screens. */
+@media(min-width:681px){.terrain-stage{height:clamp(250px,35svh,420px);min-height:0}}

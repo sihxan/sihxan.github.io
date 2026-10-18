@@ -1,17 +1,30 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Redirecting...</title>
-    <script>
-      (function () {
-        var segments = window.location.pathname.split("/").filter(Boolean);
-        var isProjectPage = segments.length > 1;
-        var base = isProjectPage ? "/" + segments[0] + "/" : "/";
-        var route = isProjectPage ? "/" + segments.slice(1).join("/") : window.location.pathname;
-        window.location.replace(window.location.origin + base + "#" + route + window.location.search);
-      })();
-    </script>
-  </head>
-  <body></body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#F8F9FC">
+  <title>페이지를 찾을 수 없습니다 — Sihwan Kim</title>
+  <link rel="stylesheet" href="/assets/portfolio.css?v=blue-20261018">
+  <link rel="stylesheet" href="/assets/color-system.css?v=blue-20261018">
+  <style>main{max-width:850px;padding:12vh 24px;margin:0 auto}h1{font-size:clamp(34px,5vw,60px);line-height:1.3;font-weight:800;word-break:keep-all}p{margin:28px 0;font-size:22px}a{display:inline-block;color:var(--accent);font-size:22px;font-weight:750;padding:14px 0}</style>
+</head>
+<body>
+  <main>
+    <h1>페이지를 찾을 수 없습니다.</h1>
+    <p>주소를 확인하거나 포트폴리오에서 프로젝트를 찾아보세요.</p>
+    <a href="/">포트폴리오로 돌아가기 ↗</a>
+  </main>
+  <script>
+    if (new URL(location.href).searchParams.get('lang') === 'en') {
+      document.documentElement.lang = 'en';
+      document.title = 'Page not found — Sihwan Kim';
+      document.querySelector('h1').textContent = 'Page not found.';
+      document.querySelector('p').textContent = 'Check the address or explore the projects in my portfolio.';
+      const link = document.querySelector('a');
+      link.textContent = 'Back to portfolio ↗';
+      link.href = '/?lang=en';
+    }
+  </script>
+</body>
 </html>
