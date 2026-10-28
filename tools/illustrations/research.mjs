@@ -87,62 +87,86 @@ function clip() {
 }
 
 function cache() {
-  const {P,s,c,l,dots,panel,group,route,foot,finish}=studio('kv-cache','cache-apparatus',[[-150,-57,-8],[149,88,0],[-120,-35,137],[48,-24,91]],{azimuth:46,elevation:25});
-  // The vertical cabinet creates a very different silhouette from the optical table.
+  const world=[...k.boxCorners({x:-191,y:-67,w:340,d:157},-12,0),...k.boxCorners({x:-181,y:-60,w:113,d:22},27,111),...k.boxCorners({x:-29,y:-31,w:76,d:78},0,85)];
+  const {P,s,c,l,dots,panel,group,route,foot,finish}=studio('kv-cache','cache-apparatus',world,{azimuth:52,elevation:25});
+  // Video on a recognizable TV; the separate cards below it represent KV memory.
   let base='';
-  base+=panel(-148,-52,94,117,-7,7,'base');
+  for(const [x,y]of [[-177,-51],[-79,52],[-21,-23],[38,42],[80,-10],[135,67]])base+=foot(x,y,-12);
+  base+=panel(-191,-67,136,130,-7,7,'base');
   base+=panel(-34,-36,86,92,-7,7,'base');
   base+=panel(69,-22,80,104,-7,7,'base');
-  for(const [x,y]of [[-134,-38],[-70,49],[-21,-23],[38,42],[80,-10],[135,67]])base+=foot(x,y,-12);
-  base+=route('archive-codec',[[-58,31],[-44,31],[-44,6],[-25,6]],-1,.02,.3);
-  base+=route('codec-reader',[[45,6],[61,6],[61,20],[74,20]],-1,.32,.65);
+  base+=route('archive-codec',[[-61,30],[-44,30],[-44,6],[-25,6]],.3,.08,.4);
+  base+=route('codec-reader',[[45,6],[61,6],[61,20],[74,20]],.3,.5,.9);
   let memory='';
-  memory+=s(-139,-42,8,93,0,118,2);memory+=s(-72,-42,8,93,0,118,2);memory+=s(-131,-42,59,7,0,118,1);
-  for(let level=0;level<5;level++){
-    const z=level*22;
-    memory+=s(-131,-35,59,84,z,4,1);
-    const shift=level===2?20:0;
-    memory+=s(-129,-30+shift,55,76,z+4,13,2,'inset');
-    memory+=s(-127,42+shift,51,5,z+4,15,2);
-    memory+=s(-111,47+shift,19,3,z+10,4,1,'dark');
-    if(level===2)for(let j=0;j<4;j++){memory+=s(-123+j*12,-14+shift,8,55,z+17,3,1,j===2?'accent':'sheet');}
+  memory+=panel(-152,-50,55,33,0,4);
+  memory+=s(-131,-48,14,13,4,25,2);
+  memory+=s(-181,-60,113,22,27,84,5);
+  // All screen artwork is mapped into the TV's front plane, not overlaid in screen space.
+  const front=k.sideMatrix([-175,-37.8],105,P,'left');
+  memory+=`<g transform="${front}">
+    <rect x="0" y="0" width="101" height="66" rx="5" fill="#223654"/>
+    <rect x="4" y="4" width="93" height="52" rx="3" fill="#dbe6f5"/>
+    <path d="M4 37 Q24 20 44 36T97 31V56H4Z" fill="#b5c9e3"/>
+    <path d="M4 48Q26 37 50 46T97 43V56H4Z" fill="#8ca7cb"/>
+    <circle cx="77" cy="17" r="5.5" fill="#f3f6fb"/>
+    <g data-motion="scan" data-motion-range="20 0"><rect x="27" y="29" width="11" height="10" rx="2" fill="#4055b5"/><circle cx="29" cy="40" r="2" fill="#263951"/><circle cx="36" cy="40" r="2" fill="#263951"/></g>
+    <path d="M7 60H94" stroke="#758caa" stroke-width="1"/>
+    <g data-motion="scan" data-motion-range="38 0"><circle cx="19" cy="60" r="1.8" fill="#e8effb"/></g>
+    <path d="m8 9 5 3-5 3Z" fill="#4055b5"/>
+    <circle cx="98" cy="71" r="1.2" fill="#4055b5"/>
+    <path d="M43 71H58" stroke="#9dacbf" stroke-width="1.6" stroke-linecap="round"/>
+  </g>`;
+  // Layered memory cards are outside the TV. No film strip enters the compressor.
+  memory+=panel(-170,2,104,50,0,5);
+  for(let j=0;j<5;j++){
+    const x=-162+j*17;
+    memory+=s(x,8,13,36,5,4+j*4,1,j===2?'accent':'sheet');
+    memory+=s(x+3,12,7,13,9+j*4,.7,1,j===2?'glass':'inset');
+    memory+=dots([[x+4,33,10+j*4],[x+9,33,10+j*4]],.7);
   }
-  memory+=panel(-141,-44,79,98,118,6);
-  memory+=s(-132,-33,61,4,124,.8,1,'inset');
+  memory+=s(-164,46,92,3,5,3,1,'inset');
   let codec='';
   codec+=panel(-29,-31,76,78,0,8);
-  codec+=s(-22,-23,8,12,8,62,1.5);codec+=s(32,-23,8,12,8,62,1.5);codec+=s(-22,-23,62,40,70,8,2);
-  // The piston enters a fixed housing; only the attached press head and shaft travel.
-  // At maximum travel the head remains 5 world units above the source tokens.
-  const pressTravel=k.axisVector(P,[0,0,-10]);
+  codec+=s(-22,-23,8,12,8,62,1.5)+s(32,-23,8,12,8,62,1.5);
+  codec+=s(-22,-23,62,40,70,8,2);
+  codec+=s(-12,-12,42,44,8,3,2,'inset');
+  // Gaps close while every card retains thickness; no fabricated compression ratio.
+  for(let j=0;j<4;j++){
+    const travel=k.axisVector(P,[0,0,-j*5]);
+    codec+=`<g data-motion="scan" data-motion-range="${travel.join(' ')}">`+
+      s(-5,-4,29,28,11+j*8,3,1,j===3?'glass':'sheet')+'</g>';
+  }
+  // Head remains 2 units above the upper card at both ends of its stroke.
+  const pressTravel=k.axisVector(P,[0,0,-15]);
   codec+=`<g data-motion="scan" data-motion-range="${pressTravel.join(' ')}">`+
-    c(9,10,4,40,27)+panel(-9,-8,36,36,33,7,'accent')+'</g>';
-  codec+=c(9,10,8,55,15);codec+=c(9,10,11,78,5,'accent');codec+=l(k.knurl(9,10,11,78,83,32,P),'lo');
-  codec+=s(-12,-12,42,44,8,4,2,'inset');
-  for(let j=0;j<3;j++)codec+=s(-5,-4+j*9,29,7,12,6,1,'sheet');
+    c(9,10,4,47,25)+panel(-9,-8,36,36,40,7,'accent')+'</g>';
+  codec+=c(9,10,8,55,15)+c(9,10,11,78,5,'accent');
+  codec+=l(k.knurl(9,10,11,78,83,32,P),'lo');
   codec+=s(-19,32,56,6,8,.7,1,'inset');
+  // A compact cartridge at the exit contrasts with the loose input memory cards.
+  codec+=s(26,18,18,23,8,7,2,'dark');
+  codec+=s(29,21,12,17,15,1,1,'accent');
+  for(let j=0;j<3;j++)codec+=s(29+j*4,35,2,4,16,.4,.2,'sheet');
   let decode='';
   decode+=panel(74,-17,68,44,0,7);
   decode+=s(79,-13,58,34,7,2,2,'dark');
-  for(let j=0;j<5;j++){decode+=s(83+j*10,-8,6,24,9,5,1,j===2?'accent':'sheet');}
+  for(let j=0;j<5;j++)decode+=s(83+j*10,-8,6,24,9,5,1,j===2?'accent':'sheet');
   decode+=s(77,19,62,4,7,5,1);
   decode+=panel(74,34,68,43,0,5);
   for(let j=0;j<4;j++)decode+=s(80+j*14,42,9,26,5,3,1,'sheet');
   let measure='';
-  // Separate channels are categorical instrumentation, not fabricated measurements.
   measure+=panel(-29,65,89,24,0,5);
   for(let j=0;j<3;j++){
     const x=-14+j*29;
-    measure+=c(x,77,9,5,3);
-    measure+=c(x,77,6.5,8,.7,'glass');
+    measure+=c(x,77,9,5,3)+c(x,77,6.5,8,.7,'glass');
     measure+=l(k.ring(x,77,5.2,8.8,P,32),'lo');
     const ticks=k.radialTicks(x,77,5.2,12,3,8.8,[1,1.5],P);
     measure+=l(ticks.minor,'lo')+l(ticks.major,'mid');
-    // No needle: none of these conceptual gauges claims a measured value.
     measure+=dots([[x,77,9]],1);
   }
-  finish(base+group('memory',memory)+group('codec',codec)+group('decode',decode)+group('measure',measure),'KV memory cabinet, compression press and independent validation instruments',['memory','codec','decode','measure']);
+  finish(base+group('memory',memory)+group('codec',codec)+group('decode',decode)+group('measure',measure),'Video TV, KV memory cards, compression press and independent validation instruments',['memory','codec','decode','measure']);
 }
+
 clip();cache();
 writeFileSync(resolve('tools/illustrations/data/research-geometry.json'),JSON.stringify(qa,null,2));
 console.log(JSON.stringify(qa));

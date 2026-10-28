@@ -94,20 +94,20 @@
       "en": "Store less.<br>Check what remains."
     },
     "caption": {
-      "ko": "메모리 서랍장·압축 프레스·독립 복원기·측정 장치를 사용한 개념 모형입니다. 실제 모델의 하드웨어 구성은 아닙니다.",
-      "en": "A conceptual memory cabinet, compression press, independent reader and measurement station. This is not the model’s physical hardware."
+      "ko": "TV는 영상 입력, 카드 묶음은 모델에 쌓인 KV-cache를 나타냅니다. 영상 파일이 아니라 이 기억을 압축·복원하는 과정을 그린 개념 모형입니다.",
+      "en": "The TV represents video input; the stacked cards represent the model’s KV-cache. This conceptual model shows compression and decoding of that cache, not of the video file."
     },
     "defaultPart": "codec",
     "parts": [
       {
         "id": "memory",
         "label": {
-          "ko": "원본 KV",
-          "en": "Original KV"
+          "ko": "영상의 KV",
+          "en": "Video KV-cache"
         },
         "work": {
-          "ko": "Qwen2.5-VL에서 수집한 실제 KV를 비교 실험에 사용했습니다.",
-          "en": "Used actual KV captured from Qwen2.5-VL for comparison experiments."
+          "ko": "Qwen2.5-VL이 영상을 처리하며 만든 KV-cache를 수집해 비교 실험에 사용했습니다.",
+          "en": "Captured the KV-cache produced as Qwen2.5-VL processed video and used it for comparison experiments."
         },
         "result": {
           "ko": "저비트·평균과 잔차 공유·학습형 표현을 비교할 기준을 구성했습니다.",
@@ -173,8 +173,8 @@
       "en": "These are codec and numerical validation results. Improved QA, end-to-end inference time and GPU memory usage have not been established."
     },
     "diagram": {
-      "ko": "KV 보관, 압축, 독립 복원과 분리 측정을 나타낸 메모리 서랍장과 압축 장치",
-      "en": "A memory cabinet and compression instrument representing KV storage, compression, independent decoding and separate measurements"
+      "ko": "TV, KV 카드 묶음, 압축 프레스, 독립 복원기와 측정 장치로 나타낸 영상 모델의 KV-cache 압축 과정",
+      "en": "A TV, KV card stack, compression press, independent decoder and measurement station illustrating video-model KV-cache compression"
     }
   }
 }

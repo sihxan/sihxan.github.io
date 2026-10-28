@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT
 PREVIEW = ROOT
 VERSION = 'apparatus-20261028'
+FIGURE_VERSIONS = {'kv-cache': 'kv-tv-20261028'}
 LAYOUT = {'clip-context': 'layout-reversed', 'sunicon-vton': '',
           'allmize': 'layout-reversed', 'generative-models': 'layout-wide', 'khuda': 'layout-wide'}
 
@@ -100,7 +101,7 @@ def build(allow_partial=False):
             return match.group(0)
         attrs = attrs.replace('class="project-cover ', 'class="project-cover apparatus-cover ')
         attrs = attrs.replace(f'href="projects/{slug}/"', f'href="projects/{slug}/#experiment"')
-        return f'<a{attrs}><img class="apparatus-cover-image" src="assets/project-{slug}.svg?v={VERSION}" alt="" loading="lazy" width="960" height="600"/><span aria-hidden="true" class="cover-arrow">↗</span></a>'
+        return f'<a{attrs}><img class="apparatus-cover-image" src="assets/project-{slug}.svg?v={FIGURE_VERSIONS.get(slug, VERSION)}" alt="" loading="lazy" width="960" height="600"/><span aria-hidden="true" class="cover-arrow">↗</span></a>'
     home = re.sub(r'<a(?P<attrs>[^>]*class="project-cover[^>]+)>.*?</a>', cover, home, flags=re.S)
     for slug in data:
         home = home.replace(f'href="projects/{slug}/"', f'href="projects/{slug}/#experiment"')
