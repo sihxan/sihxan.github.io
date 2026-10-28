@@ -1,0 +1,269 @@
+{
+  "samba": {
+    "heading": {
+      "ko": "누가 남고,<br>누가 빠지는가.",
+      "en": "Who stays.<br>Who gets left out?"
+    },
+    "caption": {
+      "ko": "샘플 선택 설계를 분류·배분대로 표현했습니다. 그림 속 표본은 설명용이며 실제 실험 결과가 아닙니다.",
+      "en": "A sorting carousel illustrates the sampling design. Its sample tokens are schematic, not experimental results."
+    },
+    "defaultPart": "minimum",
+    "parts": [
+      {
+        "id": "features",
+        "label": {
+          "ko": "특징과 군집",
+          "en": "Features and clusters"
+        },
+        "work": {
+          "ko": "VAE·DINOv2 특징을 결합해 데이터를 세분화하는 설계를 정리했습니다.",
+          "en": "Designed a grouping approach combining VAE and DINOv2 features."
+        },
+        "result": {
+          "ko": "소수 그룹이 선택 과정에서 누락될 수 있는 지점을 검토했습니다.",
+          "en": "Examined where minority groups could be omitted during selection."
+        }
+      },
+      {
+        "id": "minimum",
+        "label": {
+          "ko": "최소 표본",
+          "en": "Minimum allocation"
+        },
+        "work": {
+          "ko": "각 군집에 최소 표본 수를 먼저 확보하는 v0 선택 방식을 설계했습니다.",
+          "en": "Designed the v0 selector to reserve a minimum sample allocation per cluster."
+        },
+        "result": {
+          "ko": "작은 그룹도 고려하는 선택 규칙을 명세로 정리했습니다.",
+          "en": "Specified a selection rule that also accounts for small groups."
+        }
+      },
+      {
+        "id": "budget",
+        "label": {
+          "ko": "남은 예산",
+          "en": "Remaining budget"
+        },
+        "work": {
+          "ko": "최소 배분 뒤 남은 예산을 비례 배분하고 대표 사례를 고르는 방식을 정리했습니다.",
+          "en": "Specified proportional allocation of the remaining budget and selection of representative cases."
+        },
+        "result": {
+          "ko": "SAMBA v0 설계와 v0.1 수정 명세를 마련했습니다.",
+          "en": "Produced the SAMBA v0 design and v0.1 revision specification."
+        }
+      },
+      {
+        "id": "evaluation",
+        "label": {
+          "ko": "그룹별 평가",
+          "en": "Group-wise evaluation"
+        },
+        "work": {
+          "ko": "평균·최저 그룹 점수와 각 그룹의 성능표를 함께 확인하도록 평가 기준을 정리했습니다.",
+          "en": "Defined evaluation using average, worst-group and per-group performance together."
+        },
+        "result": {
+          "ko": "평균 점수만으로 놓칠 수 있는 선택 편향을 점검하도록 설계했습니다.",
+          "en": "Designed checks for selection bias that an average score can hide."
+        }
+      }
+    ],
+    "takeaway": {
+      "ko": "좋은 선택은,<br>누가 빠졌는지도 봅니다.",
+      "en": "Good selection also asks<br>who was left out."
+    },
+    "scope": {
+      "ko": "Waterbirds·CelebA 대상 설계<br>SAMBA v0·v0.1 명세",
+      "en": "Design for Waterbirds and CelebA<br>SAMBA v0 and v0.1 specifications"
+    },
+    "boundary": {
+      "ko": "현재 산출물은 설계와 평가 기준입니다. 제안 방식의 구현·성능 평가는 후속 단계이며, 정확도 향상을 확인한 결과는 아닙니다.",
+      "en": "The outputs are a design and evaluation specification. Implementation and performance evaluation are subsequent work; no accuracy improvement is claimed."
+    },
+    "diagram": {
+      "ko": "특징 군집, 최소 표본, 남은 예산과 그룹별 평가를 표현한 원형 샘플 분류대",
+      "en": "A circular sample sorter representing feature groups, minimum allocation, remaining budget and group-wise evaluation"
+    }
+  },
+  "generative-models": {
+    "heading": {
+      "ko": "수식에서 코드로,<br>생성 과정을 들여다보다.",
+      "en": "From equations to code.<br>Inside the generation process."
+    },
+    "caption": {
+      "ko": "광학 장치로 학습한 개념을 표현했습니다. VAE·확산·잠재표현·조건부 생성은 탐구 주제이며, 그림은 실제 모델 출력이 아닙니다.",
+      "en": "An optical apparatus represents the concepts studied. VAE, diffusion, latent representations and conditioning are study topics; the images are not actual model outputs."
+    },
+    "defaultPart": "diffusion",
+    "parts": [
+      {
+        "id": "vae",
+        "label": {
+          "ko": "VAE",
+          "en": "VAE"
+        },
+        "work": {
+          "ko": "VAE의 이론과 구현을 공부했습니다.",
+          "en": "Studied the theory and implementation of VAEs."
+        },
+        "result": {
+          "ko": "데이터를 잠재표현으로 다루는 수학과 모델 구조를 정리했습니다.",
+          "en": "Documented the mathematics and model structure behind latent representations."
+        }
+      },
+      {
+        "id": "diffusion",
+        "label": {
+          "ko": "확산 과정",
+          "en": "Diffusion"
+        },
+        "work": {
+          "ko": "DDPM·DDIM·점수 기반 생성 모델의 구조와 수학을 분석했습니다.",
+          "en": "Analyzed the structures and mathematics of DDPM, DDIM and score-based generative models."
+        },
+        "result": {
+          "ko": "생성 과정의 수식과 코드가 어떻게 이어지는지 정리했습니다.",
+          "en": "Connected the equations of generation to their implementation."
+        }
+      },
+      {
+        "id": "latent",
+        "label": {
+          "ko": "잠재공간",
+          "en": "Latent space"
+        },
+        "work": {
+          "ko": "Latent diffusion이 잠재표현에서 생성하는 방식을 살펴봤습니다.",
+          "en": "Examined how latent diffusion performs generation in a latent representation."
+        },
+        "result": {
+          "ko": "표현 공간과 생성 모델의 역할을 구분해 이해했습니다.",
+          "en": "Studied the distinct roles of representation space and the generative model."
+        }
+      },
+      {
+        "id": "conditioning",
+        "label": {
+          "ko": "조건부 생성",
+          "en": "Conditioning"
+        },
+        "work": {
+          "ko": "조건을 전달해 생성 과정을 조절하는 방식을 공부했습니다.",
+          "en": "Studied how conditioning guides the generation process."
+        },
+        "result": {
+          "ko": "논문 읽기와 구현 학습으로 구성 요소의 역할을 정리했습니다.",
+          "en": "Documented component roles through paper reading and implementation study."
+        }
+      }
+    ],
+    "takeaway": {
+      "ko": "모델을 구현하며,<br>수식의 역할을 이해했습니다.",
+      "en": "Implementation made<br>the equations tangible."
+    },
+    "scope": {
+      "ko": "VAE · DDPM · DDIM · 점수 기반 모델<br>Latent diffusion · 조건부 생성",
+      "en": "VAE · DDPM · DDIM · score-based models<br>Latent diffusion · conditional generation"
+    },
+    "boundary": {
+      "ko": "개인 학습으로 진행한 논문 분석·모델 구현 경험입니다. 생성 모델의 수학적 기반과 구성 요소의 역할을 이해하는 데 집중했습니다.",
+      "en": "Personal paper-analysis and model-implementation study, focused on the mathematical foundations of generative models and the roles of their components."
+    },
+    "diagram": {
+      "ko": "VAE 렌즈, 노이즈 화면, 잠재표현 필터와 조건부 생성 화면으로 구성한 광학 학습 장치",
+      "en": "An optical study apparatus with a VAE lens, noise display, latent filter and conditional generation display"
+    }
+  },
+  "khuda": {
+    "heading": {
+      "ko": "읽을 책을 찾고,<br>불편한 말은 가리고.",
+      "en": "Find the next book.<br>Filter harmful language."
+    },
+    "caption": {
+      "ko": "책장과 타자기는 각각 도서 추천과 욕설 탐지·마스킹을 나타냅니다. 두 기능은 별도 프로젝트입니다.",
+      "en": "The bookshelf and typewriter represent book recommendation and profanity detection/masking. These were separate projects."
+    },
+    "defaultPart": "recommendation",
+    "parts": [
+      {
+        "id": "books",
+        "label": {
+          "ko": "도서 추천",
+          "en": "Book recommendation"
+        },
+        "work": {
+          "ko": "KHUDA 추천 시스템 프로젝트에 참여했습니다.",
+          "en": "Participated in KHUDA’s recommendation-system project."
+        },
+        "result": {
+          "ko": "추천 문제를 실제 프로젝트로 경험했습니다.",
+          "en": "Gained project experience with recommendation problems."
+        }
+      },
+      {
+        "id": "recommendation",
+        "label": {
+          "ko": "추천 구현",
+          "en": "Recommender implementation"
+        },
+        "work": {
+          "ko": "도서 추천 시스템을 구현했습니다.",
+          "en": "Implemented a book recommendation system."
+        },
+        "result": {
+          "ko": "학습한 머신러닝 개념을 추천 기능 구현으로 연결했습니다.",
+          "en": "Applied machine-learning concepts to a working recommendation feature."
+        }
+      },
+      {
+        "id": "detection",
+        "label": {
+          "ko": "욕설 탐지",
+          "en": "Profanity detection"
+        },
+        "work": {
+          "ko": "자연어 처리 프로젝트에서 욕설을 탐지하는 기능을 구현했습니다.",
+          "en": "Implemented profanity detection in an NLP project."
+        },
+        "result": {
+          "ko": "텍스트 처리 문제를 프로젝트로 경험했습니다.",
+          "en": "Gained practical project experience in text processing."
+        }
+      },
+      {
+        "id": "masking",
+        "label": {
+          "ko": "텍스트 마스킹",
+          "en": "Text masking"
+        },
+        "work": {
+          "ko": "탐지한 욕설을 가리는 마스킹 기능을 구현했습니다.",
+          "en": "Implemented masking for detected profanity."
+        },
+        "result": {
+          "ko": "욕설 탐지·마스킹 기능을 구현했습니다.",
+          "en": "Delivered profanity detection and masking functionality."
+        }
+      }
+    ],
+    "takeaway": {
+      "ko": "배운 개념을,<br>두 가지 기능으로 만들었습니다.",
+      "en": "Turning learned concepts<br>into two practical features."
+    },
+    "scope": {
+      "ko": "KHUDA 2기 · 2022.07–2023.01<br>추천 시스템 · 자연어 처리",
+      "en": "KHUDA cohort 2 · Jul 2022–Jan 2023<br>Recommendation systems · NLP"
+    },
+    "boundary": {
+      "ko": "도서 추천과 욕설 탐지·마스킹은 별개로 진행한 프로젝트입니다.",
+      "en": "Book recommendation and profanity detection/masking were separate projects."
+    },
+    "diagram": {
+      "ko": "도서 추천 책장과 별도의 욕설 탐지·마스킹 타자기",
+      "en": "A book-recommendation shelf alongside a separate profanity detection and masking typewriter"
+    }
+  }
+}

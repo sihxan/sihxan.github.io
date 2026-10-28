@@ -1,0 +1,195 @@
+{
+  "sunicon-vton": {
+    "heading": {
+      "ko": "옷의 정보를 읽고,<br>피팅 이미지로 연결하다.",
+      "en": "Read the garment.<br>Build the try-on pipeline."
+    },
+    "caption": {
+      "ko": "입력·핏 측정·지시문·생성 단계를 연결한 개념 모형입니다. 의상과 화면은 실제 생성 결과가 아닌 설명용 그림입니다.",
+      "en": "A conceptual model of inputs, fit measurement, instructions and generation. The garments and screens are illustrative, not real generated results."
+    },
+    "defaultPart": "prompt",
+    "parts": [
+      {
+        "id": "inputs",
+        "label": {
+          "ko": "의상 입력",
+          "en": "Garment inputs"
+        },
+        "work": {
+          "ko": "제품 사진과 착용 참조를 연결하고 실행 설정을 정리했습니다.",
+          "en": "Connected product images and wearing references, and organized execution settings."
+        },
+        "result": {
+          "ko": "입력·설정·출력을 이어 실행할 수 있는 흐름을 만들었습니다.",
+          "en": "Established a runnable path connecting inputs, settings and outputs."
+        }
+      },
+      {
+        "id": "fit",
+        "label": {
+          "ko": "핏 측정",
+          "en": "Fit measurement"
+        },
+        "work": {
+          "ko": "전처리와 의상 길이·핏 측정 단계를 생성 흐름에 연결했습니다.",
+          "en": "Connected preprocessing and garment length and fit measurement to generation."
+        },
+        "result": {
+          "ko": "측정 정보를 지시문과 이미지 생성으로 전달하도록 통합했습니다.",
+          "en": "Integrated the measured information into instructions and image generation."
+        }
+      },
+      {
+        "id": "prompt",
+        "label": {
+          "ko": "로컬 지시문",
+          "en": "Local instructions"
+        },
+        "work": {
+          "ko": "외부 API가 맡던 지시문 생성을 로컬 VLM으로 옮기고, JSON 검증·재시도를 구현했습니다.",
+          "en": "Moved instruction generation from an external API to a local VLM, with JSON validation and retries."
+        },
+        "result": {
+          "ko": "로컬에서 핏 지시문을 만드는 실행 경로를 확인했습니다.",
+          "en": "Verified the execution path for producing fit instructions locally."
+        }
+      },
+      {
+        "id": "render",
+        "label": {
+          "ko": "이미지 생성",
+          "en": "Image generation"
+        },
+        "work": {
+          "ko": "핏 지시문에서 모델컷·가상 피팅 생성까지 단계별 실행을 연결했습니다.",
+          "en": "Connected step-by-step execution from fit instructions to model-cut and virtual try-on generation."
+        },
+        "result": {
+          "ko": "일부 상의 사례에서 전체 생성 경로를 확인했습니다.",
+          "en": "Verified the complete generation path on a limited set of upper-body garment cases."
+        }
+      },
+      {
+        "id": "run",
+        "label": {
+          "ko": "실행 관리",
+          "en": "Execution control"
+        },
+        "work": {
+          "ko": "단일 GPU의 순차 실행과 서버 기동·종료, 입력 해시·실패 기록을 구성했습니다.",
+          "en": "Built sequential single-GPU execution, server lifecycle handling, input hashes and failure records."
+        },
+        "result": {
+          "ko": "전달용 코드·실행 설정·사용 가이드를 만들고 종료·중단 시 정리 동작을 확인했습니다.",
+          "en": "Delivered code, execution settings and a usage guide, and checked cleanup after completion or interruption."
+        }
+      }
+    ],
+    "takeaway": {
+      "ko": "로컬 지시문부터 피팅 생성까지,<br>하나의 실행 흐름으로.",
+      "en": "From local instructions to try-on,<br>one executable workflow."
+    },
+    "scope": {
+      "ko": "Rewake / Sunicon 산학협력 · 파이프라인 통합·실행 검증",
+      "en": "Rewake / Sunicon collaboration · Pipeline integration and execution validation"
+    },
+    "boundary": {
+      "ko": "일부 상의 사례를 대상으로 검증했습니다. JSON 형식의 성공과 핏 해석·최종 이미지 품질은 별도로 확인해야 합니다.",
+      "en": "Validation covered limited upper-body garment cases. Valid JSON does not establish correct fit interpretation or final image quality."
+    },
+    "diagram": {
+      "ko": "옷걸이·측정대·로컬 지시문 장치·피팅 화면·단일 GPU 실행 관리로 구성한 가상 피팅 작업실",
+      "en": "A virtual try-on atelier with a garment rail, measurement table, local instruction device, fitting display and single-GPU execution control"
+    }
+  },
+  "allmize": {
+    "heading": {
+      "ko": "문서를 찾아,<br>서비스의 답변으로.",
+      "en": "From documents<br>to answers in a service."
+    },
+    "caption": {
+      "ko": "문서 검색과 답변 생성, 서비스 연결을 표현한 개념 모형입니다. 실제 제품 화면이나 배포 구조를 재현한 것은 아닙니다.",
+      "en": "A conceptual model of document retrieval, answer generation and service integration. It does not reproduce the product UI or deployment architecture."
+    },
+    "defaultPart": "retrieve",
+    "parts": [
+      {
+        "id": "documents",
+        "label": {
+          "ko": "문서와 질문",
+          "en": "Documents and questions"
+        },
+        "work": {
+          "ko": "문서를 검색해 답변 생성에 활용하는 RAG 워크플로를 구현했습니다.",
+          "en": "Implemented a RAG workflow that retrieves documents for answer generation."
+        },
+        "result": {
+          "ko": "문서의 정보를 답변 과정에 연결하는 기능을 만들었습니다.",
+          "en": "Built functionality that connects document information to the answering process."
+        }
+      },
+      {
+        "id": "retrieve",
+        "label": {
+          "ko": "검색 흐름",
+          "en": "Retrieval workflow"
+        },
+        "work": {
+          "ko": "검색 결과를 AI 기능으로 이어 주는 RAG 기반 흐름을 개발했습니다.",
+          "en": "Developed the RAG workflow connecting retrieved information to AI features."
+        },
+        "result": {
+          "ko": "검색과 생성이 서비스 안에서 이어지도록 구현했습니다.",
+          "en": "Implemented the connection between retrieval and generation within the service."
+        }
+      },
+      {
+        "id": "answer",
+        "label": {
+          "ko": "AI 기능",
+          "en": "AI features"
+        },
+        "work": {
+          "ko": "검색한 문서를 활용하는 답변 생성과 AI 서비스 기능 개발에 참여했습니다.",
+          "en": "Contributed to document-grounded answer generation and AI service features."
+        },
+        "result": {
+          "ko": "RAG 워크플로와 연결된 서비스 기능을 구현했습니다.",
+          "en": "Implemented service features connected to the RAG workflow."
+        }
+      },
+      {
+        "id": "service",
+        "label": {
+          "ko": "서비스 연결",
+          "en": "Service integration"
+        },
+        "work": {
+          "ko": "애플리케이션 로직을 개발하고 제품·기술 개선안을 제안했습니다.",
+          "en": "Developed application logic and proposed product and technical improvements."
+        },
+        "result": {
+          "ko": "초기 멤버로 기능 구현과 서비스 개선 논의에 함께 참여했습니다.",
+          "en": "Contributed as an early member to feature implementation and service improvement discussions."
+        }
+      }
+    ],
+    "takeaway": {
+      "ko": "AI 기능을<br>사용할 수 있는 서비스로 연결했습니다.",
+      "en": "Connected AI features<br>to a usable service."
+    },
+    "scope": {
+      "ko": "Allmize 초기 멤버 · 2025.02–08 참여",
+      "en": "Early member at Allmize · February–August 2025"
+    },
+    "boundary": {
+      "ko": "2025년 2–8월 초기 서비스 개발에 참여하며 RAG와 애플리케이션 로직을 담당했습니다.",
+      "en": "Contributed to early service development from February to August 2025, working on RAG and application logic."
+    },
+    "diagram": {
+      "ko": "문서 서가·검색 운반부·질문 단말·답변 독서대로 구성한 문서 검색 서비스 모형",
+      "en": "A document retrieval service represented by an archive shelf, retrieval shuttle, query terminal and answer reading desk"
+    }
+  }
+}

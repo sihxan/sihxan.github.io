@@ -1,0 +1,106 @@
+{
+  "spot-videollm": {
+    "heading": {
+      "ko": "같은 장면에서,\n두 가지 답을 읽다.",
+      "en": "One scene.\nTwo ways to read it."
+    },
+    "caption": {
+      "ko": "연구 흐름을 설명한 모형입니다. 내부 특징에서 읽은 정보와 원모델의 답변을 별도로 비교합니다.",
+      "en": "A conceptual model of the research. Information read from internal features is compared separately with the model’s own answers."
+    },
+    "defaultPart": "state",
+    "parts": [
+      {
+        "id": "scene",
+        "label": {
+          "ko": "통제 장면",
+          "en": "Controlled scenes"
+        },
+        "work": {
+          "ko": "객체 크기·프레임 수·배경·질문을 나눠 실험 장면을 구성했습니다.",
+          "en": "Built scenes varying object size, frame count, background and question."
+        },
+        "result": {
+          "ko": "같은 입력으로 실제 답변과 내부 정보를 비교할 기준을 만들었습니다.",
+          "en": "Established matched inputs for comparing native answers with internal information."
+        }
+      },
+      {
+        "id": "state",
+        "label": {
+          "ko": "내부 상태",
+          "en": "Internal states"
+        },
+        "work": {
+          "ko": "Qwen의 시각 처리 단계부터 답변 직전까지 내부 특징을 수집했습니다.",
+          "en": "Collected Qwen features from visual processing to the state immediately before answering."
+        },
+        "result": {
+          "ko": "작은 객체의 단서가 어느 단계까지 남는지 분석할 수 있게 했습니다.",
+          "en": "Made it possible to trace where small-object cues remain."
+        }
+      },
+      {
+        "id": "native",
+        "label": {
+          "ko": "모델의 답변",
+          "en": "Native answers"
+        },
+        "work": {
+          "ko": "같은 평가 입력에서 원모델이 생성한 답변을 수집하고 비교했습니다.",
+          "en": "Collected and compared the model’s generated answers on the same evaluation inputs."
+        },
+        "result": {
+          "ko": "1,104개 평가 조건 중 577개를 맞혔습니다.",
+          "en": "Correct on 577 of 1,104 test conditions."
+        }
+      },
+      {
+        "id": "readout",
+        "label": {
+          "ko": "외부 판독",
+          "en": "External readout"
+        },
+        "work": {
+          "ko": "내부 특징에서 정답을 읽는 별도 분류기를 학습했습니다.",
+          "en": "Trained a separate classifier to read answers from the internal features."
+        },
+        "result": {
+          "ko": "같은 1,104개 조건에서 874개를 맞혔습니다.",
+          "en": "Correct on 874 of the same 1,104 conditions."
+        }
+      },
+      {
+        "id": "control",
+        "label": {
+          "ko": "대조 실험",
+          "en": "Diagnostic controls"
+        },
+        "work": {
+          "ko": "조건을 맞춘 내부 상태 교환과 대조 실험을 구축했습니다.",
+          "en": "Built matched internal-state transfer controls."
+        },
+        "result": {
+          "ko": "답변·외부 판독·상태 교환의 효과를 서로 다른 측정으로 분석했습니다.",
+          "en": "Analyzed native answers, external readout and transfer effects as distinct measurements."
+        }
+      }
+    ],
+    "takeaway": {
+      "ko": "단서는 남아 있어도, 답은 틀릴 수 있습니다.",
+      "en": "The cue can remain even when the answer is wrong."
+    },
+    "scope": {
+      "ko": "Qwen3.5-9B · 고정한 두 객체로 만든 1,104개 평가 조건",
+      "en": "Qwen3.5-9B · 1,104 test conditions derived from two fixed assets"
+    },
+    "boundary": {
+      "ko": "외부 분류기를 학습해 비교한 진단 결과입니다. 원모델의 답변 성능이 개선되었다는 뜻은 아닙니다.",
+      "en": "A diagnostic comparison using a separately trained classifier. It does not show improved native QA."
+    },
+    "diagram": {
+      "ko": "영상 입력, 내부 상태, 모델 답변과 외부 판독, 대조 실험을 나타낸 인터랙티브 연구 모형",
+      "en": "Interactive research apparatus showing input scenes, internal states, native answers, external readout and diagnostic controls"
+    }
+  }
+}

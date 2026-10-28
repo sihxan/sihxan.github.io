@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "sunicon-vton",
+    "solids": 42,
+    "bounds": {
+      "minX": 288.72587587443945,
+      "maxX": 728.666096404283,
+      "minY": 95.25454711134148,
+      "maxY": 502.91784565845467
+    },
+    "ids": [
+      "inputs",
+      "fit",
+      "prompt",
+      "render",
+      "run"
+    ],
+    "projection": {
+      "origin": [
+        489.68686068741596,
+        393.9535447086421
+      ],
+      "scale": 1.3028798795778813,
+      "azimuth": 54,
+      "elevation": 30
+    }
+  },
+  {
+    "slug": "allmize",
+    "solids": 50,
+    "bounds": {
+      "minX": 225.36095697027662,
+      "maxX": 687.3289569684414,
+      "minY": 76.03800411791025,
+      "maxY": 518.3575108170731
+    },
+    "ids": [
+      "documents",
+      "retrieve",
+      "answer",
+      "service"
+    ],
+    "projection": {
+      "origin": [
+        480.8227160985298,
+        396.99516673947545
+      ],
+      "scale": 1.2481509856401505,
+      "azimuth": 48,
+      "elevation": 30
+    }
+  }
+]

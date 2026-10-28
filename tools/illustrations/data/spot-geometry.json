@@ -1,0 +1,31 @@
+{
+  "projection": {
+    "origin": [
+      477.24528942775464,
+      307.0020497900241
+    ],
+    "scale": 1.786030952085341,
+    "azimuth": 58,
+    "elevation": 32
+  },
+  "solids": 63,
+  "bounds": {
+    "minX": 44.99999999999994,
+    "maxX": 915,
+    "minY": 103.97038996166805,
+    "maxY": 534.2435580345092
+  },
+  "conceptual": true,
+  "parts": [
+    "scene",
+    "state",
+    "native",
+    "readout",
+    "control"
+  ],
+  "recordedResults": {
+    "native": 577,
+    "readout": 874,
+    "total": 1104
+  }
+}

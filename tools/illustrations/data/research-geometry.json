@@ -1,0 +1,34 @@
+{
+  "clip-context": {
+    "solids": 60,
+    "bounds": {
+      "minX": 42.00000000000006,
+      "maxX": 917.9999999999999,
+      "minY": 66.38964305460712,
+      "maxY": 522.8025942712295
+    },
+    "parts": [
+      "images",
+      "masking",
+      "scoring",
+      "checks"
+    ],
+    "conceptual": true
+  },
+  "kv-cache": {
+    "solids": 71,
+    "bounds": {
+      "minX": 173.09186819330313,
+      "maxX": 761.066932963204,
+      "minY": 48.180244464464465,
+      "maxY": 567.6968923718406
+    },
+    "parts": [
+      "memory",
+      "codec",
+      "decode",
+      "measure"
+    ],
+    "conceptual": true
+  }
+}

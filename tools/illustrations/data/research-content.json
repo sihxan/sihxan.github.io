@@ -1,0 +1,180 @@
+{
+  "clip-context": {
+    "heading": {
+      "ko": "점수는 올랐는데,<br>객체를 봤을까?",
+      "en": "A higher score.<br>Did it see the object?"
+    },
+    "caption": {
+      "ko": "원본·객체 위치 가림·다른 위치 가림을 나란히 비교하는 개념 모형입니다. 그림 속 장면은 실제 평가 이미지가 아닙니다.",
+      "en": "A conceptual comparator for original images, object-box masking and control-region masking. The miniature scenes are illustrative."
+    },
+    "defaultPart": "masking",
+    "parts": [
+      {
+        "id": "images",
+        "label": {
+          "ko": "크기별 평가",
+          "en": "Size-based evaluation"
+        },
+        "work": {
+          "ko": "COCO·PASCAL VOC에서 객체 크기별 평가 조건을 구성했습니다.",
+          "en": "Built object-size evaluation conditions on COCO and PASCAL VOC."
+        },
+        "result": {
+          "ko": "작은 객체를 구분하는 성능과 가림 효과를 같은 평가에서 비교했습니다.",
+          "en": "Compared small-object discrimination and masking effects within the evaluation."
+        }
+      },
+      {
+        "id": "masking",
+        "label": {
+          "ko": "가림과 대조",
+          "en": "Masking and controls"
+        },
+        "work": {
+          "ko": "객체의 경계 상자와 다른 위치를 가린 조건을 비교했습니다.",
+          "en": "Compared masking the object bounding box with masking another region."
+        },
+        "result": {
+          "ko": "객체 위치를 가린 뒤에도 판별력이 상당 부분 남았습니다.",
+          "en": "Substantial discrimination remained after masking the object location."
+        }
+      },
+      {
+        "id": "scoring",
+        "label": {
+          "ko": "다섯 점수 방식",
+          "en": "Five scoring methods"
+        },
+        "work": {
+          "ko": "CLIP 가중치를 고정하고 전체 이미지·패치 특징을 쓰는 다섯 방식을 비교했습니다.",
+          "en": "Compared five global-image and patch-feature scoring methods with CLIP weights frozen."
+        },
+        "result": {
+          "ko": "COCO 주분석에서 판별 성능이 높아져도 객체 위치 가림의 영향이 함께 커지지는 않았습니다.",
+          "en": "In the main COCO analysis, higher discrimination did not consistently mean a larger object-masking effect."
+        }
+      },
+      {
+        "id": "checks",
+        "label": {
+          "ko": "결과 점검",
+          "en": "Statistical checks"
+        },
+        "work": {
+          "ko": "이미지·클래스 재표본과 다중검정 보정으로 결과를 점검했습니다.",
+          "en": "Checked results with image/class resampling and multiple-comparison correction."
+        },
+        "result": {
+          "ko": "일부 결과가 유지되지 않는 조건까지 원고에 정리했습니다.",
+          "en": "Documented conditions under which some findings no longer held."
+        }
+      }
+    ],
+    "takeaway": {
+      "ko": "성능과 가림 효과는<br>함께 봐야 합니다.",
+      "en": "Read performance<br>alongside masking effects."
+    },
+    "scope": {
+      "ko": "COCO·PASCAL VOC · 사전학습 CLIP 고정<br>다섯 점수 산출 방식 비교",
+      "en": "COCO · PASCAL VOC · frozen pretrained CLIP<br>Five scoring methods"
+    },
+    "boundary": {
+      "ko": "가림은 입력을 바꾸며 경계 상자에는 주변 픽셀도 포함됩니다. 객체 자체의 정보 사용량을 직접 측정한 결과로 해석하지 않습니다.",
+      "en": "Masking changes the input, and a bounding box includes surrounding pixels. These results do not directly measure use of object-only information."
+    },
+    "diagram": {
+      "ko": "원본·가림 장면과 점수 방식, 통계 점검을 나타낸 광학 비교 장치",
+      "en": "An optical comparator representing original and masked scenes, scoring methods, and statistical checks"
+    }
+  },
+  "kv-cache": {
+    "heading": {
+      "ko": "작게 저장하고,<br>따로 검증하다.",
+      "en": "Store less.<br>Check what remains."
+    },
+    "caption": {
+      "ko": "메모리 서랍장·압축 프레스·독립 복원기·측정 장치를 사용한 개념 모형입니다. 실제 모델의 하드웨어 구성은 아닙니다.",
+      "en": "A conceptual memory cabinet, compression press, independent reader and measurement station. This is not the model’s physical hardware."
+    },
+    "defaultPart": "codec",
+    "parts": [
+      {
+        "id": "memory",
+        "label": {
+          "ko": "원본 KV",
+          "en": "Original KV"
+        },
+        "work": {
+          "ko": "Qwen2.5-VL에서 수집한 실제 KV를 비교 실험에 사용했습니다.",
+          "en": "Used actual KV captured from Qwen2.5-VL for comparison experiments."
+        },
+        "result": {
+          "ko": "저비트·평균과 잔차 공유·학습형 표현을 비교할 기준을 구성했습니다.",
+          "en": "Established comparisons of low-bit, mean/residual-sharing and learned representations."
+        }
+      },
+      {
+        "id": "codec",
+        "label": {
+          "ko": "압축 표현",
+          "en": "Compression"
+        },
+        "work": {
+          "ko": "압축 표현을 구현하고, 학습형 비교에서는 60개 설정을 학습했습니다.",
+          "en": "Implemented compressed representations and trained 60 settings in the learned comparison."
+        },
+        "result": {
+          "ko": "KV 복원 오차가 작아져도 attention 출력 오차는 커질 수 있었습니다.",
+          "en": "Lower KV reconstruction error could still coincide with higher attention-output error."
+        }
+      },
+      {
+        "id": "decode",
+        "label": {
+          "ko": "독립 복원",
+          "en": "Independent decoding"
+        },
+        "work": {
+          "ko": "압축 파일과 별도의 복원기를 구현해 실제 파일을 검사했습니다.",
+          "en": "Implemented compressed files and a separate decoder to check the actual artifacts."
+        },
+        "result": {
+          "ko": "1개 영상·2개 층에서 만든 10개 비교 파일이 바이트 상한과 복원 검사를 통과했습니다.",
+          "en": "Ten comparison files from one video and two layers passed byte-cap and decoding checks."
+        }
+      },
+      {
+        "id": "measure",
+        "label": {
+          "ko": "분리 측정",
+          "en": "Separate measurements"
+        },
+        "work": {
+          "ko": "저장량·KV 복원 오차·attention 출력 오차를 분리해 측정했습니다.",
+          "en": "Measured storage bytes, KV reconstruction error and attention-output error separately."
+        },
+        "result": {
+          "ko": "별도의 12개 영상 비교에서도 저장량과 attention 오차의 우열은 조건마다 달랐습니다.",
+          "en": "A separate 12-video comparison also showed condition-dependent trade-offs in bytes and attention error."
+        }
+      }
+    ],
+    "takeaway": {
+      "ko": "복원이 비슷해도,<br>계산은 달라질 수 있습니다.",
+      "en": "Similar reconstruction.<br>Different computation."
+    },
+    "scope": {
+      "ko": "저장된 KV를 이용한 오프라인 비교<br>12개 영상 패널과 학습형 실험은 별도 구성",
+      "en": "Offline comparisons using captured KV<br>The 12-video panel and learned study are separate"
+    },
+    "boundary": {
+      "ko": "현재 결과는 압축·복원과 수치 검증입니다. 질문 정답률, 전체 추론 시간과 GPU 메모리의 개선은 아직 입증하지 않았습니다.",
+      "en": "These are codec and numerical validation results. Improved QA, end-to-end inference time and GPU memory usage have not been established."
+    },
+    "diagram": {
+      "ko": "KV 보관, 압축, 독립 복원과 분리 측정을 나타낸 메모리 서랍장과 압축 장치",
+      "en": "A memory cabinet and compression instrument representing KV storage, compression, independent decoding and separate measurements"
+    }
+  }
+}

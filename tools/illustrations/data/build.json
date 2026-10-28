@@ -1,0 +1,84 @@
+[
+  {
+    "slug": "samba",
+    "parts": [
+      "features",
+      "budget",
+      "minimum",
+      "evaluation"
+    ],
+    "bytes": 195617
+  },
+  {
+    "slug": "generative-models",
+    "parts": [
+      "diffusion",
+      "vae",
+      "latent",
+      "conditioning"
+    ],
+    "bytes": 164106
+  },
+  {
+    "slug": "khuda",
+    "parts": [
+      "books",
+      "recommendation",
+      "detection",
+      "masking"
+    ],
+    "bytes": 244385
+  },
+  {
+    "slug": "sunicon-vton",
+    "parts": [
+      "run",
+      "inputs",
+      "render",
+      "fit",
+      "prompt"
+    ],
+    "bytes": 113374
+  },
+  {
+    "slug": "allmize",
+    "parts": [
+      "documents",
+      "retrieve",
+      "answer",
+      "service"
+    ],
+    "bytes": 142897
+  },
+  {
+    "slug": "clip-context",
+    "parts": [
+      "scoring",
+      "images",
+      "masking",
+      "checks"
+    ],
+    "bytes": 165390
+  },
+  {
+    "slug": "kv-cache",
+    "parts": [
+      "memory",
+      "codec",
+      "decode",
+      "measure"
+    ],
+    "bytes": 194399
+  },
+  {
+    "slug": "spot-videollm",
+    "parts": [
+      "native",
+      "readout",
+      "scene",
+      "state",
+      "control"
+    ],
+    "bytes": 219917
+  }
+]

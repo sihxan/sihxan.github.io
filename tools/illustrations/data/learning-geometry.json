@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "samba",
+    "solids": 59,
+    "viewBox": [
+      -73.4,
+      -8.32,
+      1113.06,
+      721.07
+    ],
+    "parts": [
+      "features",
+      "minimum",
+      "budget",
+      "evaluation"
+    ],
+    "conceptual": true
+  },
+  {
+    "slug": "generative-models",
+    "solids": 50,
+    "viewBox": [
+      -125.1,
+      -23.52,
+      1238.22,
+      716.66
+    ],
+    "parts": [
+      "vae",
+      "diffusion",
+      "latent",
+      "conditioning"
+    ],
+    "conceptual": true
+  },
+  {
+    "slug": "khuda",
+    "solids": 79,
+    "viewBox": [
+      -116.96,
+      -111.64,
+      1174.05,
+      840.76
+    ],
+    "parts": [
+      "books",
+      "recommendation",
+      "detection",
+      "masking"
+    ],
+    "conceptual": true
+  }
+]

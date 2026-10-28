@@ -35,4 +35,23 @@ Each homepage project cover and title opens a dedicated page with background, co
 
 Montserrat and Pretendard Variable are locally hosted under SIL OFL 1.1. Source information, pinned versions, checksums, and both licenses are included in `assets/`.
 
-The contour landscape and typographic project illustrations are decorative and do not represent experimental data. The rolling bead follows the same continuous terrain at a constant speed; scrolling moves the camera independently. Motion can be paused, and reduced-motion preferences are respected.
+The contour landscape is decorative. Each project has a distinct interactive conceptual illustration: an optical comparator, video inspection bench, memory cabinet, virtual fitting studio, document library, sample selector, generative-model rail, or recommendation and text-processing desk. These objects are explanatory metaphors, not hardware diagrams or actual evaluation images. Recorded results are fixed and retain their original scope. The rolling bead follows the same continuous terrain at a constant speed; scrolling moves the camera independently. Motion can be paused, and reduced-motion preferences are respected.
+
+
+## Interactive project illustrations
+
+The home gallery opens each project at `#experiment`. Selecting a part shows its contribution and outcome in Korean or English. Keyboard selection, reduced motion, offscreen suspension, and the existing pause/restart controls are supported. Research-stage boundaries remain explicit: SPOT is a diagnostic comparison, KV studies remain separate offline cohorts, and SAMBA is a design-stage proposal.
+
+The SVGs use the MIT-licensed [Anatomy](https://github.com/wheresryan22/anatomy) geometry helper, vendored in `tools/illustrations/reference/`. License copies are included there and in `assets/anatomy-license.txt`. No runtime package or external API is needed.
+
+To rebuild all illustrations and inline explorers from this repository root (Node.js 20+ and Python 3.11+):
+
+```sh
+node tools/illustrations/spot.mjs
+node tools/illustrations/research.mjs
+node tools/illustrations/products.mjs
+node tools/illustrations/learning.mjs
+python3 tools/build_explorers.py
+```
+
+Bilingual descriptions live in `tools/illustrations/data/*-content.json`. The integrator replaces existing generated sections and supports repeated builds. Shared interactions and responsive layouts live in `assets/project-explorer.js` and `assets/project-explorer.css`. Existing blue colors and contour/ball sources are preserved.
